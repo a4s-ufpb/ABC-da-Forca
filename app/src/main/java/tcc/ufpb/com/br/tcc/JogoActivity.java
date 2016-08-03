@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
     //TTS object
@@ -22,13 +24,16 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     //status check code
     private int MY_DATA_CHECK_CODE = 0;
 
-    String palavra = "MACACO";
-    char[] palavraChar = palavra.toCharArray();
-    char[] resposta = new char[palavraChar.length];
+    Palavra palavra;
+    char[] palavraChar;
+    char[] resposta;
 
     TextView campoPalavra;
     ImageView campoImagem;
 
+    GerenciadorDePalavras gerenciadorDePalavras;
+
+    ImageView botaoHome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +46,34 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         campoPalavra = (TextView) findViewById(R.id.campoPalavra);
         campoImagem = (ImageView) findViewById(R.id.campoImagem);
+        botaoHome = (ImageView) findViewById(R.id.botaoHome);
+        gerenciadorDePalavras = new GerenciadorDePalavras();
+
+        palavra = gerenciadorDePalavras.getPalavraAleatoria();
+        palavraChar = palavra.getPalavra().toCharArray();
+        resposta = new char[palavraChar.length];
+
+        Picasso
+                .with(this).load(palavra.getPathImagem())
+                .resize(110,110)
+                .into(campoImagem);
+
+
         iniciarCampoPalavra();
 
+        botaoHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         campoImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speakWords(palavra);
+                speakWords(palavra.getPalavra());
             }
         });
 
@@ -448,8 +474,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         //check for successful instantiation
         if (initStatus == TextToSpeech.SUCCESS) {
-            if(myTTS.isLanguageAvailable(Locale.US)==TextToSpeech.LANG_AVAILABLE)
+            if(myTTS.isLanguageAvailable(Locale.US)==TextToSpeech.LANG_AVAILABLE){
+
                 myTTS.setLanguage(Locale.US);
+            }
+
         }
         else if (initStatus == TextToSpeech.ERROR) {
             Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
@@ -461,11 +490,10 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             if(palavraChar[i] == letra){
                 resposta[i] = letra;
             }
-
         }
         atualizarCampoPalavra();
-
     }
+
     public void atualizarCampoPalavra(){
         if (campoPalavra != null) {
             String texto = "";
@@ -475,12 +503,12 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }else{
                     texto +=resposta[i]+" ";
                 }
-
             }
             campoPalavra.setText(texto);
             verificaPalavra();
         }
     }
+
     public void iniciarCampoPalavra(){
         String texto = "";
         for(int i=0 ; i < resposta.length ; i++){
@@ -492,14 +520,13 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
     public void verificaPalavra(){
         if(Arrays.equals(palavraChar,resposta)){
-
             // Ganhou
             try {
                 Thread.sleep( 1000 );
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            speakWords(palavra);
+            speakWords(palavra.getPalavra());
         }
     }
 }
