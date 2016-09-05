@@ -1,7 +1,10 @@
 package tcc.ufpb.com.br.tcc;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.widget.Button;
 import android.view.View;
 import android.speech.tts.TextToSpeech;
@@ -34,6 +37,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     GerenciadorDePalavras gerenciadorDePalavras;
 
     ImageView botaoHome;
+
+    private AlertDialog alerta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -527,6 +533,33 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 e.printStackTrace();
             }
             speakWords(palavra.getPalavra());
+
+            alertDialogAcertou();
         }
+    }
+
+    public void alertDialogAcertou() {
+        //LayoutInflater é utilizado para inflar nosso layout em uma view.
+        //-pegamos nossa instancia da classe
+        LayoutInflater li = getLayoutInflater();
+
+        //inflamos o layout alerta.xml na view
+        View view = li.inflate(R.layout.alerta, null);
+        //definimos para o botão do layout um clickListener
+        view.findViewById(R.id.btProximaPalavra).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                //exibe um Toast informativo.
+                Toast.makeText(JogoActivity.this, "alerta.dismiss()", Toast.LENGTH_SHORT).show();
+                //desfaz o alerta.
+                alerta.dismiss();
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("Palavra correta!");
+        builder.setView(view);
+        alerta = builder.create();
+        alerta.show();
     }
 }
