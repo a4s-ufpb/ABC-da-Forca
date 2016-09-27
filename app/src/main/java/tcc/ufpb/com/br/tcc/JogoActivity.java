@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +34,14 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
     TextView campoPalavra;
     ImageView campoImagem;
-
+    RelativeLayout layout;
     GerenciadorDePalavras gerenciadorDePalavras;
 
     ImageView botaoHome;
 
     private AlertDialog alerta;
+
+    private int qtErros = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
 
+        layout = (RelativeLayout) findViewById(R.id.jogolayout);
         campoPalavra = (TextView) findViewById(R.id.campoPalavra);
         campoImagem = (ImageView) findViewById(R.id.campoImagem);
         botaoHome = (ImageView) findViewById(R.id.botaoHome);
@@ -487,16 +491,37 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         }
         else if (initStatus == TextToSpeech.ERROR) {
-            Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Desculpe! Houve algum problema interno...", Toast.LENGTH_LONG).show();
         }
     }
 
     public void verificarLetra(char letra){
+        boolean existeLetra = false;
         for(int i=0; i < palavraChar.length ; i++){
             if(palavraChar[i] == letra){
                 resposta[i] = letra;
+                existeLetra = true;
             }
         }
+        if(!existeLetra){
+            this.qtErros++;
+
+            if(qtErros == 1)
+                layout.setBackground(getResources().getDrawable(R.drawable.background1erro));
+            else if(qtErros == 2)
+                layout.setBackground(getResources().getDrawable(R.drawable.background2erros));
+            else if(qtErros == 3)
+                layout.setBackground(getResources().getDrawable(R.drawable.background3erros));
+            else if(qtErros == 4)
+                layout.setBackground(getResources().getDrawable(R.drawable.background4erros));
+            else if(qtErros == 5)
+                layout.setBackground(getResources().getDrawable(R.drawable.background5erros));
+            else if(qtErros == 6)
+                layout.setBackground(getResources().getDrawable(R.drawable.background6erros));
+                // game over, inflar o alert dialog do game over
+
+        }
+
         atualizarCampoPalavra();
     }
 

@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tcc.ufpb.com.br.tcc.JogoActivity"
     android:background="@drawable/background"
-    android:id="@+id/layout">
+    android:id="@+id/jogolayout">
 
 
     <TextView
