@@ -548,10 +548,16 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         //definimos para o botão do layout um clickListener
         view.findViewById(R.id.btProximaPalavra).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                //exibe um Toast informativo.
-                Toast.makeText(JogoActivity.this, "alerta.dismiss()", Toast.LENGTH_SHORT).show();
-                //desfaz o alerta.
-                alerta.dismiss();
+
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+
+
+//                //exibe um Toast informativo.
+//                Toast.makeText(JogoActivity.this, "alerta.dismiss()", Toast.LENGTH_SHORT).show();
+//                //desfaz o alerta.
+//                alerta.dismiss();
             }
         });
 

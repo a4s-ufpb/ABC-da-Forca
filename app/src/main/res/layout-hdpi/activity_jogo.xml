@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tcc.ufpb.com.br.tcc.JogoActivity"
+    android:background="@drawable/background"
+    android:id="@+id/layout">
+
+
+    <TextView
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="45sp"
+        android:id="@+id/campoPalavra"
+        android:textAlignment="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_above="@+id/botaoA" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/campoImagem"
+        android:layout_alignTop="@+id/botaoHome"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="A"
+        android:id="@+id/botaoA"
+        android:layout_above="@+id/botaoN"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="B"
+        android:id="@+id/botaoB"
+        android:layout_alignTop="@+id/botaoA"
+        android:layout_toRightOf="@+id/botaoA"
+        android:layout_toEndOf="@+id/botaoA" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="C"
+        android:id="@+id/botaoC"
+        android:layout_alignTop="@+id/botaoB"
+        android:layout_toRightOf="@+id/botaoB"
+        android:layout_toEndOf="@+id/botaoB" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="D"
+        android:id="@+id/botaoD"
+        android:layout_above="@+id/botaoP"
+        android:layout_toRightOf="@+id/botaoC"
+        android:layout_toEndOf="@+id/botaoC" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="E"
+        android:id="@+id/botaoE"
+        android:layout_alignTop="@+id/botaoD"
+        android:layout_toRightOf="@+id/botaoD"
+        android:layout_toEndOf="@+id/botaoD" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="F"
+        android:id="@+id/botaoF"
+        android:layout_alignTop="@+id/botaoE"
+        android:layout_toRightOf="@+id/botaoE"
+        android:layout_toEndOf="@+id/botaoE" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="G"
+        android:id="@+id/botaoG"
+        android:layout_alignTop="@+id/botaoF"
+        android:layout_toRightOf="@+id/botaoF"
+        android:layout_toEndOf="@+id/botaoF" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="H"
+        android:id="@+id/botaoH"
+        android:layout_alignTop="@+id/botaoG"
+        android:layout_toRightOf="@+id/botaoG"
+        android:layout_toEndOf="@+id/botaoG" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="I"
+        android:id="@+id/botaoI"
+        android:layout_alignTop="@+id/botaoH"
+        android:layout_toRightOf="@+id/botaoH"
+        android:layout_toEndOf="@+id/botaoH" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="J"
+        android:id="@+id/botaoJ"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoI"
+        android:layout_toEndOf="@+id/botaoI" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="K"
+        android:id="@+id/botaoK"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoJ"
+        android:layout_toEndOf="@+id/botaoJ" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="L"
+        android:id="@+id/botaoL"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoK"
+        android:layout_toEndOf="@+id/botaoK" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="M"
+        android:id="@+id/botaoM"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoL"
+        android:layout_toEndOf="@+id/botaoL" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="N"
+        android:id="@+id/botaoN"
+        android:layout_alignTop="@+id/botaoZ"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="O"
+        android:id="@+id/botaoO"
+        android:layout_alignTop="@+id/botaoN"
+        android:layout_alignLeft="@+id/botaoB"
+        android:layout_alignStart="@+id/botaoB" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="P"
+        android:id="@+id/botaoP"
+        android:layout_alignTop="@+id/botaoO"
+        android:layout_toRightOf="@+id/botaoO"
+        android:layout_toEndOf="@+id/botaoO" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="Q"
+        android:id="@+id/botaoQ"
+
+        android:layout_alignTop="@+id/botaoP"
+        android:layout_toRightOf="@+id/botaoP"
+        android:layout_toEndOf="@+id/botaoP" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="R"
+        android:id="@+id/botaoR"
+
+        android:layout_alignTop="@+id/botaoQ"
+        android:layout_toRightOf="@+id/botaoQ"
+        android:layout_toEndOf="@+id/botaoQ" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="S"
+        android:id="@+id/botaoS"
+
+        android:layout_below="@+id/botaoF"
+        android:layout_toRightOf="@+id/botaoE"
+        android:layout_toEndOf="@+id/botaoE" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="T"
+        android:id="@+id/botaoT"
+
+        android:layout_below="@+id/botaoF"
+        android:layout_toRightOf="@+id/botaoF"
+        android:layout_toEndOf="@+id/botaoF" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="U"
+        android:id="@+id/botaoU"
+
+        android:layout_below="@+id/botaoH"
+        android:layout_toLeftOf="@+id/botaoI"
+        android:layout_toStartOf="@+id/botaoI" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="V"
+        android:id="@+id/botaoV"
+        android:layout_below="@+id/botaoI"
+        android:layout_alignLeft="@+id/botaoI"
+        android:layout_alignStart="@+id/botaoI" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="W"
+        android:id="@+id/botaoW"
+
+        android:layout_below="@+id/botaoI"
+        android:layout_toLeftOf="@+id/botaoK"
+        android:layout_toStartOf="@+id/botaoK" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="X"
+        android:id="@+id/botaoX"
+
+        android:layout_below="@+id/botaoK"
+        android:layout_alignLeft="@+id/botaoK"
+        android:layout_alignStart="@+id/botaoK" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="Y"
+        android:id="@+id/botaoY"
+        android:layout_alignTop="@+id/botaoX"
+        android:layout_toRightOf="@+id/botaoX"
+        android:layout_toEndOf="@+id/botaoX" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="Z"
+        android:id="@+id/botaoZ"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoY"
+        android:layout_toEndOf="@+id/botaoY" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/botaoHome"
+        android:src="@drawable/botaohome"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

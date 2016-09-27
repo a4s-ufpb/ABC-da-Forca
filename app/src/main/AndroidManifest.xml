@@ -20,7 +20,9 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"></activity>
-        <activity android:name=".JogoActivity" android:screenOrientation="landscape">
+        <activity
+            android:name=".JogoActivity"
+            android:screenOrientation="landscape">
 
         </activity>
     </application>
