@@ -1,6 +1,6 @@
 package tcc.ufpb.com.br.tcc;
 
-import android.content.DialogInterface;
+import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.content.Intent;
+import android.os.Vibrator;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -39,6 +40,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
     ImageView botaoHome;
 
+    Vibrator vibrate;
+
     private AlertDialog alerta;
 
     private int qtErros = 0;
@@ -58,6 +61,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         campoImagem = (ImageView) findViewById(R.id.campoImagem);
         botaoHome = (ImageView) findViewById(R.id.botaoHome);
         gerenciadorDePalavras = new GerenciadorDePalavras();
+        vibrate = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 
         palavra = gerenciadorDePalavras.getPalavraAleatoria();
         palavraChar = palavra.getPalavra().toCharArray();
@@ -505,20 +509,23 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         }
         if(!existeLetra){
             this.qtErros++;
+            vibrate.vibrate(500);
 
             if(qtErros == 1)
-                layout.setBackground(getResources().getDrawable(R.drawable.background1erro));
-            else if(qtErros == 2)
                 layout.setBackground(getResources().getDrawable(R.drawable.background2erros));
-            else if(qtErros == 3)
+            else if(qtErros == 2)
                 layout.setBackground(getResources().getDrawable(R.drawable.background3erros));
-            else if(qtErros == 4)
+            else if(qtErros == 3)
                 layout.setBackground(getResources().getDrawable(R.drawable.background4erros));
-            else if(qtErros == 5)
+            else if(qtErros == 4)
                 layout.setBackground(getResources().getDrawable(R.drawable.background5erros));
-            else if(qtErros == 6)
+            else if(qtErros == 5){
                 layout.setBackground(getResources().getDrawable(R.drawable.background6erros));
                 // game over, inflar o alert dialog do game over
+                gameOver();
+            }
+
+
 
         }
 
@@ -568,10 +575,10 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         //-pegamos nossa instancia da classe
         LayoutInflater li = getLayoutInflater();
 
-        //inflamos o layout alerta.xml na view
-        View view = li.inflate(R.layout.alerta, null);
+        //inflamos o layout palavra_correta.xmlrreta.xml na view
+        final View view = li.inflate(R.layout.palavra_correta, null);
         //definimos para o botão do layout um clickListener
-        view.findViewById(R.id.btProximaPalavra).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.botaoNext).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
                 Intent intent = getIntent();
@@ -580,17 +587,57 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
 
 //                //exibe um Toast informativo.
-//                Toast.makeText(JogoActivity.this, "alerta.dismiss()", Toast.LENGTH_SHORT).show();
-//                //desfaz o alerta.
-//                alerta.dismiss();
+//                Toast.makeText(JogoActivity.this, "palavra_correta.dismiss()", Toast.LENGTH_SHORT).show();
+//                //desfaz o palavra_correta.
+//                palavra_correta.dismiss();
+            }
+        });
+
+        ;
+
+        view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(view.getContext(), MainActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-        builder.setTitle("Palavra correta!");
+        builder.setTitle("");
         builder.setView(view);
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void gameOver(){
+        LayoutInflater li = getLayoutInflater();
+        final View view = li.inflate(R.layout.game_over, null);
+
+
+        view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                Intent i = new Intent(view.getContext(), MainActivity.class);
+                startActivity(i);
+                finish();
+
+
+//                //exibe um Toast informativo.
+//                Toast.makeText(JogoActivity.this, "palavra_correta.dismiss()", Toast.LENGTH_SHORT).show();
+//                //desfaz o palavra_correta.
+//                palavra_correta.dismiss();
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("");
+        builder.setView(view);
+        alerta = builder.create();
+        alerta.show();
+
     }
 }
