@@ -34,12 +34,26 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal">
 
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:id="@+id/botaoHome"
-            android:src="@drawable/botaohome"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:id="@+id/botaoHome"
+                android:src="@drawable/botaohome"
+                />
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/restart_button"
+                android:layout_marginLeft="30dp"
+                android:id="@+id/botaoRestart"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

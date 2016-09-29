@@ -632,6 +632,21 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             }
         });
 
+        view.findViewById(R.id.botaoRestart).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+
+
+//                //exibe um Toast informativo.
+//                Toast.makeText(JogoActivity.this, "palavra_correta.dismiss()", Toast.LENGTH_SHORT).show();
+//                //desfaz o palavra_correta.
+//                palavra_correta.dismiss();
+            }
+        });
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
         builder.setTitle("");
