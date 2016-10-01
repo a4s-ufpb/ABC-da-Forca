@@ -10,28 +10,28 @@
     tools:context="tcc.ufpb.com.br.tcc.MainActivity"
     android:background="@drawable/background">
 
-    <ImageButton
+    <ImageView
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:text="Jogar"
         android:id="@+id/botaoJogar"
         android:src="@drawable/botaoplay"
         android:background="@android:color/transparent"
+        android:layout_marginBottom="60dp"
         android:layout_above="@+id/botaoConfigurar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp" />
+        android:layout_centerHorizontal="true" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:text="Configurar"
         android:id="@+id/botaoConfigurar"
         android:src="@drawable/botaoconfigurar"
+        android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@android:color/transparent" />
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:layout_width="wrap_content"
