@@ -40,15 +40,15 @@
             android:gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:id="@+id/botaoHome"
                 android:src="@drawable/botaohome"
                 />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/restart_button"
                 android:layout_marginLeft="30dp"
                 android:id="@+id/botaoRestart"/>
