@@ -13,7 +13,7 @@ public class Palavra {
 
 
     public Palavra(String palavra, int drawablePath){
-        this.palavra = palavra;
+        this.palavra = palavra.toUpperCase();
         this.drawablePath = drawablePath;
     }
 

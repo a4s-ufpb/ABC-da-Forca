@@ -11,8 +11,8 @@
     android:weightSum="1">
 
     <ImageView
-        android:layout_width="586dp"
-        android:layout_height="211dp"
+        android:layout_width="450dp"
+        android:layout_height="250dp"
         android:id="@+id/logo"
         android:background="@drawable/logo" />
 

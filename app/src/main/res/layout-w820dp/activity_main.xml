@@ -18,8 +18,7 @@
         android:id="@+id/botaoJogar"
         android:src="@drawable/botaoplay"
         android:background="@android:color/transparent"
-        android:layout_marginBottom="60dp"
-        android:layout_above="@+id/botaoConfigurar"
+        android:layout_below="@+id/logoMenu"
         android:layout_centerHorizontal="true" />
 
     <ImageView
@@ -34,11 +33,10 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="500dp"
+        android:layout_height="320dp"
         android:id="@+id/logoMenu"
         android:src="@drawable/logo"
-        android:layout_above="@+id/botaoJogar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="88dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

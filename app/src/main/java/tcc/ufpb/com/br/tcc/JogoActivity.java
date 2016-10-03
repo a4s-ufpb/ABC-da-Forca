@@ -12,6 +12,7 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 import android.content.Intent;
 import android.os.Vibrator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -24,27 +25,35 @@ import com.squareup.picasso.Picasso;
 
 public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
-    //TTS object
+    //Objeto TTS
     private TextToSpeech myTTS;
-    //status check code
+    //Codigo de checagem
     private int MY_DATA_CHECK_CODE = 0;
 
-    Palavra palavra;
-    char[] palavraChar;
-    char[] resposta;
+    private Palavra palavra;
+    private char[] palavraChar;
+    private char[] resposta;
 
-    TextView campoPalavra;
-    ImageView campoImagem;
-    RelativeLayout layout;
-    GerenciadorDePalavras gerenciadorDePalavras;
+    private Contexto contextoEscolhido;
 
-    ImageView botaoHome;
+    private TextView campoPalavra;
+    private ImageView campoImagem;
+    private RelativeLayout layout;
 
-    Vibrator vibrate;
+    private GerenciadorDeContextos gerenciadorDeContextos; // aplicar o singleton depois
+    private ImageView botaoHome;
+
+    private Vibrator vibrate;
 
     private AlertDialog alerta;
 
     private int qtErros = 0;
+
+    private ArrayList<Button> botoes;
+
+    //back key
+    private Toast toast;
+    private long lastBackPressTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,24 +65,100 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
 
+
+
+
+        //Instanciando os objetos contidos na view
         layout = (RelativeLayout) findViewById(R.id.jogolayout);
         campoPalavra = (TextView) findViewById(R.id.campoPalavra);
         campoImagem = (ImageView) findViewById(R.id.campoImagem);
         botaoHome = (ImageView) findViewById(R.id.botaoHome);
-        gerenciadorDePalavras = new GerenciadorDePalavras();
         vibrate = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 
-        palavra = gerenciadorDePalavras.getPalavraAleatoria();
-        palavraChar = palavra.getPalavra().toCharArray();
-        resposta = new char[palavraChar.length];
+        this.botoes= new ArrayList<>();
 
-        Picasso
-                .with(this).load(palavra.getPathImagem())
-                .resize(110,110)
-                .into(campoImagem);
+        final Button btnA = (Button) findViewById(R.id.botaoA);
+        botoes.add(btnA);
+        final Button btnB = (Button) findViewById(R.id.botaoB);
+        botoes.add(btnB);
+        final Button btnC = (Button) findViewById(R.id.botaoC);
+        botoes.add(btnC);
+        final Button btnD = (Button) findViewById(R.id.botaoD);
+        botoes.add(btnD);
+        final Button btnE = (Button) findViewById(R.id.botaoE);
+        botoes.add(btnE);
+        final Button btnF = (Button) findViewById(R.id.botaoF);
+        botoes.add(btnF);
+        final Button btnG = (Button) findViewById(R.id.botaoG);
+        botoes.add(btnG);
+        final Button btnH = (Button) findViewById(R.id.botaoH);
+        botoes.add(btnH);
+        final Button btnI = (Button) findViewById(R.id.botaoI);
+        botoes.add(btnI);
+        final Button btnJ = (Button) findViewById(R.id.botaoJ);
+        botoes.add(btnJ);
+        final Button btnK = (Button) findViewById(R.id.botaoK);
+        botoes.add(btnK);
+        final Button btnL = (Button) findViewById(R.id.botaoL);
+        botoes.add(btnL);
+        final Button btnM = (Button) findViewById(R.id.botaoM);
+        botoes.add(btnM);
+        final Button btnN = (Button) findViewById(R.id.botaoN);
+        botoes.add(btnN);
+        final Button btnO = (Button) findViewById(R.id.botaoO);
+        botoes.add(btnO);
+        final Button btnP = (Button) findViewById(R.id.botaoP);
+        botoes.add(btnP);
+        final Button btnQ = (Button) findViewById(R.id.botaoQ);
+        botoes.add(btnQ);
+        final Button btnR = (Button) findViewById(R.id.botaoR);
+        botoes.add(btnR);
+        final Button btnS = (Button) findViewById(R.id.botaoS);
+        botoes.add(btnS);
+        final Button btnT = (Button) findViewById(R.id.botaoT);
+        botoes.add(btnT);
+        final Button btnU = (Button) findViewById(R.id.botaoU);
+        botoes.add(btnU);
+        final Button btnV = (Button) findViewById(R.id.botaoV);
+        botoes.add(btnV);
+        final Button btnW = (Button) findViewById(R.id.botaoW);
+        botoes.add(btnW);
+        final Button btnX = (Button) findViewById(R.id.botaoX);
+        botoes.add(btnX);
+        final Button btnY = (Button) findViewById(R.id.botaoY);
+        botoes.add(btnY);
+        final Button btnZ = (Button) findViewById(R.id.botaoZ);
+        botoes.add(btnZ);
+        final Button btnAcomAcentoAgudo = (Button) findViewById(R.id.botaoAComAcentoAgudo);
+        botoes.add(btnAcomAcentoAgudo);
+        final Button btnEcomAcentoAgudo = (Button) findViewById(R.id.botaoEComAcentoAgudo);
+        botoes.add(btnEcomAcentoAgudo);
+        final Button btnIcomAcentoAgudo = (Button) findViewById(R.id.botaoIComAcentoAgudo);
+        botoes.add(btnIcomAcentoAgudo);
+        final Button btnOcomAcentoAgudo = (Button) findViewById(R.id.botaoOComAcentoAgudo);
+        botoes.add(btnOcomAcentoAgudo);
+        final Button btnUcomAcentoAgudo = (Button) findViewById(R.id.botaoUComAcentoAgudo);
+        botoes.add(btnUcomAcentoAgudo);
+        final Button btnAcomAcentoCircunflexo = (Button) findViewById(R.id.botaoAComCircunflexo);
+        botoes.add(btnAcomAcentoCircunflexo);
+        final Button btnEcomAcentoCircunflexo = (Button) findViewById(R.id.botaoEComCircunflexo);
+        botoes.add(btnEcomAcentoCircunflexo);
+        final Button btnOcomAcentoCircunflexo = (Button) findViewById(R.id.botaoOComcircunflexo);
+        botoes.add(btnOcomAcentoCircunflexo);
+        final Button btnAcomTil = (Button) findViewById(R.id.botaoAComTil);
+        botoes.add(btnAcomTil);
+        final Button btnOcomTil = (Button) findViewById(R.id.botaoOComTil);
+        botoes.add(btnOcomTil);
+        final Button btnCedilha = (Button) findViewById(R.id.botaoCedilha);
+        botoes.add(btnCedilha);
 
 
-        iniciarCampoPalavra();
+        gerenciadorDeContextos = new GerenciadorDeContextos();
+        contextoEscolhido = new Contexto("Animais");
+        gerenciadorDeContextos.addContexto(contextoEscolhido);
+
+        carregarPalavra(this);
+
 
         botaoHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +176,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             }
         });
 
-        final Button btnA = (Button) findViewById(R.id.botaoA);
+
+
         if (btnA != null) {
             btnA.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,7 +192,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnB = (Button) findViewById(R.id.botaoB);
         if (btnB != null) {
             btnB.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -121,7 +206,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnC = (Button) findViewById(R.id.botaoC);
         if (btnC != null) {
             btnC.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -135,7 +219,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnD = (Button) findViewById(R.id.botaoD);
         if (btnD != null) {
             btnD.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -149,7 +232,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnE = (Button) findViewById(R.id.botaoE);
         if (btnE != null) {
             btnE.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -163,7 +245,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnF = (Button) findViewById(R.id.botaoF);
         if (btnF != null) {
             btnF.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -177,7 +258,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnG = (Button) findViewById(R.id.botaoG);
         if (btnG != null) {
             btnG.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -191,7 +271,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnH = (Button) findViewById(R.id.botaoH);
         if (btnH != null) {
             btnH.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -205,7 +284,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnI = (Button) findViewById(R.id.botaoI);
         if (btnI != null) {
             btnI.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -219,7 +297,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnJ = (Button) findViewById(R.id.botaoJ);
+
         if (btnJ != null) {
             btnJ.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -233,7 +311,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnK = (Button) findViewById(R.id.botaoK);
+
         if (btnK != null) {
             btnK.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -247,7 +325,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnL = (Button) findViewById(R.id.botaoL);
+
         if (btnL != null) {
             btnL.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -261,7 +339,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnM = (Button) findViewById(R.id.botaoM);
+
         if (btnM != null) {
             btnM.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -275,7 +353,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnN = (Button) findViewById(R.id.botaoN);
+
         if (btnN != null) {
             btnN.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -289,7 +367,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnO = (Button) findViewById(R.id.botaoO);
+
         if (btnO != null) {
             btnO.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -303,7 +381,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnP = (Button) findViewById(R.id.botaoP);
         if (btnP != null) {
             btnP.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -317,7 +394,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnQ = (Button) findViewById(R.id.botaoQ);
+
         if (btnQ != null) {
             btnQ.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -331,7 +408,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnR = (Button) findViewById(R.id.botaoR);
+
         if (btnR != null) {
             btnR.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -345,7 +422,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnS = (Button) findViewById(R.id.botaoS);
+
         if (btnS != null) {
             btnS.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -359,7 +436,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnT = (Button) findViewById(R.id.botaoT);
+
         if (btnT != null) {
             btnT.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -373,7 +450,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnU = (Button) findViewById(R.id.botaoU);
+
         if (btnU != null) {
             btnU.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -387,7 +464,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnV = (Button) findViewById(R.id.botaoV);
+
         if (btnV != null) {
             btnV.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -401,7 +478,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnW = (Button) findViewById(R.id.botaoW);
+
         if (btnW != null) {
             btnW.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -415,7 +492,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnX = (Button) findViewById(R.id.botaoX);
+
         if (btnX != null) {
             btnX.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -429,7 +506,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnY = (Button) findViewById(R.id.botaoY);
         if (btnY != null) {
             btnY.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -443,7 +519,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
-        final Button btnZ = (Button) findViewById(R.id.botaoZ);
         if (btnZ != null) {
             btnZ.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -457,6 +532,149 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             });
         }
 
+        if (btnAcomAcentoAgudo != null) {
+            btnAcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "A, com acento agudo";
+                    speakWords(words);
+                    btnAcomAcentoAgudo.setEnabled(false);
+                    verificarLetra('Á');
+
+                }
+            });
+        }
+
+        if (btnEcomAcentoAgudo != null) {
+            btnEcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "E, com acento agudo";
+                    speakWords(words);
+                    btnEcomAcentoAgudo.setEnabled(false);
+                    verificarLetra('É');
+
+                }
+            });
+        }
+
+        if (btnIcomAcentoAgudo != null) {
+            btnIcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "I, com acento agudo";
+                    speakWords(words);
+                    btnIcomAcentoAgudo.setEnabled(false);
+                    verificarLetra('Í');
+
+                }
+            });
+        }
+
+        if (btnOcomAcentoAgudo != null) {
+            btnOcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "O, com acento agudo";
+                    speakWords(words);
+                    btnOcomAcentoAgudo.setEnabled(false);
+                    verificarLetra('Ó');
+
+                }
+            });
+        }
+
+        if (btnUcomAcentoAgudo != null) {
+            btnUcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "U, com acento agudo";
+                    speakWords(words);
+                    btnUcomAcentoAgudo.setEnabled(false);
+                    verificarLetra('Ú');
+
+                }
+            });
+        }
+
+        if (btnAcomAcentoCircunflexo != null) {
+            btnAcomAcentoCircunflexo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "A, com acento circunflexo";
+                    speakWords(words);
+                    btnAcomAcentoCircunflexo.setEnabled(false);
+                    verificarLetra('Â');
+
+                }
+            });
+        }
+
+        if (btnEcomAcentoCircunflexo != null) {
+            btnEcomAcentoCircunflexo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "E, com acento circunflexo";
+                    speakWords(words);
+                    btnEcomAcentoCircunflexo.setEnabled(false);
+                    verificarLetra('Ê');
+
+                }
+            });
+        }
+
+        if (btnOcomAcentoCircunflexo != null) {
+            btnOcomAcentoCircunflexo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "O, com acento circunflexo";
+                    speakWords(words);
+                    btnOcomAcentoCircunflexo.setEnabled(false);
+                    verificarLetra('Ô');
+
+                }
+            });
+        }
+
+        if (btnAcomTil != null) {
+            btnAcomTil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "A, com til";
+                    speakWords(words);
+                    btnAcomTil.setEnabled(false);
+                    verificarLetra('Ã');
+
+                }
+            });
+        }
+
+        if (btnOcomTil != null) {
+            btnOcomTil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "O, com til";
+                    speakWords(words);
+                    btnOcomTil.setEnabled(false);
+                    verificarLetra('Õ');
+
+                }
+            });
+        }
+
+        if (btnCedilha != null) {
+            btnCedilha.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String words = "Ç";
+                    speakWords(words);
+                    btnCedilha.setEnabled(false);
+                    verificarLetra('Ç');
+
+                }
+            });
+        }
+
 
 
     }
@@ -464,6 +682,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     public void speakWords(String speech) {
         //speak straight away
         myTTS.setLanguage(new Locale("pt","BR"));
+        //myTTS.setSpeechRate((float) 0.9); // velocidade da voz
         myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
     }
 
@@ -581,11 +800,12 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         view.findViewById(R.id.botaoNext).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                //Intent intent = getIntent();
+                //finish();
+                //startActivity(intent);
 
-
+                carregarPalavra(view.getContext());
+                alerta.cancel();
 //                //exibe um Toast informativo.
 //                Toast.makeText(JogoActivity.this, "palavra_correta.dismiss()", Toast.LENGTH_SHORT).show();
 //                //desfaz o palavra_correta.
@@ -654,5 +874,42 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         alerta = builder.create();
         alerta.show();
 
+    }
+
+    public void habilitarLetras(){
+        for(Button b : this.botoes){
+            b.setEnabled(true);
+        }
+
+    }
+
+    public void carregarPalavra(Context context){
+        palavra = contextoEscolhido.getPalavraAleatoria();
+        palavraChar = palavra.getPalavra().toCharArray();
+        resposta = new char[palavraChar.length];
+
+        Picasso
+                .with(context).load(palavra.getPathImagem())
+                //.resize(110,110)
+                .into(campoImagem);
+
+        habilitarLetras();
+        iniciarCampoPalavra();
+
+    }
+
+    //back key
+    @Override
+    public void onBackPressed() {
+        if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
+            toast = Toast.makeText(this, "Pressione o Botão Voltar novamente para fechar o Aplicativo.", Toast.LENGTH_SHORT);
+            toast.show();
+            this.lastBackPressTime = System.currentTimeMillis();
+        } else {
+            if (toast != null) {
+                toast.cancel();
+            }
+            super.onBackPressed();
+        }
     }
 }
