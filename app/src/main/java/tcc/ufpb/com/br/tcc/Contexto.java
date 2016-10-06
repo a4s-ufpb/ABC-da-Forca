@@ -1,59 +1,67 @@
 package tcc.ufpb.com.br.tcc;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by Deyvison on 03/10/2016.
  */
-public class Contexto {
+public class Contexto implements Serializable {
 
     private String nome;
-    private String pathIagem;
-    private ArrayList<Palavra> palavras;
+    private int pathIagem;
+    private ArrayList<Palavra> facil;
+    private ArrayList<Palavra> medio;
+    private ArrayList<Palavra> dificil;
 
-    public Contexto(String nome){
+    public Contexto(String nome, int pathImagem){
         this.nome = nome;
-        this.palavras = new ArrayList<>();
+        this.pathIagem = pathImagem;
+        this.facil = new ArrayList<>();
+        this.medio = new ArrayList<>();
+        this.dificil = new ArrayList<>();
 
 
-        Palavra p = new Palavra("aranha",R.drawable.aranha);
-        Palavra p1 = new Palavra("cachorro",R.drawable.cachorro);
-        Palavra p2 = new Palavra("coelho",R.drawable.coelho);
-        Palavra p3 = new Palavra("coruja",R.drawable.coruja);
-        Palavra p4 = new Palavra("elefante",R.drawable.elefante);
-        Palavra p5 = new Palavra("galinha",R.drawable.galinha);
-        Palavra p6 = new Palavra("girafa",R.drawable.girafa);
-        Palavra p7 = new Palavra("gato",R.drawable.gato);
-        Palavra p8 = new Palavra("leão",R.drawable.leao);
-        Palavra p9 = new Palavra("macaco",R.drawable.macaco);
-        Palavra p10 = new Palavra("peixe",R.drawable.peixe);
-        Palavra p11 = new Palavra("porco",R.drawable.porco);
-        Palavra p12 = new Palavra("sapo",R.drawable.sapo);
-        Palavra p13 = new Palavra("tartaruga",R.drawable.tartaruga);
-        Palavra p14 = new Palavra("urso",R.drawable.urso);
 
-        palavras.add(p);
-        palavras.add(p1);
-        palavras.add(p2);
-        palavras.add(p3);
-        palavras.add(p4);
-        palavras.add(p5);
-        palavras.add(p6);
-        palavras.add(p7);
-        palavras.add(p8);
-        palavras.add(p9);
-        palavras.add(p10);
-        palavras.add(p11);
-        palavras.add(p12);
-        palavras.add(p13);
-        palavras.add(p14);
     }
 
-    public Palavra getPalavraAleatoria(){
+    public Palavra getPalavraAleatoria(Niveis nivel){
         Random rd = new Random();
-        int i = rd.nextInt(palavras.size());
-        return palavras.get(i);
+
+        if(nivel == Niveis.FACIL){
+            int i = rd.nextInt(facil.size());
+            return facil.get(i);
+
+        }else if(nivel == Niveis.MEDIO){
+            int i = rd.nextInt(medio.size());
+            return medio.get(i);
+
+        }else{
+            int i = rd.nextInt(dificil.size());
+            return dificil.get(i);
+        }
+
     }
 
+    public int getPathIagem(){
+        return this.pathIagem;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+
+    public void adicionarPalavra(Palavra p){
+
+        if(p.getNivel() == Niveis.FACIL)
+            this.facil.add(p);
+        else if(p.getNivel() == Niveis.MEDIO)
+            this.medio.add(p);
+        else
+            this.dificil.add(p);
+    }
 }

@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tcc.ufpb.com.br.tcc">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
+        android:name=".ForcaApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,14 +22,20 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".JogoActivity"
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ContextoActivity"
+            android:label="@string/title_activity_contexto"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".NivelActivity"
+            android:label="@string/title_activity_nivel"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="landscape"/>
     </application>
-
-    <uses-permission android:name="android.permission.VIBRATE"/>
 
 </manifest>

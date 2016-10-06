@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TCC</string>
+    <string name="title_activity_contexto">ContextoActivity</string>
+    <string name="title_activity_nivel">NivelActivity</string>
 </resources>

@@ -30,11 +30,13 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     //Codigo de checagem
     private int MY_DATA_CHECK_CODE = 0;
 
-    private Palavra palavra;
+
     private char[] palavraChar;
     private char[] resposta;
 
     private Contexto contextoEscolhido;
+    private Niveis nivelEscolhido;
+    private Palavra palavraSorteada;
 
     private TextView campoPalavra;
     private ImageView campoImagem;
@@ -74,6 +76,13 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         campoImagem = (ImageView) findViewById(R.id.campoImagem);
         botaoHome = (ImageView) findViewById(R.id.botaoHome);
         vibrate = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+
+
+        // recuperar o contexto e nivel escolhido pelo jogador
+        this.contextoEscolhido = (Contexto) getIntent().getExtras().getSerializable("contexto");
+        this.nivelEscolhido = (Niveis) getIntent().getExtras().getSerializable("nivel");
+        //Toast.makeText(this, "Nivel recebido no jogo: "+nivelEscolhido, Toast.LENGTH_LONG).show();
+
 
         this.botoes= new ArrayList<>();
 
@@ -153,10 +162,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         botoes.add(btnCedilha);
 
 
-        gerenciadorDeContextos = new GerenciadorDeContextos();
-        contextoEscolhido = new Contexto("Animais");
-        gerenciadorDeContextos.addContexto(contextoEscolhido);
-
         carregarPalavra(this);
 
 
@@ -172,7 +177,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         campoImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speakWords(palavra.getPalavra());
+                speakWords(palavraSorteada.getPalavra());
             }
         });
 
@@ -715,7 +720,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         }
         else if (initStatus == TextToSpeech.ERROR) {
             Toast.makeText(this, "Desculpe! Houve algum problema interno...", Toast.LENGTH_LONG).show();
-        }
+    }
     }
 
     public void verificarLetra(char letra){
@@ -783,7 +788,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            speakWords(palavra.getPalavra());
+            speakWords(palavraSorteada.getPalavra());
 
             alertDialogAcertou();
         }
@@ -884,15 +889,17 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     }
 
     public void carregarPalavra(Context context){
-        palavra = contextoEscolhido.getPalavraAleatoria();
-        palavraChar = palavra.getPalavra().toCharArray();
+        palavraSorteada = contextoEscolhido.getPalavraAleatoria(this.nivelEscolhido); // mudar o nivel para qual o usuario escolher
+        palavraChar = palavraSorteada.getPalavra().toCharArray();
         resposta = new char[palavraChar.length];
 
         Picasso
-                .with(context).load(palavra.getPathImagem())
+                .with(context).load(palavraSorteada.getPathImagem())
                 //.resize(110,110)
                 .into(campoImagem);
 
+        layout.setBackground(getResources().getDrawable(R.drawable.background1erro));
+        this.qtErros = 0;
         habilitarLetras();
         iniciarCampoPalavra();
 

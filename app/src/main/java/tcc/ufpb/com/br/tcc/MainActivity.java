@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         botaoJogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(),JogoActivity.class);
+                Intent i = new Intent(v.getContext(),ContextoActivity.class);
                 startActivity(i);
                 finish();
             }
