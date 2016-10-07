@@ -9,7 +9,7 @@
     android:paddingTop="5px"
 
     tools:context="tcc.ufpb.com.br.tcc.JogoActivity"
-    android:background="@drawable/background1erro"
+    android:background="@drawable/backgrond0erros"
     android:id="@+id/jogolayout">
     <!-- android:paddingTop="@dimen/activity_vertical_margin" -->
     <TextView
@@ -57,13 +57,7 @@
         android:layout_alignRight="@+id/botaoHome"
         android:layout_alignEnd="@+id/botaoHome" />
 
-    <ImageView
 
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:id="@+id/campoImagem"
-        android:layout_below="@+id/qtAcertos"
-        android:layout_centerHorizontal="true" />
 
 
     <!-- Letras do alfabeto -->
@@ -485,6 +479,17 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/botaoOComTil"
         android:layout_toEndOf="@+id/botaoOComTil" />
+
+
+
+    <ImageView
+
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:id="@+id/campoImagem"
+        android:layout_alignTop="@+id/qtAcertos"
+        android:layout_centerHorizontal="true" />
+
 
     <!-- / Letras do alfabeto -->
 

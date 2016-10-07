@@ -8,7 +8,7 @@
     android:paddingRight="5px"
     android:paddingTop="5px"
     tools:context="tcc.ufpb.com.br.tcc.JogoActivity"
-    android:background="@drawable/background1erro"
+    android:background="@drawable/backgrond0erros"
     android:id="@+id/jogolayout">
 
 
@@ -485,5 +485,7 @@
         android:layout_alignTop="@+id/botaoOComTil"
         android:layout_toRightOf="@+id/botaoX"
         android:layout_toEndOf="@+id/botaoX" />
+
+
 
 </RelativeLayout>

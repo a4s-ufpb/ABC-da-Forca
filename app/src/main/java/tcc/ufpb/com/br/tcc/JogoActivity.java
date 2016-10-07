@@ -1,6 +1,7 @@
 package tcc.ufpb.com.br.tcc;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     //Codigo de checagem
     private int MY_DATA_CHECK_CODE = 0;
 
+    private MediaPlayer acerto;
+    private MediaPlayer erro;
 
     private char[] palavraChar;
     private char[] resposta;
@@ -68,6 +71,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
 
 
+        acerto = MediaPlayer.create(this, R.raw.correct);
+        erro = MediaPlayer.create(this, R.raw.erro);
 
 
         //Instanciando os objetos contidos na view
@@ -404,7 +409,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             btnQ.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "Q";
+                    String words = "Quê";
                     speakWords(words);
                     btnQ.setEnabled(false);
                     verificarLetra('Q');
@@ -671,7 +676,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             btnCedilha.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "Ç";
+                    String words = "C Cedilha";
                     speakWords(words);
                     btnCedilha.setEnabled(false);
                     verificarLetra('Ç');
@@ -732,25 +737,33 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             }
         }
         if(!existeLetra){
+
+            erro.start();
             this.qtErros++;
             vibrate.vibrate(500);
 
             if(qtErros == 1)
-                layout.setBackground(getResources().getDrawable(R.drawable.background2erros));
+                layout.setBackground(getResources().getDrawable(R.drawable.background1erro));
             else if(qtErros == 2)
-                layout.setBackground(getResources().getDrawable(R.drawable.background3erros));
+                layout.setBackground(getResources().getDrawable(R.drawable.background2erros));
             else if(qtErros == 3)
-                layout.setBackground(getResources().getDrawable(R.drawable.background4erros));
+                layout.setBackground(getResources().getDrawable(R.drawable.background3erros));
             else if(qtErros == 4)
-                layout.setBackground(getResources().getDrawable(R.drawable.background5erros));
+                layout.setBackground(getResources().getDrawable(R.drawable.background4erros));
             else if(qtErros == 5){
+                layout.setBackground(getResources().getDrawable(R.drawable.background5erros));
+            }else if(qtErros == 6){
                 layout.setBackground(getResources().getDrawable(R.drawable.background6erros));
                 // game over, inflar o alert dialog do game over
                 gameOver();
+
             }
 
 
 
+        }else{
+
+            acerto.start();
         }
 
         atualizarCampoPalavra();
@@ -898,7 +911,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 //.resize(110,110)
                 .into(campoImagem);
 
-        layout.setBackground(getResources().getDrawable(R.drawable.background1erro));
+        layout.setBackground(getResources().getDrawable(R.drawable.backgrond0erros));
         this.qtErros = 0;
         habilitarLetras();
         iniciarCampoPalavra();
