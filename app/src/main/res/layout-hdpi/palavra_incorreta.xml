@@ -7,6 +7,7 @@
 
 
     <LinearLayout
+        android:layout_marginTop="20sp"
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="110dp"
@@ -14,22 +15,25 @@
         android:orientation="horizontal"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Game over!"
+        <ImageView
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Palavra Correta!"
             android:textSize="30dp"
+            android:src="@drawable/errou"
             android:id="@+id/textView" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:src="@drawable/incorrect_icon"
 
             />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal">
@@ -44,9 +48,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/restart_button"
+            android:src="@drawable/next_button"
             android:layout_marginLeft="30dp"
-            android:id="@+id/botaoRestart"/>
+            android:id="@+id/botaoNext"/>
 
     </LinearLayout>
 

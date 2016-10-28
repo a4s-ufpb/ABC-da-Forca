@@ -50,7 +50,7 @@
         android:textSize="45sp"
         android:id="@+id/campoPalavra"
         android:textAlignment="center"
-
+        android:gravity="center"
         android:layout_above="@+id/botaoA"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

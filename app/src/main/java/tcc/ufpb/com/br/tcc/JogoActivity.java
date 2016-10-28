@@ -1,10 +1,12 @@
 package tcc.ufpb.com.br.tcc;
 
 import android.content.Context;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.view.View;
@@ -12,49 +14,43 @@ import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.content.Intent;
 import android.os.Vibrator;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
-
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
 
 public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
-    //Objeto TTS
-    private TextToSpeech myTTS;
-    //Codigo de checagem
-    private int MY_DATA_CHECK_CODE = 0;
+    private TextToSpeech myTTS; //Objeto TTS
+    private int MY_DATA_CHECK_CODE = 0; //Codigo de checagem
 
-    private MediaPlayer acerto;
+    private MediaPlayer acerto;  // sons de acerto e erro
     private MediaPlayer erro;
 
-    private char[] palavraChar;
-    private char[] resposta;
+    private char[] palavraChar; // palavra quebrada em letras
+    private char[] resposta; // array da palavra oculta
 
-    private Contexto contextoEscolhido;
-    private Niveis nivelEscolhido;
-    private Palavra palavraSorteada;
+    private Contexto contextoEscolhido; // contexto escolhido pelo usuário
+    private Niveis nivelEscolhido; // nível escolhido pelo usuário
+    private Palavra palavraSorteada; // palavra da vez
+    private Rodada rodada;
 
-    private TextView campoPalavra;
-    private ImageView campoImagem;
-    private RelativeLayout layout;
+    private TextView campoPalavra; // campo da palavra oculta
+    private ImageView campoImagem; // campo da imagem que representa a palavra
+    private RelativeLayout layout; // layout principal do jogo
+    private ImageView botaoHome; // botao home do layout
 
-    private GerenciadorDeContextos gerenciadorDeContextos; // aplicar o singleton depois
-    private ImageView botaoHome;
+    private Vibrator vibrate; // objeto para vibrar
+    private AlertDialog alerta; // alerta para feedback com usuario
 
-    private Vibrator vibrate;
+    private int qtErros = 0; // qt de letras erradas
+    private int qtAcertosNaRodada = 0; // quantidade de palavra certas na rodada
 
-    private AlertDialog alerta;
-
-    private int qtErros = 0;
-
-    private ArrayList<Button> botoes;
+    private ArrayList<Button> botoes; // letras do alfabeto
 
     //back key
     private Toast toast;
@@ -70,10 +66,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
 
-
-        acerto = MediaPlayer.create(this, R.raw.correct);
-        erro = MediaPlayer.create(this, R.raw.erro);
-
+        this.acerto = MediaPlayer.create(this, R.raw.correct); // criando os áudios
+        this.erro = MediaPlayer.create(this, R.raw.erro);
 
         //Instanciando os objetos contidos na view
         layout = (RelativeLayout) findViewById(R.id.jogolayout);
@@ -82,15 +76,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         botaoHome = (ImageView) findViewById(R.id.botaoHome);
         vibrate = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 
-
         // recuperar o contexto e nivel escolhido pelo jogador
         this.contextoEscolhido = (Contexto) getIntent().getExtras().getSerializable("contexto");
         this.nivelEscolhido = (Niveis) getIntent().getExtras().getSerializable("nivel");
-        //Toast.makeText(this, "Nivel recebido no jogo: "+nivelEscolhido, Toast.LENGTH_LONG).show();
-
 
         this.botoes= new ArrayList<>();
-
         final Button btnA = (Button) findViewById(R.id.botaoA);
         botoes.add(btnA);
         final Button btnB = (Button) findViewById(R.id.botaoB);
@@ -166,8 +156,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         final Button btnCedilha = (Button) findViewById(R.id.botaoCedilha);
         botoes.add(btnCedilha);
 
+        this.rodada = new Rodada();
+        iniciarRodada(this);
 
-        carregarPalavra(this);
 
 
         botaoHome.setOnClickListener(new View.OnClickListener() {
@@ -178,15 +169,12 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 finish();
             }
         });
-
         campoImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 speakWords(palavraSorteada.getPalavra());
             }
         });
-
-
 
         if (btnA != null) {
             btnA.setOnClickListener(new View.OnClickListener() {
@@ -196,12 +184,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnA.setEnabled(false);
                     verificarLetra('A');
-                    //   btnA.setBackgroundColor(Color.RED);
-
                 }
             });
         }
-
         if (btnB != null) {
             btnB.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -210,12 +195,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnB.setEnabled(false);
                     verificarLetra('B');
-                    // btnB.setBackgroundColor(Color.RED);
-
                 }
             });
         }
-
         if (btnC != null) {
             btnC.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -224,11 +206,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnC.setEnabled(false);
                     verificarLetra('C');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnD != null) {
             btnD.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -237,24 +217,20 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnD.setEnabled(false);
                     verificarLetra('D');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnE != null) {
             btnE.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "E";
+                    String words = "É";
                     speakWords(words);
                     btnE.setEnabled(false);
                     verificarLetra('E');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnF != null) {
             btnF.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -263,24 +239,20 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnF.setEnabled(false);
                     verificarLetra('F');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnG != null) {
             btnG.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "G";
+                    String words = "Gê";
                     speakWords(words);
                     btnG.setEnabled(false);
                     verificarLetra('G');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnH != null) {
             btnH.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -289,11 +261,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnH.setEnabled(false);
                     verificarLetra('H');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnI != null) {
             btnI.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -302,12 +272,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnI.setEnabled(false);
                     verificarLetra('I');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnJ != null) {
             btnJ.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -316,12 +283,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnJ.setEnabled(false);
                     verificarLetra('J');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnK != null) {
             btnK.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -330,12 +294,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnK.setEnabled(false);
                     verificarLetra('K');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnL != null) {
             btnL.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -344,12 +305,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnL.setEnabled(false);
                     verificarLetra('L');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnM != null) {
             btnM.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -358,12 +316,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnM.setEnabled(false);
                     verificarLetra('M');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnN != null) {
             btnN.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -372,25 +327,20 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnN.setEnabled(false);
                     verificarLetra('N');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnO != null) {
             btnO.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "O";
+                    String words = "Ó";
                     speakWords(words);
                     btnO.setEnabled(false);
                     verificarLetra('O');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnP != null) {
             btnP.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -399,12 +349,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnP.setEnabled(false);
                     verificarLetra('P');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnQ != null) {
             btnQ.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -413,12 +360,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnQ.setEnabled(false);
                     verificarLetra('Q');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnR != null) {
             btnR.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -427,12 +371,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnR.setEnabled(false);
                     verificarLetra('R');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnS != null) {
             btnS.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -441,12 +382,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnS.setEnabled(false);
                     verificarLetra('S');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnT != null) {
             btnT.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -455,12 +393,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnT.setEnabled(false);
                     verificarLetra('T');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnU != null) {
             btnU.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -469,12 +404,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnU.setEnabled(false);
                     verificarLetra('U');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnV != null) {
             btnV.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -483,12 +415,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnV.setEnabled(false);
                     verificarLetra('V');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnW != null) {
             btnW.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -497,12 +426,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnW.setEnabled(false);
                     verificarLetra('W');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
-
         if (btnX != null) {
             btnX.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -511,11 +437,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnX.setEnabled(false);
                     verificarLetra('X');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnY != null) {
             btnY.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -524,11 +448,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnY.setEnabled(false);
                     verificarLetra('Y');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnZ != null) {
             btnZ.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -537,11 +459,9 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnZ.setEnabled(false);
                     verificarLetra('Z');
-                    // btnC.setBackgroundColor(Color.RED);
                 }
             });
         }
-
         if (btnAcomAcentoAgudo != null) {
             btnAcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -554,12 +474,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnEcomAcentoAgudo != null) {
             btnEcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "E, com acento agudo";
+                    String words = "É, com acento agudo";
                     speakWords(words);
                     btnEcomAcentoAgudo.setEnabled(false);
                     verificarLetra('É');
@@ -567,7 +486,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnIcomAcentoAgudo != null) {
             btnIcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -576,16 +494,14 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnIcomAcentoAgudo.setEnabled(false);
                     verificarLetra('Í');
-
                 }
             });
         }
-
         if (btnOcomAcentoAgudo != null) {
             btnOcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "O, com acento agudo";
+                    String words = "Ó, com acento agudo";
                     speakWords(words);
                     btnOcomAcentoAgudo.setEnabled(false);
                     verificarLetra('Ó');
@@ -593,7 +509,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnUcomAcentoAgudo != null) {
             btnUcomAcentoAgudo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -606,7 +521,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnAcomAcentoCircunflexo != null) {
             btnAcomAcentoCircunflexo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -619,12 +533,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnEcomAcentoCircunflexo != null) {
             btnEcomAcentoCircunflexo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "E, com acento circunflexo";
+                    String words = "É, com acento circunflexo";
                     speakWords(words);
                     btnEcomAcentoCircunflexo.setEnabled(false);
                     verificarLetra('Ê');
@@ -632,12 +545,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnOcomAcentoCircunflexo != null) {
             btnOcomAcentoCircunflexo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "O, com acento circunflexo";
+                    String words = "Ó, com acento circunflexo";
                     speakWords(words);
                     btnOcomAcentoCircunflexo.setEnabled(false);
                     verificarLetra('Ô');
@@ -645,7 +557,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnAcomTil != null) {
             btnAcomTil.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -658,12 +569,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnOcomTil != null) {
             btnOcomTil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String words = "O, com til";
+                    String words = "Ó, com til";
                     speakWords(words);
                     btnOcomTil.setEnabled(false);
                     verificarLetra('Õ');
@@ -671,7 +581,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 }
             });
         }
-
         if (btnCedilha != null) {
             btnCedilha.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -680,14 +589,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnCedilha.setEnabled(false);
                     verificarLetra('Ç');
-
                 }
             });
         }
-
-
-
     }
+
     //speak the user text
     public void speakWords(String speech) {
         //speak straight away
@@ -725,7 +631,22 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         }
         else if (initStatus == TextToSpeech.ERROR) {
             Toast.makeText(this, "Desculpe! Houve algum problema interno...", Toast.LENGTH_LONG).show();
+        }
     }
+
+    //back key
+    @Override
+    public void onBackPressed() {
+        if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
+            toast = Toast.makeText(this, "Pressione o Botão Voltar novamente para fechar o Aplicativo.", Toast.LENGTH_SHORT);
+            toast.show();
+            this.lastBackPressTime = System.currentTimeMillis();
+        } else {
+            if (toast != null) {
+                toast.cancel();
+            }
+            super.onBackPressed();
+        }
     }
 
     public void verificarLetra(char letra){
@@ -755,17 +676,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             }else if(qtErros == 6){
                 layout.setBackground(getResources().getDrawable(R.drawable.background6erros));
                 // game over, inflar o alert dialog do game over
-                gameOver();
-
+                errouPalavra();
             }
-
-
-
         }else{
-
             acerto.start();
         }
-
         atualizarCampoPalavra();
     }
 
@@ -802,36 +717,23 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 e.printStackTrace();
             }
             speakWords(palavraSorteada.getPalavra());
-
-            alertDialogAcertou();
+            acertouPalavra();
         }
     }
 
-    public void alertDialogAcertou() {
-        //LayoutInflater é utilizado para inflar nosso layout em uma view.
-        //-pegamos nossa instancia da classe
-        LayoutInflater li = getLayoutInflater();
+    public void acertouPalavra() {
 
-        //inflamos o layout palavra_correta.xmlrreta.xml na view
+        this.qtAcertosNaRodada++;
+
+        LayoutInflater li = getLayoutInflater();
         final View view = li.inflate(R.layout.palavra_correta, null);
-        //definimos para o botão do layout um clickListener
+
         view.findViewById(R.id.botaoNext).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
-                //Intent intent = getIntent();
-                //finish();
-                //startActivity(intent);
-
-                carregarPalavra(view.getContext());
                 alerta.cancel();
-//                //exibe um Toast informativo.
-//                Toast.makeText(JogoActivity.this, "palavra_correta.dismiss()", Toast.LENGTH_SHORT).show();
-//                //desfaz o palavra_correta.
-//                palavra_correta.dismiss();
+                carregarPalavra(view.getContext());
             }
         });
-
-        ;
 
         view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -850,38 +752,23 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         alerta.show();
     }
 
-    public void gameOver(){
-        LayoutInflater li = getLayoutInflater();
-        final View view = li.inflate(R.layout.game_over, null);
+    public void errouPalavra(){
 
+        LayoutInflater li = getLayoutInflater();
+        final View view = li.inflate(R.layout.palavra_incorreta, null);
 
         view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
                 Intent i = new Intent(view.getContext(), MainActivity.class);
                 startActivity(i);
                 finish();
-
-
-//                //exibe um Toast informativo.
-//                Toast.makeText(JogoActivity.this, "palavra_correta.dismiss()", Toast.LENGTH_SHORT).show();
-//                //desfaz o palavra_correta.
-//                palavra_correta.dismiss();
             }
         });
 
-        view.findViewById(R.id.botaoRestart).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.botaoNext).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-
-
-//                //exibe um Toast informativo.
-//                Toast.makeText(JogoActivity.this, "palavra_correta.dismiss()", Toast.LENGTH_SHORT).show();
-//                //desfaz o palavra_correta.
-//                palavra_correta.dismiss();
+                alerta.cancel();
+                carregarPalavra(view.getContext());
             }
         });
 
@@ -891,45 +778,84 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         builder.setView(view);
         alerta = builder.create();
         alerta.show();
-
     }
 
     public void habilitarLetras(){
         for(Button b : this.botoes){
             b.setEnabled(true);
         }
-
     }
 
-    public void carregarPalavra(Context context){
-        palavraSorteada = contextoEscolhido.getPalavraAleatoria(this.nivelEscolhido); // mudar o nivel para qual o usuario escolher
-        palavraChar = palavraSorteada.getPalavra().toCharArray();
-        resposta = new char[palavraChar.length];
+    public void iniciarRodada(Context context){
 
-        Picasso
-                .with(context).load(palavraSorteada.getPathImagem())
-                //.resize(110,110)
-                .into(campoImagem);
-
-        layout.setBackground(getResources().getDrawable(R.drawable.backgrond0erros));
-        this.qtErros = 0;
-        habilitarLetras();
-        iniciarCampoPalavra();
-
+        this.rodada.iniciarRodada(this.contextoEscolhido, this.nivelEscolhido, 5);
+        carregarPalavra(context);
     }
 
-    //back key
-    @Override
-    public void onBackPressed() {
-        if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
-            toast = Toast.makeText(this, "Pressione o Botão Voltar novamente para fechar o Aplicativo.", Toast.LENGTH_SHORT);
-            toast.show();
-            this.lastBackPressTime = System.currentTimeMillis();
-        } else {
-            if (toast != null) {
-                toast.cancel();
-            }
-            super.onBackPressed();
+    public void carregarPalavra(Context context) {
+        if (!this.rodada.fimDeRodada()) {
+            palavraSorteada = rodada.getPalavraDaVez();
+            palavraChar = palavraSorteada.getPalavra().toCharArray();
+            resposta = new char[palavraChar.length];
+
+            Picasso
+                    .with(context).load(palavraSorteada.getPathImagem())
+                    //.resize(110,110)
+                    .into(campoImagem);
+
+            layout.setBackground(getResources().getDrawable(R.drawable.backgrond0erros));
+            this.qtErros = 0;
+            habilitarLetras();
+            iniciarCampoPalavra();
+        }else{
+            fimDeRodada();
         }
+    }
+
+    public void fimDeRodada(){
+
+        LayoutInflater li = getLayoutInflater();
+        final View view = li.inflate(R.layout.feedback_rodada, null);
+
+        ImageView estrelas = (ImageView)view.findViewById(R.id.estrelafeedback);
+
+        if(this.qtAcertosNaRodada == 0){
+            estrelas.setImageResource(R.drawable.estrela0acertos);
+        }else if(this.qtAcertosNaRodada == 1){
+            estrelas.setImageResource(R.drawable.estrela1acertos);
+        }else if(this.qtAcertosNaRodada == 2){
+            estrelas.setImageResource(R.drawable.estrela2acertos);
+        }else if(this.qtAcertosNaRodada == 3){
+            estrelas.setImageResource(R.drawable.estrela3acertos);
+        }else if(this.qtAcertosNaRodada == 4){
+            estrelas.setImageResource(R.drawable.estrela4acertos);
+        }else if(this.qtAcertosNaRodada == 5){
+            estrelas.setImageResource(R.drawable.estrela5acertos);
+        }
+
+        this.qtAcertosNaRodada = 0;
+
+        view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                Intent i = new Intent(view.getContext(), MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        view.findViewById(R.id.botaoNovaRodada).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                alerta.cancel();
+                iniciarRodada(view.getContext());
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("");
+        builder.setView(view);
+        alerta = builder.create();
+        alerta.show();
     }
 }

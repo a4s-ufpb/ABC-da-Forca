@@ -4,6 +4,7 @@
     android:layout_height="fill_parent"
     >
     <LinearLayout
+        android:layout_marginTop="20sp"
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="130dp"
@@ -11,22 +12,24 @@
         android:orientation="horizontal"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:text="Palavra Correta!"
-            android:textSize="35dp"
+            android:textSize="30dp"
+            android:src="@drawable/acertou"
             android:id="@+id/textView" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/correct_icon"
 
             />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal">

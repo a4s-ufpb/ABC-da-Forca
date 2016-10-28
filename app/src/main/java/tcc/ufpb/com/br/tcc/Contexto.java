@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -45,6 +46,15 @@ public class Contexto implements Serializable {
             return dificil.get(i);
         }
 
+    }
+
+    public List<Palavra> getPalavraPorNivel(Niveis nivel){
+        if(nivel == Niveis.FACIL)
+            return this.facil;
+        else if(nivel == Niveis.MEDIO)
+            return this.medio;
+        else
+            return this.dificil;
     }
 
     public int getPathIagem(){
