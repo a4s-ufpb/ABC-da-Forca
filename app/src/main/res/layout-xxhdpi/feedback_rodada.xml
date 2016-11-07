@@ -4,10 +4,18 @@
     android:layout_height="match_parent"
     >
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fim da rodada!"
+        android:textSize="50dp"
+        android:layout_gravity="center_horizontal"/>
+
     <LinearLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="140dp"
+        android:layout_height="120dp"
         android:gravity="center"
         android:orientation="horizontal"
         >
@@ -15,8 +23,8 @@
 
 
         <ImageView
-            android:layout_width="400dp"
-            android:layout_height="100dp"
+            android:layout_width="350dp"
+            android:layout_height="80dp"
             android:src="@drawable/estrela2acertos"
             android:id="@+id/estrelafeedback"
 
@@ -31,15 +39,15 @@
 
 
         <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/botaohome"
             android:id="@+id/botaoHome"
             />
 
         <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/restart_button"
             android:layout_marginLeft="30dp"
             android:id="@+id/botaoNovaRodada"/>

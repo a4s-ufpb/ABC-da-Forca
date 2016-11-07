@@ -821,16 +821,22 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         if(this.qtAcertosNaRodada == 0){
             estrelas.setImageResource(R.drawable.estrela0acertos);
+            speakWords("Você acertou nenhuma palavra. Seu desempenho foi péssimo");
         }else if(this.qtAcertosNaRodada == 1){
             estrelas.setImageResource(R.drawable.estrela1acertos);
+            speakWords("Você acertou uma palavra. Seu desempenho foi ruim");
         }else if(this.qtAcertosNaRodada == 2){
             estrelas.setImageResource(R.drawable.estrela2acertos);
+            speakWords("Você acertou duas palavras. Seu desempenho foi regular");
         }else if(this.qtAcertosNaRodada == 3){
             estrelas.setImageResource(R.drawable.estrela3acertos);
+            speakWords("Você acertou três palavras. Seu desempenho foi bom");
         }else if(this.qtAcertosNaRodada == 4){
             estrelas.setImageResource(R.drawable.estrela4acertos);
+            speakWords("Você acertou quatro palavras. Seu desempenho foi ótimo");
         }else if(this.qtAcertosNaRodada == 5){
             estrelas.setImageResource(R.drawable.estrela5acertos);
+            speakWords("Você acertou todas as palavras. Seu desempenho foi excelente");
         }
 
         this.qtAcertosNaRodada = 0;
@@ -853,7 +859,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-        builder.setTitle("");
+       // builder.setTitle("Fim de rodada!");
+
         builder.setView(view);
         alerta = builder.create();
         alerta.show();
