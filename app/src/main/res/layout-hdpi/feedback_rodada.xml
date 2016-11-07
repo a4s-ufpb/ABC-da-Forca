@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:src="@drawable/estrela2acertos"
+            android:id="@+id/estrelafeedback"
+
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/botaohome"
+            android:id="@+id/botaoHome"
+            />
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/restart_button"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/botaoNovaRodada"/>
+    </LinearLayout>
+
+</LinearLayout>

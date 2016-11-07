@@ -46,7 +46,7 @@ public class NivelActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (contexto != null) {
                         if(contexto.getPalavraPorNivel(Niveis.FACIL).size() < 5){
-                            Toast.makeText(v.getContext(),"Palavras insuficientes. Cadastre mais palavras neste contexto para jogar.",Toast.LENGTH_LONG).show();
+                            Toast.makeText(v.getContext(),"Palavras insuficientes. Cadastre mais palavras neste nível para jogar.",Toast.LENGTH_LONG).show();
                         }else{
                             Toast.makeText(v.getContext(),"Fácil", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(v.getContext(),JogoActivity.class);
@@ -67,7 +67,7 @@ public class NivelActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (contexto != null) {
                         if(contexto.getPalavraPorNivel(Niveis.MEDIO).size() < 5){
-                            Toast.makeText(v.getContext(),"Palavras insuficientes. Cadastre mais palavras neste contexto para jogar.",Toast.LENGTH_LONG).show();
+                            Toast.makeText(v.getContext(),"Palavras insuficientes. Cadastre mais palavras neste nível para jogar.",Toast.LENGTH_LONG).show();
                         }else{
                             Toast.makeText(v.getContext(),"Médio", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(v.getContext(),JogoActivity.class);
@@ -87,7 +87,7 @@ public class NivelActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (contexto != null) {
                         if(contexto.getPalavraPorNivel(Niveis.DIFICIL).size() < 5){
-                            Toast.makeText(v.getContext(),"Palavras insuficientes. Cadastre mais palavras neste contexto para jogar.",Toast.LENGTH_LONG).show();
+                            Toast.makeText(v.getContext(),"Palavras insuficientes. Cadastre mais palavras neste nível para jogar.",Toast.LENGTH_LONG).show();
                         }else{
                             Toast.makeText(v.getContext(),"Dificil", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(v.getContext(),JogoActivity.class);
