@@ -1,6 +1,7 @@
 package tcc.ufpb.com.br.tcc;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView botaoJogar;
+    ImageView botaoJogar, botaoConfigurar;
 
     private Toast toast;
     private long lastBackPressTime = 0;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         botaoJogar = (ImageView) findViewById(R.id.botaoJogar);
+        botaoConfigurar = (ImageView) findViewById(R.id.botaoConfigurar);
 
         botaoJogar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,12 +33,23 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        botaoConfigurar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(),GerenciadorDeContextos.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+
     }
 
     @Override
     public void onBackPressed() {
         if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
-            toast = Toast.makeText(this, "Pressione o Botão Voltar novamente para fechar o Aplicativo.", 4000);
+            toast = Toast.makeText(this, "Pressione o Botão Voltar novamente para fechar o Aplicativo.", Toast.LENGTH_LONG);
             toast.show();
             this.lastBackPressTime = System.currentTimeMillis();
         } else {

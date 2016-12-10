@@ -34,8 +34,13 @@
         <activity
             android:name=".NivelActivity"
             android:label="@string/title_activity_nivel"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".GerenciadorDeContextos"
+            android:label="@string/title_activity_gerenciador_de_contextos"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
