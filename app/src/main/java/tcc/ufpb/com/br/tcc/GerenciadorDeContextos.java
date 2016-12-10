@@ -5,19 +5,28 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class GerenciadorDeContextos extends AppCompatActivity {
 
     private ListView listView;
     private ContextoAdapter adapter;
     private ForcaApplication application;
+    private AlertDialog alerta;
 
 
     @Override
@@ -26,6 +35,9 @@ public class GerenciadorDeContextos extends AppCompatActivity {
         setContentView(R.layout.activity_gerenciador_de_contextos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // não abrir o teclado automaticamente
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -55,8 +67,36 @@ public class GerenciadorDeContextos extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 Toast.makeText(view.getContext(),retorno.getNome(), Toast.LENGTH_SHORT).show();
 
-                // passar o contexto selecionado no bundle para a activity de nível
-                Toast.makeText(view.getContext(),retorno.getNome(),Toast.LENGTH_SHORT).show();
+                LayoutInflater li = getLayoutInflater();
+                View view1 = li.inflate(R.layout.editar_contexto, null);
+
+                EditText campoNomeContexto  = (EditText) view1.findViewById(R.id.campoNomeContexto);
+                Button btnSelecionarImagem = (Button) view1.findViewById(R.id.btnSelecionarImagem);
+                ImageView campoImagem = (ImageView) view1.findViewById(R.id.campoImagem);
+                Button btnPalavrasCadastradas = (Button) view1.findViewById(R.id.btnpalavrasCadastradas);
+                Button btnRemover = (Button) view1.findViewById(R.id.btnRemover);
+                Button btnCancelar = (Button) view1.findViewById(R.id.btnCancelar);
+
+                campoNomeContexto.setText(retorno.getNome());
+
+
+                campoImagem.setImageResource(retorno.getPathIagem());
+
+                btnCancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alerta.cancel();
+                    }
+                });
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view1.getContext());
+                builder.setCancelable(false);
+                builder.setTitle("Editar Contexto");
+                builder.setView(view1);
+
+                alerta = builder.create();
+                alerta.show();
+
             }
         });
     }
