@@ -11,29 +11,28 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by Deyvison on 05/10/2016.
+ * Created by Deyvison on 12/12/2016.
  */
-public class ContextoAdapter extends BaseAdapter {
+public class PalavraAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Contexto> contextos;
+    private List<Palavra> palavras;
     private ForcaApplication application;
 
-    public ContextoAdapter(Context context){
+    public PalavraAdapter(Context context, List<Palavra> palavras){
         this.context = context;
         this.application = (ForcaApplication) context.getApplicationContext();
-        this.contextos = application.getContextos();
+        this.palavras = palavras;
     }
-
 
     @Override
     public int getCount() {
-        return contextos.size();
+        return palavras.size();
     }
 
     @Override
-    public Contexto getItem(int position) {
-        return contextos.get(position);
+    public Palavra getItem(int position) {
+        return palavras.get(position);
     }
 
     @Override
@@ -47,14 +46,15 @@ public class ContextoAdapter extends BaseAdapter {
         View view = null;
         view = LayoutInflater.from(context).inflate(R.layout.layout_item_list, parent, false);
 
-        Contexto contexto = contextos.get(position);
+        Palavra palavra = palavras.get(position);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         TextView textView = (TextView) view.findViewById(R.id.textView);
 
-        imageView.setImageResource(contexto.getPathImagem());
-        textView.setText(contexto.getNome());
+        imageView.setImageResource(palavra.getPathImagem());
+        textView.setText(palavra.getNome());
 
         return view;
     }
+
 }

@@ -57,7 +57,7 @@ public class Contexto implements Serializable {
             return this.dificil;
     }
 
-    public int getPathIagem(){
+    public int getPathImagem(){
         return this.pathIagem;
     }
 
@@ -73,5 +73,13 @@ public class Contexto implements Serializable {
             this.medio.add(p);
         else
             this.dificil.add(p);
+    }
+
+    public List<Palavra> getPalavras(){
+        List<Palavra> palavras = new ArrayList<>();
+        palavras.addAll(facil);
+        palavras.addAll(medio);
+        palavras.addAll(dificil);
+        return palavras;
     }
 }

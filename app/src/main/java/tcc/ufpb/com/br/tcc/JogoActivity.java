@@ -172,7 +172,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         campoImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speakWords(palavraSorteada.getPalavra());
+                speakWords(palavraSorteada.getNome());
             }
         });
 
@@ -716,7 +716,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            speakWords(palavraSorteada.getPalavra());
+            speakWords(palavraSorteada.getNome());
             acertouPalavra();
         }
     }
@@ -795,7 +795,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     public void carregarPalavra(Context context) {
         if (!this.rodada.fimDeRodada()) {
             palavraSorteada = rodada.getPalavraDaVez();
-            palavraChar = palavraSorteada.getPalavra().toCharArray();
+            palavraChar = palavraSorteada.getNome().toCharArray();
             resposta = new char[palavraChar.length];
 
             Picasso

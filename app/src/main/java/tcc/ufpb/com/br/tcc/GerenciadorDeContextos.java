@@ -27,6 +27,7 @@ public class GerenciadorDeContextos extends AppCompatActivity {
     private ContextoAdapter adapter;
     private ForcaApplication application;
     private AlertDialog alerta;
+    private Contexto contextoSelecionado;
 
 
     @Override
@@ -63,9 +64,9 @@ public class GerenciadorDeContextos extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Contexto retorno = adapter.getItem(position);
+                contextoSelecionado = adapter.getItem(position);
                 adapter.notifyDataSetChanged();
-                Toast.makeText(view.getContext(),retorno.getNome(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(),contextoSelecionado.getNome(), Toast.LENGTH_SHORT).show();
 
                 LayoutInflater li = getLayoutInflater();
                 View view1 = li.inflate(R.layout.editar_contexto, null);
@@ -77,15 +78,25 @@ public class GerenciadorDeContextos extends AppCompatActivity {
                 Button btnRemover = (Button) view1.findViewById(R.id.btnRemover);
                 Button btnCancelar = (Button) view1.findViewById(R.id.btnCancelar);
 
-                campoNomeContexto.setText(retorno.getNome());
+                campoNomeContexto.setText(contextoSelecionado.getNome());
 
 
-                campoImagem.setImageResource(retorno.getPathIagem());
+                campoImagem.setImageResource(contextoSelecionado.getPathImagem());
 
                 btnCancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         alerta.cancel();
+                    }
+                });
+
+                btnPalavrasCadastradas.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(v.getContext(),GerenciadorDePalavras.class);
+                        i.putExtra("contexto",contextoSelecionado);
+                        startActivity(i);
+                        finish();
                     }
                 });
 

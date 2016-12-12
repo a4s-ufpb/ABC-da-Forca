@@ -20,7 +20,7 @@ public class Palavra implements Serializable{
         this.nivel = nivel;
     }
 
-    public String getPalavra() {
+    public String getNome() {
         return palavra;
     }
 

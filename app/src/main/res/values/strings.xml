@@ -3,4 +3,5 @@
     <string name="title_activity_contexto">ContextoActivity</string>
     <string name="title_activity_nivel">NivelActivity</string>
     <string name="title_activity_gerenciador_de_contextos">GerenciadorDeContextos</string>
+    <string name="title_activity_gerenciador_de_palavras">GerenciadorDePalavras</string>
 </resources>
