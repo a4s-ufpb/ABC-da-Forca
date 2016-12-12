@@ -798,10 +798,18 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             palavraChar = palavraSorteada.getNome().toCharArray();
             resposta = new char[palavraChar.length];
 
-            Picasso
-                    .with(context).load(palavraSorteada.getPathImagem())
-                    //.resize(110,110)
-                    .into(campoImagem);
+            if(palavraSorteada.getDefault()){
+                Picasso
+                        .with(context).load(Integer.parseInt(palavraSorteada.getPathImagem()))
+                        //.resize(110,110)
+                        .into(campoImagem);
+            }else{
+                Picasso
+                        .with(context).load(palavraSorteada.getPathImagem())
+                        //.resize(110,110)
+                        .into(campoImagem);
+            }
+
 
             layout.setBackground(getResources().getDrawable(R.drawable.backgrond0erros));
             this.qtErros = 0;

@@ -10,13 +10,15 @@ import java.io.Serializable;
  */
 public class Palavra implements Serializable{
 
+    private boolean itemDefault;
     private String palavra;
-    private int drawablePath;
+    private String pathImagem;
     private Niveis nivel;
 
-    public Palavra(String palavra, int drawablePath, Niveis nivel){
+    public Palavra(String palavra, String drawablePath, Niveis nivel, boolean itemDefault){
+        this.itemDefault = itemDefault;
         this.palavra = palavra.toUpperCase();
-        this.drawablePath = drawablePath;
+        this.pathImagem = drawablePath;
         this.nivel = nivel;
     }
 
@@ -28,17 +30,21 @@ public class Palavra implements Serializable{
         this.palavra = palavra;
     }
 
-    public int getPathImagem() {
-        return drawablePath;
+    public String getPathImagem() {
+        return pathImagem;
     }
 
-    public void setPathImagem(int drawablePath) {
-        this.drawablePath = drawablePath;
+    public void setPathImagem(String drawablePath) {
+        this.pathImagem = drawablePath;
     }
     // palavra e imagem
 
 
     public Niveis getNivel(){
         return this.nivel;
+    }
+
+    public boolean getDefault(){
+        return this.itemDefault;
     }
 }

@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -52,7 +54,13 @@ public class ContextoAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         TextView textView = (TextView) view.findViewById(R.id.textView);
 
-        imageView.setImageResource(contexto.getPathImagem());
+        if(contexto.getDefault()){
+            // se for default, converte para int
+            Picasso.with(view.getContext()).load(Integer.parseInt(contexto.getPathImagem())).into(imageView);
+        }else{
+            Picasso.with(view.getContext()).load(contexto.getPathImagem()).into(imageView);
+        }
+
         textView.setText(contexto.getNome());
 
         return view;

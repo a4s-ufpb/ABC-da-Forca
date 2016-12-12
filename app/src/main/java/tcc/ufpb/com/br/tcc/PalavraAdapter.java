@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -51,7 +53,15 @@ public class PalavraAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         TextView textView = (TextView) view.findViewById(R.id.textView);
 
-        imageView.setImageResource(palavra.getPathImagem());
+
+        if(palavra.getDefault()){
+            // se for default, converte para int
+            Picasso.with(view.getContext()).load(Integer.parseInt(palavra.getPathImagem())).into(imageView);
+        }else{
+            Picasso.with(view.getContext()).load(palavra.getPathImagem()).into(imageView);
+        }
+
+
         textView.setText(palavra.getNome());
 
         return view;

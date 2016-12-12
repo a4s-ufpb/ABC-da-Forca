@@ -13,13 +13,15 @@ import java.util.Random;
  */
 public class Contexto implements Serializable {
 
+    private boolean itemDefault;
     private String nome;
-    private int pathIagem;
+    private String pathIagem;
     private ArrayList<Palavra> facil;
     private ArrayList<Palavra> medio;
     private ArrayList<Palavra> dificil;
 
-    public Contexto(String nome, int pathImagem){
+    public Contexto(String nome, String pathImagem, boolean itemDefault){
+        this.itemDefault = itemDefault;
         this.nome = nome;
         this.pathIagem = pathImagem;
         this.facil = new ArrayList<>();
@@ -57,7 +59,7 @@ public class Contexto implements Serializable {
             return this.dificil;
     }
 
-    public int getPathImagem(){
+    public String getPathImagem(){
         return this.pathIagem;
     }
 
@@ -81,5 +83,9 @@ public class Contexto implements Serializable {
         palavras.addAll(medio);
         palavras.addAll(dificil);
         return palavras;
+    }
+
+    public boolean getDefault(){
+        return this.itemDefault;
     }
 }

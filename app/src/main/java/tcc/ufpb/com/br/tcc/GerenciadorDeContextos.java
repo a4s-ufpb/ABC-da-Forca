@@ -80,8 +80,13 @@ public class GerenciadorDeContextos extends AppCompatActivity {
 
                 campoNomeContexto.setText(contextoSelecionado.getNome());
 
+                if(contextoSelecionado.getDefault()){
+                    // se for default, converte para int
+                    Picasso.with(view.getContext()).load(Integer.parseInt(contextoSelecionado.getPathImagem())).into(campoImagem);
+                }else{
+                    Picasso.with(view.getContext()).load(contextoSelecionado.getPathImagem()).into(campoImagem);
+                }
 
-                campoImagem.setImageResource(contextoSelecionado.getPathImagem());
 
                 btnCancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
