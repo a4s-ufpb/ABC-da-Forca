@@ -14,6 +14,8 @@ import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.content.Intent;
 import android.os.Vibrator;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -805,7 +807,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                         .into(campoImagem);
             }else{
                 Picasso
-                        .with(context).load(palavraSorteada.getPathImagem())
+                        .with(context).load(new File(palavraSorteada.getPathImagem()))
                         //.resize(110,110)
                         .into(campoImagem);
             }

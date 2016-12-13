@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:layout_marginTop="10sp"
         android:id="@+id/relativeLayout1"
@@ -18,7 +17,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do contexto:"
+            android:text="Palavra:"
             android:textSize="30dp"
 
             />
@@ -28,7 +27,7 @@
             android:textSize="30dp"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:id="@+id/campoCadastrarNomeContexto"
+            android:id="@+id/campoNomeContexto"
 
 
             />
@@ -45,17 +44,64 @@
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCadastrarImagem"
+            android:id="@+id/btnSelecionarImagem"
             android:text="Selecionar Imagem"
             />
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/noimagebox"
+            android:src="@mipmap/ic_launcher"
             android:layout_marginLeft="30dp"
-            android:id="@+id/campoImagemSelecionada"
+            android:id="@+id/campoImagem"
             />
+    </LinearLayout>
+
+    <LinearLayout
+
+
+        android:layout_marginTop="20sp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+
+        <RadioGroup
+            android:id="@+id/radioButtonNiveis"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fácil"
+                android:textSize="30dp"
+                android:textColor="@color/md_green_900"
+                android:id="@+id/radioButton" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Médio"
+                android:textSize="30dp"
+                android:textColor="@color/md_yellow_A700"
+                android:id="@+id/radioButton2" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:textColor="@color/md_red_900"
+                android:text="Difícil"
+                android:id="@+id/radioButton3" />
+
+        </RadioGroup>
+
+
+
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +117,7 @@
             android:layout_height="wrap_content"
 
             android:text="Cadastrar"
-            android:id="@+id/btnCadastrar"
+            android:id="@+id/btnCadastrar2"
             />
 
         <Button
@@ -79,11 +125,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
-            android:id="@+id/btnCancelarCadastro2"
+            android:id="@+id/btnCancelar"
             />
 
 
     </LinearLayout>
+
 
 
 </LinearLayout>

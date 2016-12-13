@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -18,23 +19,23 @@ import java.util.List;
 public class PalavraAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Palavra> palavras;
+    private Contexto contexto;
     private ForcaApplication application;
 
-    public PalavraAdapter(Context context, List<Palavra> palavras){
+    public PalavraAdapter(Context context, Contexto contextoEscolhido){
         this.context = context;
         this.application = (ForcaApplication) context.getApplicationContext();
-        this.palavras = palavras;
+        this.contexto = application.getContexto(contextoEscolhido);
     }
 
     @Override
     public int getCount() {
-        return palavras.size();
+        return contexto.getPalavras().size();
     }
 
     @Override
     public Palavra getItem(int position) {
-        return palavras.get(position);
+        return contexto.getPalavras().get(position);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class PalavraAdapter extends BaseAdapter {
         View view = null;
         view = LayoutInflater.from(context).inflate(R.layout.layout_item_list, parent, false);
 
-        Palavra palavra = palavras.get(position);
+        Palavra palavra = contexto.getPalavras().get(position);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         TextView textView = (TextView) view.findViewById(R.id.textView);
@@ -58,7 +59,7 @@ public class PalavraAdapter extends BaseAdapter {
             // se for default, converte para int
             Picasso.with(view.getContext()).load(Integer.parseInt(palavra.getPathImagem())).into(imageView);
         }else{
-            Picasso.with(view.getContext()).load(palavra.getPathImagem()).into(imageView);
+            Picasso.with(view.getContext()).load(new File(palavra.getPathImagem())).into(imageView);
         }
 
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -58,7 +59,7 @@ public class ContextoAdapter extends BaseAdapter {
             // se for default, converte para int
             Picasso.with(view.getContext()).load(Integer.parseInt(contexto.getPathImagem())).into(imageView);
         }else{
-            Picasso.with(view.getContext()).load(contexto.getPathImagem()).into(imageView);
+            Picasso.with(view.getContext()).load(new File(contexto.getPathImagem())).into(imageView);
         }
 
         textView.setText(contexto.getNome());

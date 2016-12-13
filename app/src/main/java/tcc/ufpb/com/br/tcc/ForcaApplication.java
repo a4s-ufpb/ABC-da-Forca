@@ -1,6 +1,7 @@
 package tcc.ufpb.com.br.tcc;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +107,38 @@ public class ForcaApplication extends Application {
 
     }
 
+    public void adicionarContexto(Contexto c){
+        this.contextos.add(c);
+    }
+
     public List<Contexto> getContextos(){
         return contextos;
+    }
+
+    public void adiconarPalavraAoContexto(Contexto contextoEscolhido, Palavra palavra) {
+
+        for(Contexto c : this.contextos){
+            if(c.getNome().equals(contextoEscolhido.getNome())){
+
+                c.adicionarPalavra(palavra);
+                Toast.makeText(this,"entrouuuu",Toast.LENGTH_SHORT).show();
+                break;
+
+            }
+
+        }
+    }
+
+    public Contexto getContexto(Contexto contexto){
+        Contexto lol = null;
+        for(Contexto c : this.contextos){
+            if(c.getNome().equals(contexto.getNome())){
+                lol = c;
+                break;
+
+            }
+
+        }
+        return lol;
     }
 }
