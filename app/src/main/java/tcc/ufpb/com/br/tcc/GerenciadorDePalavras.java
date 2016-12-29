@@ -13,7 +13,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -61,8 +63,10 @@ public class GerenciadorDePalavras extends AppCompatActivity {
     private PalavraAdapter palavraAdapter;
     private ForcaApplication application;
     private AlertDialog alerta;
-    private Contexto contextoEscolhido;
+    public static Contexto contextoEscolhido;
     private Palavra palavraSelecionada;
+    private ViewPager viewPager;
+    private PagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,8 +139,8 @@ public class GerenciadorDePalavras extends AppCompatActivity {
                                 String nome = campoCadastrarNomeImagem.getText().toString();
                                 //contextoEscolhido.adicionarPalavra(new Palavra(nome,pathPalavraASerCadastrada, nivel, false));
                                 application.adiconarPalavraAoContexto(contextoEscolhido,new Palavra(nome,pathPalavraASerCadastrada, nivel, false));
-                                palavraAdapter.notifyDataSetChanged();
-
+                                //palavraAdapter.notifyDataSetChanged();
+                                adapter.notifyDataSetChanged();
 
                                 alerta.cancel();
                                 imagemCarregada = false;
@@ -181,16 +185,37 @@ public class GerenciadorDePalavras extends AppCompatActivity {
 
 
         application = (ForcaApplication) getApplicationContext();
-        palavraAdapter = new PalavraAdapter(this, contextoEscolhido);
-        listView = (ListView)findViewById(R.id.listViewPalavras);
-        listView.setAdapter(palavraAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout.Tab t1 = tabLayout.newTab().setText("Fácil");
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        TabLayout.Tab t2 = tabLayout.newTab().setText("Médio");
+        TabLayout.Tab t3 = tabLayout.newTab().setText("Difícil");
+
+        tabLayout.addTab(t1);
+        tabLayout.addTab(t2);
+        tabLayout.addTab(t3);
+
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        adapter = new PagerAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                palavraSelecionada = palavraAdapter.getItem(position);
-                palavraAdapter.notifyDataSetChanged();
-                Toast.makeText(view.getContext(),palavraSelecionada.getNome(), Toast.LENGTH_SHORT).show();
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
     }

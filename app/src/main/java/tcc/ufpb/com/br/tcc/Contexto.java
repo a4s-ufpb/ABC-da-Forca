@@ -88,4 +88,16 @@ public class Contexto implements Serializable {
     public boolean getDefault(){
         return this.itemDefault;
     }
+
+    public List<Palavra> getPalavrasNivelDificil() {
+        return this.dificil;
+    }
+
+    public List<Palavra> getPalavrasNivelMedio() {
+        return this.medio;
+    }
+
+    public List<Palavra> getPalavrasNivelFacil() {
+        return this.facil;
+    }
 }
