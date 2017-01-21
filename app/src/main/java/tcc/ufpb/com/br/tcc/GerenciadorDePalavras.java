@@ -398,7 +398,7 @@ public class GerenciadorDePalavras extends AppCompatActivity {
 
     public void EnableRuntimePermission(){
 
-        if(Build.VERSION.SDK_INT > 23){
+        if(Build.VERSION.SDK_INT >= 23){
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDePalavras.this,
                     Manifest.permission.CAMERA) && ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDePalavras.this,

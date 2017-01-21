@@ -141,4 +141,22 @@ public class ForcaApplication extends Application {
         }
         return lol;
     }
+
+    public void removerContexto(Contexto c){
+        this.contextos.remove(c);
+    }
+
+    public void alterarContexto(Contexto atual, String nome, String path){
+
+        for(Contexto c : this.contextos){
+            if(c.equals(atual)){
+                Toast.makeText(getApplicationContext(),"entrouuuuuuu?",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),path,Toast.LENGTH_SHORT).show();
+                c.setNome(nome);
+                c.setPath(path);
+
+                break;
+            }
+        }
+    }
 }

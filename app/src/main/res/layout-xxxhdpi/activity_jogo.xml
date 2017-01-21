@@ -12,12 +12,12 @@
     android:id="@+id/jogolayout">
 
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:text=":"
-        android:id="@+id/qtAcertos"/>
+        android:id="@+id/qtAcertos"/>-->
 
     <ImageView
         android:layout_width="70dp"
@@ -29,14 +29,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/star"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true" />-->
 
     <TextView
         android:textColor="#000000"

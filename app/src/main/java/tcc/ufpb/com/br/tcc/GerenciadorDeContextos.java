@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -134,8 +135,8 @@ public class GerenciadorDeContextos extends AppCompatActivity {
 
                                 alerta.cancel();
                                 imagemCarregada = false;
-                                pathContextoASerCadastrado= null;
-                                imagemASerSalva=null;
+                                //pathContextoASerCadastrado= null;
+                                //imagemASerSalva=null;
                             }else{
                                 Toast.makeText(v.getContext(),"Para continuar, Dê um nome ao contexto e selecione uma imagem da galeria",Toast.LENGTH_SHORT).show();
                             }
@@ -174,22 +175,26 @@ public class GerenciadorDeContextos extends AppCompatActivity {
                 LayoutInflater li = getLayoutInflater();
                 View view1 = li.inflate(R.layout.editar_contexto, null);
 
-                EditText campoNomeContexto  = (EditText) view1.findViewById(R.id.campoNomeContexto);
+                final EditText campoNomeContexto  = (EditText) view1.findViewById(R.id.campoNomeContexto);
                 Button btnSelecionarImagem = (Button) view1.findViewById(R.id.btnSelecionarImagem);
-                ImageView campoImagem = (ImageView) view1.findViewById(R.id.campoImagem);
+                campoImagemSelecionada = (ImageView) view1.findViewById(R.id.campoImagem);
                 Button btnPalavrasCadastradas = (Button) view1.findViewById(R.id.btnpalavrasCadastradas);
                 Button btnRemover = (Button) view1.findViewById(R.id.btnRemover);
                 Button btnCancelar = (Button) view1.findViewById(R.id.btnCancelar);
 
-                campoNomeContexto.setText(contextoSelecionado.getNome());
+                Button btnAtualizar = (Button) view1.findViewById(R.id.btnAtualizar);
 
-                if(contextoSelecionado.getDefault()){
-                    // se for default, converte para int
-                    Picasso.with(view.getContext()).load(Integer.parseInt(contextoSelecionado.getPathImagem())).into(campoImagem);
-                }else{
-                    Picasso.with(view.getContext()).load(new File(contextoSelecionado.getPathImagem())).into(campoImagem);
+                campoNomeContexto.setText(contextoSelecionado.getNome());
+                if(contextoSelecionado.getDefault()) {
+                    campoNomeContexto.setEnabled(false);
+                    btnSelecionarImagem.setEnabled(false);
+                    btnRemover.setEnabled(false);
+                    btnAtualizar.setEnabled(false);
+
                 }
 
+
+                imagemASerSalva = BitmapFactory.decodeFile(contextoSelecionado.getPathImagem());
 
                 btnCancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -207,6 +212,60 @@ public class GerenciadorDeContextos extends AppCompatActivity {
                         finish();
                     }
                 });
+
+                btnRemover.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!contextoSelecionado.getDefault()){
+                            application.removerContexto(contextoSelecionado);
+                            alerta.cancel();
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+
+                btnSelecionarImagem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // aquiiiiiii
+                        selectImage();
+                    }
+                });
+
+                btnAtualizar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        try {
+                            saveImageToExternalStorage(imagemASerSalva);
+                            Toast.makeText(v.getContext(),pathContextoASerCadastrado,Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        String nome = campoNomeContexto.getText().toString();
+
+                        String path = pathContextoASerCadastrado;
+
+
+                        //Picasso.with(v.getContext()).load(new File(path)).into(campoImagemSelecionada);
+
+
+                        application.alterarContexto(contextoSelecionado,nome, path);
+
+
+                        adapter.notifyDataSetChanged();
+
+                        alerta.cancel();
+                    }
+                });
+
+                if(contextoSelecionado.getDefault()){
+                    // se for default, converte para int
+                    Picasso.with(view.getContext()).load(Integer.parseInt(contextoSelecionado.getPathImagem())).into(campoImagemSelecionada);
+                }else{
+                    Picasso.with(view.getContext()).load(new File(contextoSelecionado.getPathImagem())).into(campoImagemSelecionada);
+                }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view1.getContext());
                 builder.setCancelable(false);
@@ -316,6 +375,10 @@ public class GerenciadorDeContextos extends AppCompatActivity {
 
 
     public void saveImageToExternalStorage(Bitmap finalBitmap) throws IOException {
+        if(finalBitmap == null){
+            Toast.makeText(this,"Tá nuloo",Toast.LENGTH_SHORT).show();
+        }
+
         //String root =Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
         File root = android.os.Environment.getExternalStorageDirectory();
         File myDir = new File(root + "/ABCdaForca");
@@ -396,7 +459,7 @@ public class GerenciadorDeContextos extends AppCompatActivity {
 
     public void EnableRuntimePermission(){
 
-        if(Build.VERSION.SDK_INT > 23){
+        if(Build.VERSION.SDK_INT >= 23){
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDeContextos.this,
                     Manifest.permission.CAMERA) && ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDeContextos.this,
@@ -405,6 +468,7 @@ public class GerenciadorDeContextos extends AppCompatActivity {
                 Toast.makeText(GerenciadorDeContextos.this,"Todas as permissões concedidas", Toast.LENGTH_LONG).show();
 
             } else {
+                Toast.makeText(GerenciadorDeContextos.this,"Conceda as permissões", Toast.LENGTH_LONG).show();
                 ActivityCompat.requestPermissions(GerenciadorDeContextos.this,new String[]{
                         Manifest.permission.CAMERA,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE}, RequestPermissionCode);

@@ -25,7 +25,7 @@
              />
 
         <EditText
-
+            android:textStyle="bold"
             android:textSize="30dp"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
@@ -92,6 +92,17 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
+
+
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="Atualizar"
+            android:id="@+id/btnAtualizar"
+            />
 
         <Button
             android:layout_marginTop="10dp"

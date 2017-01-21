@@ -15,7 +15,7 @@ public class Contexto implements Serializable {
 
     private boolean itemDefault;
     private String nome;
-    private String pathIagem;
+    private String pathImagem;
     private ArrayList<Palavra> facil;
     private ArrayList<Palavra> medio;
     private ArrayList<Palavra> dificil;
@@ -23,7 +23,7 @@ public class Contexto implements Serializable {
     public Contexto(String nome, String pathImagem, boolean itemDefault){
         this.itemDefault = itemDefault;
         this.nome = nome;
-        this.pathIagem = pathImagem;
+        this.pathImagem = pathImagem;
         this.facil = new ArrayList<>();
         this.medio = new ArrayList<>();
         this.dificil = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Contexto implements Serializable {
     }
 
     public String getPathImagem(){
-        return this.pathIagem;
+        return this.pathImagem;
     }
 
     public String getNome(){
@@ -99,5 +99,11 @@ public class Contexto implements Serializable {
 
     public List<Palavra> getPalavrasNivelFacil() {
         return this.facil;
+    }
+
+    public void setNome(String nome){this.nome = nome;}
+
+    public void setPath(String path){
+        this.pathImagem = path;
     }
 }
