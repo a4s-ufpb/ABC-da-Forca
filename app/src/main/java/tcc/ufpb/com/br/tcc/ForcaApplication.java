@@ -1,6 +1,7 @@
 package tcc.ufpb.com.br.tcc;
 
 import android.app.Application;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -158,5 +159,32 @@ public class ForcaApplication extends Application {
                 break;
             }
         }
+    }
+
+
+    public void removerPalavra(Contexto contexto, Palavra palavra){
+
+        for(Contexto c : this.contextos){
+            if(c.equals(contexto)){
+                c.removerPalavra(palavra,palavra.getNivel());
+            }
+        }
+    }
+
+    public void alterarPalavra(Contexto contexto, Palavra palavra, String nome, String path,Niveis nivel){
+
+        for(Contexto c : this.contextos){
+
+            if(nivel == Niveis.FACIL){
+                for(Palavra p : c.getPalavrasNivelFacil()){
+                    if(p.equals(palavra)){
+                        p.setPalavra(nome);
+                        p.setPathImagem(path);
+                    }
+                }
+            }
+        }
+
+
     }
 }

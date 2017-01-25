@@ -106,4 +106,16 @@ public class Contexto implements Serializable {
     public void setPath(String path){
         this.pathImagem = path;
     }
+
+
+    public void removerPalavra (Palavra p, Niveis nivel){
+        if(nivel == Niveis.FACIL){
+            facil.remove(p);
+        }else if(nivel == Niveis.MEDIO){
+            medio.remove(p);
+
+        }else{
+            dificil.remove(p);
+        }
+    }
 }

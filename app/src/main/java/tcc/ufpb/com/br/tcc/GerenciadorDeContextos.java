@@ -55,7 +55,7 @@ public class GerenciadorDeContextos extends AppCompatActivity {
     private ContextoAdapter adapter;
     private ForcaApplication application;
     private AlertDialog alerta;
-    private Contexto contextoSelecionado;
+    public static Contexto contextoSelecionado;
 
 
     private EditText campoCadastrarNomeContexto;
@@ -216,11 +216,34 @@ public class GerenciadorDeContextos extends AppCompatActivity {
                 btnRemover.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!contextoSelecionado.getDefault()){
-                            application.removerContexto(contextoSelecionado);
-                            alerta.cancel();
-                            adapter.notifyDataSetChanged();
-                        }
+
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(v.getContext());
+                        builder1.setMessage("Deseja remover o contexto?");
+                        builder1.setCancelable(true);
+
+                        builder1.setNegativeButton(
+                                "Cancelar",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+
+                                    }
+                                });
+
+                        builder1.setPositiveButton(
+                                "Sim",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        application.removerContexto(contextoSelecionado);
+                                        alerta.cancel();
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                });
+
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
+
+
                     }
                 });
 

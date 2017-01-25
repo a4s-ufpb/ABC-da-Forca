@@ -40,13 +40,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
+import tcc.ufpb.com.br.tcc.fragments.TabFragment1;
+
 public class GerenciadorDePalavras extends AppCompatActivity {
 
-    private String pathPalavraASerCadastrada;
-    private Bitmap imagemASerSalva;
+    public static String pathPalavraASerCadastrada;
+    public static Bitmap imagemASerSalva;
     private boolean imagemCarregada=false;
 
+    public static View viewPalavra;
     private RadioGroup radioButtons;
+
+    public static Palavra palavraEscolhida;
+
+
 
     private File file;
     private Uri uri;
@@ -78,6 +85,10 @@ public class GerenciadorDePalavras extends AppCompatActivity {
         // solicitar permissão do usuario em tempo de execucao
         EnableRuntimePermission();
 
+
+        //
+
+        //
         // não abrir o teclado automaticamente
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
@@ -236,7 +247,7 @@ public class GerenciadorDePalavras extends AppCompatActivity {
 
 
 
-    private void selectImage() {
+    public void selectImage() {
         final CharSequence[] items = { "Tirar Foto", "Selecionar da Galeria",
                 "Cancelar" };
 
@@ -286,6 +297,8 @@ public class GerenciadorDePalavras extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Toast.makeText(this,"entrou aqui? fragment tab1",Toast.LENGTH_SHORT).show();
         if (requestCode == 0 && resultCode == RESULT_OK) { // tirar foto com a camera
             ImageCropFunction();
         }
@@ -300,12 +313,19 @@ public class GerenciadorDePalavras extends AppCompatActivity {
                 try {
                     Bundle bundle = data.getExtras();
                     if(bundle != null) {
+                        Toast.makeText(this,"ifffffffffffff",Toast.LENGTH_SHORT).show();
                         Bitmap bitmap = bundle.getParcelable("data");
                         imagemASerSalva = bitmap;
+                        TabFragment1.imagemAserSalva = bitmap;
+
+
 
                         campoImagemSelecionada.setImageBitmap(bitmap);
+                        Log.e("lol", bitmap.toString());
+                        Log.e("lol", bitmap+"");
                         imagemCarregada = true;
                         //saveImageToExternalStorage(bitmap);
+                        TabFragment1.campoImagemSelecionada.setImageBitmap(bitmap);
                     }
 
                 } catch (Exception e) {
@@ -314,6 +334,8 @@ public class GerenciadorDePalavras extends AppCompatActivity {
             }
         }
     }
+
+
 
 
 
@@ -347,6 +369,7 @@ public class GerenciadorDePalavras extends AppCompatActivity {
 //                .into(lol2);
         //teste
         this.pathPalavraASerCadastrada = file1.getPath();
+        TabFragment1.pathImagemASerCadastrada = file1.getPath();
 
         if (file1.exists())
             file1.delete();
