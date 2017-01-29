@@ -76,26 +76,37 @@ public class ForcaApplication extends Application {
         // Frutas
 
         //facil
-        frutas.adicionarPalavra(new Palavra("Goiaba", R.drawable.goiaba+"",Niveis.FACIL, true));
-        frutas.adicionarPalavra(new Palavra("Figo", R.drawable.figo+"",Niveis.FACIL, true));
-        frutas.adicionarPalavra(new Palavra("Tomate", R.drawable.tomate+"",Niveis.FACIL, true));
-        frutas.adicionarPalavra(new Palavra("Caju", R.drawable.caju+"",Niveis.FACIL, true));
-        frutas.adicionarPalavra(new Palavra("Pera", R.drawable.pera+"",Niveis.FACIL, true));
         frutas.adicionarPalavra(new Palavra("Amora", R.drawable.amora+"",Niveis.FACIL, true));
+        frutas.adicionarPalavra(new Palavra("Caju", R.drawable.caju+"",Niveis.FACIL, true));
         frutas.adicionarPalavra(new Palavra("Coco", R.drawable.coco+"",Niveis.FACIL, true));
+        frutas.adicionarPalavra(new Palavra("Figo", R.drawable.figo+"",Niveis.FACIL, true));
+        frutas.adicionarPalavra(new Palavra("Goiaba", R.drawable.goiaba+"",Niveis.FACIL, true));
+        frutas.adicionarPalavra(new Palavra("Pera", R.drawable.pera+"",Niveis.FACIL, true));
+        frutas.adicionarPalavra(new Palavra("Tomate", R.drawable.tomate+"",Niveis.FACIL, true));
+        frutas.adicionarPalavra(new Palavra("Umbu", R.drawable.umbu+"",Niveis.FACIL, true));
+        frutas.adicionarPalavra(new Palavra("Uva", R.drawable.uva+"",Niveis.FACIL, true));
+
+
 
         //medio
-        frutas.adicionarPalavra(new Palavra("Laranja",R.drawable.laranja+"", Niveis.MEDIO, true));
+
         frutas.adicionarPalavra(new Palavra("Abacate",R.drawable.abacate+"", Niveis.MEDIO, true));
-        frutas.adicionarPalavra(new Palavra("Mangaba",R.drawable.mangaba+"", Niveis.MEDIO, true));
-        frutas.adicionarPalavra(new Palavra("Sapoti",R.drawable.sapoti+"", Niveis.MEDIO, true));
         frutas.adicionarPalavra(new Palavra("Banana",R.drawable.banana+"", Niveis.MEDIO, true));
+        frutas.adicionarPalavra(new Palavra("Laranja",R.drawable.laranja+"", Niveis.MEDIO, true));
+        frutas.adicionarPalavra(new Palavra("Manga",R.drawable.manga+"", Niveis.MEDIO, true));
+        frutas.adicionarPalavra(new Palavra("Mangaba",R.drawable.mangaba+"", Niveis.MEDIO, true));
+        frutas.adicionarPalavra(new Palavra("Pitanga",R.drawable.pitanga+"", Niveis.MEDIO, true));
+        frutas.adicionarPalavra(new Palavra("Sapoti",R.drawable.sapoti+"", Niveis.MEDIO, true));
+
 
         //dificil
-        frutas.adicionarPalavra(new Palavra("Limão",R.drawable.limao+"", Niveis.DIFICIL, true));
-        frutas.adicionarPalavra(new Palavra("Mexerica",R.drawable.mexerica+"", Niveis.DIFICIL, true));
         frutas.adicionarPalavra(new Palavra("Jabuticaba",R.drawable.jabuticaba+"", Niveis.DIFICIL, true));
         frutas.adicionarPalavra(new Palavra("Jambo",R.drawable.jambo+"", Niveis.DIFICIL, true));
+        frutas.adicionarPalavra(new Palavra("Limão",R.drawable.limao+"", Niveis.DIFICIL, true));
+        frutas.adicionarPalavra(new Palavra("Mamão",R.drawable.mamao+"", Niveis.DIFICIL, true));
+        frutas.adicionarPalavra(new Palavra("Mexerica",R.drawable.mexerica+"", Niveis.DIFICIL, true));
+
+
 
 
         contextos.add(animais);
