@@ -218,14 +218,17 @@ public class ForcaApplication extends Application {
 
     }
 
-    public void alterarContexto(Contexto atual, String nome, String path){
+    public void alterarContexto(Contexto atual, String nome, String path){ // alterar contexto não funcionando ainda
 
         for(Contexto c : this.contextos){
             if(c.equals(atual)){
                 Toast.makeText(getApplicationContext(),"entrouuuuuuu?",Toast.LENGTH_SHORT).show();
                 Toast.makeText(getApplicationContext(),path,Toast.LENGTH_SHORT).show();
+                String oldname = c.getNome();
                 c.setNome(nome);
                 c.setPath(path);
+                Log.i("lol","valor de atual.getNome() = " + atual.getNome());
+                db.setContexto(oldname,c);
 
                 break;
             }
