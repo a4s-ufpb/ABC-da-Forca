@@ -10,17 +10,19 @@ import java.io.Serializable;
  */
 public class Palavra implements Serializable{
 
-    private boolean itemDefault;
+    private Boolean itemDefault;
     private String palavra;
     private String pathImagem;
     private Niveis nivel;
 
-    public Palavra(String palavra, String drawablePath, Niveis nivel, boolean itemDefault){
+    public Palavra(String palavra, String drawablePath, Niveis nivel, Boolean itemDefault){
         this.itemDefault = itemDefault;
         this.palavra = palavra.toUpperCase();
         this.pathImagem = drawablePath;
         this.nivel = nivel;
     }
+
+
 
     public String getNome() {
         return palavra;

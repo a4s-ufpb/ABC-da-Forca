@@ -13,16 +13,46 @@ import java.util.List;
 // classe vai conter todas as operações de inserção e remoção de dados no bd
 public class ForcaApplication extends Application {
 
+    private List<Contexto> contextosDefault;
     private List<Contexto> contextos;
+    private DBManager db;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
+        db = new DBManager(this);
 
+        contextosDefault = new ArrayList<>();
         contextos = new ArrayList<>();
 
         criarContextos();
 
+        // verificar se já existe no banco antes de inserir, alterar ou remover
+
+        // varrer o contexto default e adicionar no bd os que não existem
+        for(Contexto c : this.contextosDefault){
+            Contexto retorno= db.selectContextoByNome(c.getNome()); // se for nulo, não existe no banco ainda
+            if(retorno == null){
+                db.addContexto(c); // adiciona o contexto no banco
+
+                for(Palavra p : c.getPalavrasNivelFacil()){ // adicionar palavra fácil no banco
+                    db.insertPalavraFacil(c.getNome(),p);
+                }
+                for(Palavra p : c.getPalavrasNivelMedio()){ // adicionar palavra medio no banco
+
+                }
+                for(Palavra p : c.getPalavrasNivelDificil()){ // adicionar palavra fácil no banco
+
+                }
+            }
+        }
+
+        this.contextos = db.getContextos();
+
+        for(Contexto c : this.contextos){ // carregar palavras dos contextos
+            c.setPalavraNivelFacil(db.selectPalavraFacil(c.getNome()));
+        }
 
     }
 
@@ -109,8 +139,8 @@ public class ForcaApplication extends Application {
 
 
 
-        contextos.add(animais);
-        contextos.add(frutas);
+        contextosDefault.add(animais);
+        contextosDefault.add(frutas);
 
 
     }
@@ -120,7 +150,15 @@ public class ForcaApplication extends Application {
     }
 
     public void adicionarContexto(Contexto c){
-        this.contextos.add(c);
+        Contexto contexto = db.selectContextoByNome(c.getNome());
+        Log.i("lol","retorno do contexto = "+ contexto);
+        if(contexto == null){
+            this.contextos.add(c);
+            db.addContexto(c);
+        }else{
+            Toast.makeText(this,"Contexto já cadastrado",Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public List<Contexto> getContextos(){
@@ -132,8 +170,22 @@ public class ForcaApplication extends Application {
         for(Contexto c : this.contextos){
             if(c.getNome().equals(contextoEscolhido.getNome())){
 
-                c.adicionarPalavra(palavra);
-                Toast.makeText(this,"entrouuuu",Toast.LENGTH_SHORT).show();
+
+                if(palavra.getNivel() == Niveis.FACIL){
+                    Palavra p = db.selectPalavraEasyByName(c.getNome(),palavra.getNome());
+                    if(p == null){ // verificar se já existe a palavra no banco
+                        c.adicionarPalavra(palavra);
+                        db.insertPalavraFacil(c.getNome(),palavra);
+                    }else{
+                        Toast.makeText(this,"Palavra já cadastrada",Toast.LENGTH_LONG).show();
+                    }
+                } // fazer o mesmo para médio e dificil.
+
+//                else if(palavra.getNivel() == Niveis.MEDIO)
+//                    // palavra medio
+//                else
+                    // palavra dificil
+
                 break;
 
             }
@@ -155,7 +207,15 @@ public class ForcaApplication extends Application {
     }
 
     public void removerContexto(Contexto c){
-        this.contextos.remove(c);
+        Contexto contexto = db.selectContextoByNome(c.getNome());
+        if(contexto != null){
+            this.contextos.remove(c);
+            db.delContexto(c.getNome());
+        }else{
+            Toast.makeText(getApplicationContext(),"Contexto não existe",Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     public void alterarContexto(Contexto atual, String nome, String path){

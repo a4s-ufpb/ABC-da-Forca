@@ -118,4 +118,8 @@ public class Contexto implements Serializable {
             dificil.remove(p);
         }
     }
+
+    public void setPalavraNivelFacil(ArrayList<Palavra> palavras){
+        this.facil = palavras;
+    }
 }
