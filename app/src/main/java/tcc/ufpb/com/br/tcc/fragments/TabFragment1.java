@@ -131,7 +131,7 @@ public class TabFragment1 extends Fragment {
                     public void onClick(View v) {
 
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(v.getContext());
-                        builder1.setMessage("Deseja remover o contexto?");
+                        builder1.setMessage("Deseja remover a palavra?");
                         builder1.setCancelable(true);
 
                         builder1.setNegativeButton(

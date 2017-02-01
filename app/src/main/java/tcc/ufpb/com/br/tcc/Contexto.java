@@ -122,4 +122,12 @@ public class Contexto implements Serializable {
     public void setPalavraNivelFacil(ArrayList<Palavra> palavras){
         this.facil = palavras;
     }
+
+    public void setPalavraNivelMedio(ArrayList<Palavra> palavras){
+        this.medio = palavras;
+    }
+
+    public void setPalavraNivelHard(ArrayList<Palavra> palavras){
+        this.dificil = palavras;
+    }
 }

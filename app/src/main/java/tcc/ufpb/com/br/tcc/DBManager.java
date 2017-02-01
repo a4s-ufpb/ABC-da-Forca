@@ -163,5 +163,140 @@ public class DBManager {
     }
 
 
+    //tabela palavra nível medio
+
+    // inserir palavra nível médio
+    public void insertPalavraMedio(String foreignkey ,Palavra p){
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("nome", p.getNome() );
+        values.put("nomeContexto", foreignkey);
+        values.put("pathImagem", p.getPathImagem());
+        values.put("isDefault", p.getDefault()+"");
+
+        database.insert("medium", null, values);
+    }
+
+    // retorna todas as palavras nivel medio cadastradas em um contexto
+    public ArrayList<Palavra> selectPalavraMedio(String foreignKey){ // retorna todas as palavras nivel médio de um contexto
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+        // pega todos os registros do banco
+        String query = "select medium.nome, medium.nomeContexto, medium.pathImagem, medium.isDefault " +
+                "from contexto,medium " +
+                "where contexto.nome = medium.nomeContexto";
+
+        Cursor cursor = database.rawQuery(query,null);
+
+        ArrayList<Palavra> palavras = null;
+        if(cursor != null && cursor.moveToFirst()){
+            palavras = new ArrayList<>();
+
+            do{
+
+                Palavra p = new Palavra(cursor.getString(0),cursor.getString(2),Niveis.MEDIO,Boolean.parseBoolean(cursor.getString(3)));
+                if(cursor.getString(1).equals(foreignKey)) // verifica se o foreign key são iguais
+                    palavras.add(p);
+            }while (cursor.moveToNext());
+        }
+
+        return palavras;
+    }
+
+
+    // pesquisa palavra nível medio em determinado contexto
+    public Palavra selectPalavraMediumByName(String foreignKey, String name){ // seleciona a palavra pelo nome
+
+        ArrayList<Palavra> retorno = selectPalavraMedio(foreignKey);
+
+        for(Palavra p : retorno){
+            if(p.getNome().equals(name))
+                return p;
+        }
+        return null;
+
+    }
+
+    // remove palavra de nível medio de um contexto
+    public void deletePalavraMedio(String foreignkey, String name){ // deleta uma palavra de determinado contexto
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        database.delete("medium", "nomeContexto=? and nome=?", new String[]{foreignkey,name});
+    }
+
+    // alterar palavra medio de um determinado contexto
+    public void setPalavraMedio(String foreignkey, String nome, Palavra p){
+        deletePalavraMedio(foreignkey,nome);
+        insertPalavraMedio(foreignkey,p);
+    }
+
+
+    //tabela palavra nível hard
+
+    public void insertPalavraHard(String foreignkey ,Palavra p){
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("nome", p.getNome() );
+        values.put("nomeContexto", foreignkey);
+        values.put("pathImagem", p.getPathImagem());
+        values.put("isDefault", p.getDefault()+"");
+
+        database.insert("hard", null, values);
+    }
+
+    // retorna todas as palavras nivel hard cadastradas em um contexto
+    public ArrayList<Palavra> selectPalavraHard(String foreignKey){ // retorna todas as palavras nivel médio de um contexto
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+        // pega todos os registros do banco
+        String query = "select hard.nome, hard.nomeContexto, hard.pathImagem, hard.isDefault " +
+                "from contexto,hard " +
+                "where contexto.nome = hard.nomeContexto";
+
+        Cursor cursor = database.rawQuery(query,null);
+
+        ArrayList<Palavra> palavras = null;
+        if(cursor != null && cursor.moveToFirst()){
+            palavras = new ArrayList<>();
+
+            do{
+
+                Palavra p = new Palavra(cursor.getString(0),cursor.getString(2),Niveis.DIFICIL,Boolean.parseBoolean(cursor.getString(3)));
+                if(cursor.getString(1).equals(foreignKey)) // verifica se o foreign key são iguais
+                    palavras.add(p);
+            }while (cursor.moveToNext());
+        }
+
+        return palavras;
+    }
+
+
+    // pesquisa palavra nível hard em determinado contexto
+    public Palavra selectPalavraHardByName(String foreignKey, String name){ // seleciona a palavra pelo nome
+
+        ArrayList<Palavra> retorno = selectPalavraHard(foreignKey);
+
+        for(Palavra p : retorno){
+            if(p.getNome().equals(name))
+                return p;
+        }
+        return null;
+
+    }
+
+    // remove palavra de nível hard de um contexto
+    public void deletePalavraHard(String foreignkey, String name){ // deleta uma palavra de determinado contexto
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        database.delete("hard", "nomeContexto=? and nome=?", new String[]{foreignkey,name});
+    }
+
+    // alterar palavra medio de um determinado contexto
+    public void setPalavraHard(String foreignkey, String nome, Palavra p){
+        deletePalavraHard(foreignkey,nome);
+        insertPalavraHard(foreignkey,p);
+    }
+
+
 
 }
