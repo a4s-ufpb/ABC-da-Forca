@@ -41,6 +41,8 @@ import java.io.IOException;
 import java.util.Random;
 
 import tcc.ufpb.com.br.tcc.fragments.TabFragment1;
+import tcc.ufpb.com.br.tcc.fragments.TabFragment2;
+import tcc.ufpb.com.br.tcc.fragments.TabFragment3;
 
 public class GerenciadorDePalavras extends AppCompatActivity {
 

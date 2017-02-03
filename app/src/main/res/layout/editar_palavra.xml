@@ -22,7 +22,7 @@
 
             />
 
-        <EditText
+        <TextView
             android:textStyle="bold"
             android:textSize="30dp"
             android:layout_width="230dp"
@@ -40,19 +40,11 @@
         android:gravity="center_horizontal">
 
 
-        <Button
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSelecionarImagem"
-            android:text="Selecionar Imagem"
-            />
-
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:src="@mipmap/ic_launcher"
-            android:layout_marginLeft="30dp"
+
             android:id="@+id/campoImagemPalavra"
             />
     </LinearLayout>
@@ -65,15 +57,7 @@
 
 
         <Button
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Atualizar"
-            android:id="@+id/btnAtualizarPalavra"
-            />
-
-        <Button
+            android:textAlignment="center"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,20 +65,9 @@
             android:id="@+id/btnRemover"
             />
 
-
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-
-
-
         <Button
-            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -102,6 +75,9 @@
             android:id="@+id/btnCancelar"
             />
 
+
     </LinearLayout>
+
+
 
 </LinearLayout>

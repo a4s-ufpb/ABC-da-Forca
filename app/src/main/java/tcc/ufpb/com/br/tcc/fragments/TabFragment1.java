@@ -46,21 +46,14 @@ import tcc.ufpb.com.br.tcc.adapter.PalavraNivelFacilAdapter;
 
 public class TabFragment1 extends Fragment {
     public static Bitmap imagemAserSalva;
-    public static ImageView fumador;
     public static String pathImagemASerCadastrada;
 
-    private String pathContextoASerCadastrado;
-    private String pathPalavraASerCadastrada;
-    private boolean imagemCarregada=false;
-
-    public  static final int RequestPermissionCode  = 1 ;
-    private File file;
-    private Uri uri;
-    private Intent CamIntent, GalIntent, CropIntent ;
     public static Palavra retorno;
     private ForcaApplication application;
     public static ImageView campoImagemSelecionada;
     private AlertDialog alerta;
+
+
     private ListView listView;
     private PalavraNivelFacilAdapter adapter;
     @Override
@@ -86,12 +79,10 @@ public class TabFragment1 extends Fragment {
 
                 GerenciadorDePalavras.viewPalavra = view1;
 
-                final EditText campoNomePalavra  = (EditText) view1.findViewById(R.id.campoNomePalavra);
-                Button btnSelecionarImagem = (Button) view1.findViewById(R.id.btnSelecionarImagem);
+                final TextView campoNomePalavra  = (TextView) view1.findViewById(R.id.campoNomePalavra);
                 campoImagemSelecionada = (ImageView) view1.findViewById(R.id.campoImagemPalavra);
 
 
-                Button btnAtualizar = (Button) view1.findViewById(R.id.btnAtualizarPalavra);
                 Button btnRemover = (Button) view1.findViewById(R.id.btnRemover);
 
                 Button btnCancelar = (Button) view1.findViewById(R.id.btnCancelar);
@@ -99,11 +90,9 @@ public class TabFragment1 extends Fragment {
                 campoNomePalavra.setText(retorno.getNome());
 
                 if(retorno.getDefault()) {
-                    campoNomePalavra.setEnabled(false);
-                    btnSelecionarImagem.setEnabled(false);
-                    btnRemover.setEnabled(false);
-                    btnAtualizar.setEnabled(false);
+                   // campoNomePalavra.setEnabled(false);
 
+                    btnRemover.setEnabled(false);
                 }
 
                 imagemAserSalva = BitmapFactory.decodeFile(retorno.getPathImagem());
@@ -160,48 +149,6 @@ public class TabFragment1 extends Fragment {
                     }
                 });
 
-                btnSelecionarImagem.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // aquiiiiiii
-                        selectImage();
-
-                    }
-                });
-
-
-                btnAtualizar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        try {
-                            saveImageToExternalStorage(imagemAserSalva);
-                            Toast.makeText(v.getContext(),pathImagemASerCadastrada,Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        String nome = campoNomePalavra.getText().toString();
-                        Log.e("lol",nome);
-
-                        String path = pathImagemASerCadastrada;
-                        Log.e("lol",path+"");
-
-                        //Picasso.with(v.getContext()).load(new File(path)).into(campoImagemSelecionada);
-
-
-                        application.alterarPalavra(GerenciadorDePalavras.contextoEscolhido,retorno,nome, pathImagemASerCadastrada,retorno.getNivel());
-
-
-                        adapter.notifyDataSetChanged();
-
-                        alerta.cancel();
-                        Log.d("lol","chupa caju");
-
-
-                    }
-                });
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(view1.getContext());
                 builder.setCancelable(false);
                 builder.setTitle("Editar Palavra");
@@ -216,149 +163,18 @@ public class TabFragment1 extends Fragment {
 
     }
 
-    public void selectImage() {
-        final CharSequence[] items = { "Tirar Foto", "Selecionar da Galeria",
-                "Cancelar" };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Adicionar foto!");
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-
-                if (items[item].equals("Tirar Foto")) {
-                    ClickImageFromCamera();
-
-                } else if (items[item].equals("Selecionar da Galeria")) {
-                    GetImageFromGallery();
-
-                } else if (items[item].equals("Cancelar")) {
-                    dialog.dismiss();
-                }
-            }
-        });
-        builder.show();
-    }
-    public void ClickImageFromCamera() {
-
-        CamIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-
-        file = new File(Environment.getExternalStorageDirectory(),
-                "file" + String.valueOf(System.currentTimeMillis()) + ".jpg");
-        uri = Uri.fromFile(file);
-
-        CamIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, uri);
-
-        CamIntent.putExtra("return-data", true);
-
-        getActivity().startActivityForResult(CamIntent, 0);
-
-    }
-
-    public void GetImageFromGallery(){
-
-        GalIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-        getActivity().startActivityForResult(Intent.createChooser(GalIntent, "Select Image From Gallery"), 2);
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-
-
-        Toast.makeText(getContext(),"entrou aqui? acho dificil",Toast.LENGTH_SHORT).show();
-
-
     }
 
 
 
-    public void saveImageToExternalStorage(Bitmap finalBitmap) throws IOException {
-        if(finalBitmap == null){
-            Toast.makeText(getContext(),"Tá nuloo",Toast.LENGTH_SHORT).show();
-        }
 
-        //String root =Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-        File root = android.os.Environment.getExternalStorageDirectory();
-        File myDir = new File(root + "/ABCdaForca");
-        myDir.mkdirs();
-        Random generator = new Random();
-        int n = 1000000000;
-        int x = 1000000000;
-        int y = 1000000000;
-        n = generator.nextInt(n);
-        x = generator.nextInt(x);
-        y = generator.nextInt(y);
-        String fname = "Image-" + n + x + y + ".jpg";
-        File file1 = new File(myDir, fname);
 
-        // teste
-        TextView lol = (TextView)getActivity().findViewById(R.id.text);
-        //lol.setText(myDir+fname);
-        if (lol != null) {
-            lol.setText(file1.getPath());
-        }
 
-//        ImageView lol2 = (ImageView) findViewById(R.id.imageview2);
-//        Picasso
-//                .with(this)
-//                .load(new File(file1.getPath()))
-//                .resize(200,200)
-//                .into(lol2);
-        //teste
-        this.pathImagemASerCadastrada = file1.getPath();
-
-        if (file1.exists())
-            file1.delete();
-        //file1.createNewFile();
-        try {
-            FileOutputStream out = new FileOutputStream(file1);
-            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-
-            out.flush();
-            out.close();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Tell the media scanner about the new file so that it is
-        // immediately available to the user.
-        MediaScannerConnection.scanFile(getContext(), new String[] { file1.toString() },                null,
-                new MediaScannerConnection.OnScanCompletedListener() {
-                    public void onScanCompleted(String path, Uri uri) {
-                        Log.i("ExternalStorage", "Scanned " + path + ":");
-                        Log.i("ExternalStorage", "-> uri=" + uri);
-                    }
-                });
-    }
-
-    public void ImageCropFunction() {
-
-        // Image Crop Code
-        try {
-            CropIntent = new Intent("com.android.camera.action.CROP");
-            CropIntent.setDataAndType(uri, "image/*");
-
-            CropIntent.putExtra("crop", "true");
-            //CropIntent.putExtra("outputX", 180);
-            //CropIntent.putExtra("outputY", 180);
-            CropIntent.putExtra("aspectX", 0);
-            CropIntent.putExtra("aspectY", 0);
-            CropIntent.putExtra("scaleUpIfNeeded", true);
-            CropIntent.putExtra("return-data", true);
-
-            getActivity().startActivityForResult(CropIntent, 1);
-
-        } catch (ActivityNotFoundException e) {
-
-        }
-    }
-    //Image Crop Code End Here
 
 
 
