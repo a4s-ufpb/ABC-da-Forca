@@ -87,7 +87,6 @@ public class GerenciadorDePalavras extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"entrou?",Toast.LENGTH_SHORT).show();
                     LayoutInflater li = getLayoutInflater();
                     view = li.inflate(R.layout.cadastrar_nova_palavra, null);
 
@@ -104,22 +103,18 @@ public class GerenciadorDePalavras extends AppCompatActivity {
                             Niveis nivel = null;
                             switch (radioButtons.getCheckedRadioButtonId()){
                                 case R.id.radioButton:
-                                    Toast.makeText(v.getContext(),"Fácil",Toast.LENGTH_SHORT).show();
                                     nivel = Niveis.FACIL;
                                     break;
                                 case R.id.radioButton2:
-                                    Toast.makeText(v.getContext(),"Médio",Toast.LENGTH_SHORT).show();
                                     nivel = Niveis.MEDIO;
                                     break;
                                 case R.id.radioButton3:
-                                    Toast.makeText(v.getContext(),"Dificil",Toast.LENGTH_SHORT).show();
                                     nivel = Niveis.DIFICIL;
                                     break;
                             }
                             if(imagemCarregada){
                                 try {
                                     saveImageToExternalStorage(imagemASerSalva);
-                                    Toast.makeText(v.getContext(),pathPalavraASerCadastrada,Toast.LENGTH_SHORT).show();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -157,7 +152,6 @@ public class GerenciadorDePalavras extends AppCompatActivity {
                     builder.setView(view);
                     alerta = builder.create();
                     alerta.show();
-                    Toast.makeText(view.getContext(),"Adicionar Palavra",Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -242,7 +236,6 @@ public class GerenciadorDePalavras extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Toast.makeText(this,"entrou aqui? fragment tab1",Toast.LENGTH_SHORT).show();
         if (requestCode == 0 && resultCode == RESULT_OK) { // tirar foto com a camera
             ImageCropFunction();
         } else if (requestCode == 2) { // carregar da galeria

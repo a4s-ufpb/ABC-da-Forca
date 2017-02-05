@@ -117,8 +117,6 @@ public class GerenciadorDeContextos extends AppCompatActivity {
 
                                 try {
                                     saveImageToExternalStorage(imagemASerSalva);
-                                    Toast.makeText(v.getContext(),pathContextoASerCadastrado,Toast.LENGTH_SHORT).show();
-
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -143,8 +141,6 @@ public class GerenciadorDeContextos extends AppCompatActivity {
 
                     alerta = builder.create();
                     alerta.show();
-
-                    Toast.makeText(view.getContext(),"Adicionar contexto",Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -237,7 +233,6 @@ public class GerenciadorDeContextos extends AppCompatActivity {
                     public void onClick(View v) {
                         try {
                             saveImageToExternalStorage(imagemASerSalva);
-                            Toast.makeText(v.getContext(),pathContextoASerCadastrado,Toast.LENGTH_SHORT).show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

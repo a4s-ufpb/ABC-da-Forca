@@ -607,7 +607,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 myTTS.setLanguage(Locale.US);
             }
         } else if (initStatus == TextToSpeech.ERROR) {
-            Toast.makeText(this, "Desculpe! Houve algum problema interno...", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Instale o pacote de voz para o áudio do jogo funcionar", Toast.LENGTH_LONG).show();
         }
     }
 

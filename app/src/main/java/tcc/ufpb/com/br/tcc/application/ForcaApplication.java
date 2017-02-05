@@ -149,7 +149,7 @@ public class ForcaApplication extends Application {
             this.contextos.remove(c);
             db.delContexto(c.getNome());
         }else{
-            Toast.makeText(getApplicationContext(),"Contexto não existe",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Contexto não cadastrado",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -158,8 +158,6 @@ public class ForcaApplication extends Application {
 
         for(Contexto c : this.contextos){
             if(c.equals(atual)){
-                Toast.makeText(getApplicationContext(),"entrouuuuuuu?",Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),path,Toast.LENGTH_SHORT).show();
                 String oldname = c.getNome();
                 c.setNome(nome);
                 c.setPath(path);
@@ -236,7 +234,7 @@ public class ForcaApplication extends Application {
                         c.removerPalavra(palavra,palavra.getNivel());
                         db.deletePalavraEasy(c.getNome(),palavra.getNome());
                     }else{
-                        Toast.makeText(this,"Palavra não cadastrada no banco de dados",Toast.LENGTH_LONG).show();
+                        Toast.makeText(this,"Palavra não cadastrada",Toast.LENGTH_LONG).show();
                     }
                 }else if(palavra.getNivel() == Niveis.MEDIO){
                     Palavra p = db.selectPalavraMediumByName(c.getNome(),palavra.getNome());
@@ -244,7 +242,7 @@ public class ForcaApplication extends Application {
                         c.removerPalavra(palavra,palavra.getNivel());
                         db.deletePalavraMedio(c.getNome(),palavra.getNome());
                     }else{
-                        Toast.makeText(this,"Palavra não cadastrada no banco de dados",Toast.LENGTH_LONG).show();
+                        Toast.makeText(this,"Palavra não cadastrada",Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Palavra p = db.selectPalavraHardByName(c.getNome(),palavra.getNome());

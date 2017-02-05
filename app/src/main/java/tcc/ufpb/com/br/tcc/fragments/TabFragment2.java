@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import java.io.File;
 import tcc.ufpb.com.br.tcc.application.ForcaApplication;
@@ -46,7 +45,6 @@ public class TabFragment2 extends Fragment {
                 retorno = adapter.getItem(position);
                 adapter.notifyDataSetChanged();
                 GerenciadorDePalavras.palavraEscolhida = retorno;
-                Toast.makeText(view.getContext(),retorno.getNome(), Toast.LENGTH_SHORT).show();
 
                 LayoutInflater li = getActivity().getLayoutInflater();
                 View view1 = li.inflate(R.layout.editar_palavra, null);
