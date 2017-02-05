@@ -1,19 +1,17 @@
-package tcc.ufpb.com.br.tcc;
-
+package tcc.ufpb.com.br.tcc.adapter;
 /**
  * Created by Deyvison on 23/12/2016.
  */
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
 import tcc.ufpb.com.br.tcc.fragments.TabFragment1;
 import tcc.ufpb.com.br.tcc.fragments.TabFragment2;
 import tcc.ufpb.com.br.tcc.fragments.TabFragment3;
 
-
 public class PagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+    private int mNumOfTabs;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -22,17 +20,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
         switch (position) {
             case 0:
-                TabFragment1 tab1 = new TabFragment1();
-                return tab1;
+                return new TabFragment1();
             case 1:
-                TabFragment2 tab2 = new TabFragment2();
-                return tab2;
+                return new TabFragment2();
             case 2:
-                TabFragment3 tab3 = new TabFragment3();
-                return tab3;
+                return new TabFragment3();
             default:
                 return null;
         }
@@ -42,7 +36,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return mNumOfTabs;
     }
-
 
     @Override
     public int getItemPosition(Object object){

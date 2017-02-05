@@ -1,4 +1,4 @@
-package tcc.ufpb.com.br.tcc;
+package tcc.ufpb.com.br.tcc.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,7 +20,6 @@ public class DBHelper extends SQLiteOpenHelper {
             "id int AUTO INCREMENT"+
             ");";
 
-
     private static String TABLE_EASY = "CREATE TABLE easy("+
             "nome TEXT,"+
             "nomeContexto TEXT,"+
@@ -38,7 +37,6 @@ public class DBHelper extends SQLiteOpenHelper {
             "id int AUTO INCREMENT,"+
             "FOREIGN KEY (nomeContexto) REFERENCES contexto(nome)"+
             ");";
-
 
     private static String TABLE_HARD = "CREATE TABLE hard("+
             "nome TEXT,"+
@@ -63,8 +61,5 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
-
-
 }

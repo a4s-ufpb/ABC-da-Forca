@@ -1,8 +1,5 @@
-package tcc.ufpb.com.br.tcc;
+package tcc.ufpb.com.br.tcc.entity;
 
-import android.util.Log;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,21 +15,15 @@ public class Rodada {
 
     private List<Palavra> palavrasAleatorias;
 
-
-
     public Rodada(){
         this.palavrasAleatorias = new ArrayList<>();
     }
 
     private void gerarPalavrasAleatorias(){
-
         Random rd = new Random();
         List<Palavra> todasAsPalavras = contexto.getPalavraPorNivel(nivelDaRodada); // array deve conter no minimo o mesmo valor que qtPalavrasPorRodada
-
         List<Palavra> palavrasSorteio = new ArrayList<>();
         palavrasSorteio.addAll(todasAsPalavras);
-
-
         if(todasAsPalavras.size() >= this.qtPalavrasPorRodada){
             for(int i = 0 ; i < this.qtPalavrasPorRodada ; i++){
                 int k = rd.nextInt(palavrasSorteio.size());
@@ -40,11 +31,8 @@ public class Rodada {
                 this.palavrasAleatorias.add(palavraSorteada);
                 palavrasSorteio.remove(palavraSorteada);
             }
-        }else{
-            // palavras cadastradas insuficientes
         }
     }
-
 
     public Palavra getPalavraDaVez(){
         Palavra p = this.palavrasAleatorias.get(0);
@@ -53,7 +41,6 @@ public class Rodada {
     }
 
     public boolean fimDeRodada(){
-
         if(palavrasAleatorias.size() == 0)
             return true;
         else
@@ -66,9 +53,4 @@ public class Rodada {
         this.qtPalavrasPorRodada = qtPalavrasPorRodada;
         gerarPalavrasAleatorias();
     }
-
-
-
-
-
 }

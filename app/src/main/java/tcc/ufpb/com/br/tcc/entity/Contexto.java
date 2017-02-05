@@ -1,7 +1,4 @@
-package tcc.ufpb.com.br.tcc;
-
-import android.util.Log;
-import android.widget.Toast;
+package tcc.ufpb.com.br.tcc.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,27 +24,6 @@ public class Contexto implements Serializable {
         this.facil = new ArrayList<>();
         this.medio = new ArrayList<>();
         this.dificil = new ArrayList<>();
-
-
-
-    }
-
-    public Palavra getPalavraAleatoria(Niveis nivel){
-        Random rd = new Random();
-
-        if(nivel == Niveis.FACIL){
-            int i = rd.nextInt(facil.size());
-            return facil.get(i);
-
-        }else if(nivel == Niveis.MEDIO){
-            int i = rd.nextInt(medio.size());
-            return medio.get(i);
-
-        }else{
-            int i = rd.nextInt(dificil.size());
-            return dificil.get(i);
-        }
-
     }
 
     public List<Palavra> getPalavraPorNivel(Niveis nivel){
@@ -68,7 +44,6 @@ public class Contexto implements Serializable {
     }
 
     public void adicionarPalavra(Palavra p){
-
         if(p.getNivel() == Niveis.FACIL)
             this.facil.add(p);
         else if(p.getNivel() == Niveis.MEDIO)
@@ -107,13 +82,11 @@ public class Contexto implements Serializable {
         this.pathImagem = path;
     }
 
-
     public void removerPalavra (Palavra p, Niveis nivel){
         if(nivel == Niveis.FACIL){
             facil.remove(p);
         }else if(nivel == Niveis.MEDIO){
             medio.remove(p);
-
         }else{
             dificil.remove(p);
         }

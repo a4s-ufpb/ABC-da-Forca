@@ -1,7 +1,4 @@
-package tcc.ufpb.com.br.tcc;
-
-import android.media.Image;
-import android.widget.ImageView;
+package tcc.ufpb.com.br.tcc.entity;
 
 import java.io.Serializable;
 
@@ -22,8 +19,6 @@ public class Palavra implements Serializable{
         this.nivel = nivel;
     }
 
-
-
     public String getNome() {
         return palavra;
     }
@@ -35,12 +30,6 @@ public class Palavra implements Serializable{
     public String getPathImagem() {
         return pathImagem;
     }
-
-    public void setPathImagem(String drawablePath) {
-        this.pathImagem = drawablePath;
-    }
-    // palavra e imagem
-
 
     public Niveis getNivel(){
         return this.nivel;

@@ -10,7 +10,7 @@
 
     <application
 
-        android:name=".ForcaApplication"
+        android:name=".application.ForcaApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="ABCdaForca"
@@ -21,7 +21,7 @@
         android:largeHeap="true"
         >
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,28 +30,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".JogoActivity"
+            android:name=".activity.JogoActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ContextoActivity"
+            android:name=".activity.ContextoActivity"
             android:label="@string/title_activity_contexto"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".NivelActivity"
+            android:name=".activity.NivelActivity"
             android:label="@string/title_activity_nivel"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".GerenciadorDeContextos"
+            android:name=".gerenciador.GerenciadorDeContextos"
             android:label="@string/title_activity_gerenciador_de_contextos"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".GerenciadorDePalavras"
+            android:name=".gerenciador.GerenciadorDePalavras"
             android:label="@string/title_activity_gerenciador_de_palavras"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme"/>

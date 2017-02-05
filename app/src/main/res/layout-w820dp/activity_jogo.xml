@@ -8,7 +8,7 @@
     android:paddingRight="5px"
     android:paddingTop="5px"
 
-    tools:context="tcc.ufpb.com.br.tcc.JogoActivity"
+    tools:context="tcc.ufpb.com.br.tcc.activity.JogoActivity"
     android:background="@drawable/backgrond0erros"
     android:id="@+id/jogolayout">
     <!-- android:paddingTop="@dimen/activity_vertical_margin" -->

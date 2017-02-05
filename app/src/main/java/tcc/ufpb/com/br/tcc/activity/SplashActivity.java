@@ -1,7 +1,6 @@
-package tcc.ufpb.com.br.tcc;
+package tcc.ufpb.com.br.tcc.activity;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -10,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import tcc.ufpb.com.br.tcc.R;
 
 public class SplashActivity extends AppCompatActivity{
 

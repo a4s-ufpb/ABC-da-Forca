@@ -1,73 +1,67 @@
-package tcc.ufpb.com.br.tcc;
+package tcc.ufpb.com.br.tcc.application;
 
 import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
+import tcc.ufpb.com.br.tcc.entity.Niveis;
+import tcc.ufpb.com.br.tcc.R;
+import tcc.ufpb.com.br.tcc.db.DBManager;
+import tcc.ufpb.com.br.tcc.entity.Contexto;
+import tcc.ufpb.com.br.tcc.entity.Palavra;
 
 /**
  * Created by Deyvison on 05/10/2016.
  */
-// classe vai conter todas as operações de inserção e remoção de dados no bd
+
 public class ForcaApplication extends Application {
 
     private List<Contexto> contextosDefault;
     private List<Contexto> contextos;
     private DBManager db;
 
-
     @Override
     public void onCreate() {
         super.onCreate();
         db = new DBManager(this);
-
         contextosDefault = new ArrayList<>();
         contextos = new ArrayList<>();
-
         criarContextos();
 
-        // verificar se já existe no banco antes de inserir, alterar ou remover
-
-        // varrer o contexto default e adicionar no bd os que não existem
+        // if contexto default not exists on database, add it
         for(Contexto c : this.contextosDefault){
-            Contexto retorno= db.selectContextoByNome(c.getNome()); // se for nulo, não existe no banco ainda
+            Contexto retorno= db.selectContextoByNome(c.getNome()); // if not null, don't exists in databae yet.
             if(retorno == null){
-                db.addContexto(c); // adiciona o contexto no banco
-
-                for(Palavra p : c.getPalavrasNivelFacil()){ // adicionar palavra fácil no banco
+                db.addContexto(c); // add the contexto in database
+                for(Palavra p : c.getPalavrasNivelFacil()){ //add easy word default in dabatase
                     db.insertPalavraFacil(c.getNome(),p);
                 }
-                for(Palavra p : c.getPalavrasNivelMedio()){ // adicionar palavra medio no banco
+                for(Palavra p : c.getPalavrasNivelMedio()){ // add medium word default in dabatase
                     db.insertPalavraMedio(c.getNome(),p);
                 }
-                for(Palavra p : c.getPalavrasNivelDificil()){ // adicionar palavra fácil no banco
+                for(Palavra p : c.getPalavrasNivelDificil()){ // add hard word default in dabatase
                     db.insertPalavraHard(c.getNome(),p);
                 }
             }
         }
 
-        this.contextos = db.getContextos();
-
-        for(Contexto c : this.contextos){ // carregar palavras dos contextos
+        this.contextos = db.getContextos(); // get all contextos from database
+        for(Contexto c : this.contextos){ // load words into contexts
             c.setPalavraNivelFacil(db.selectPalavraFacil(c.getNome()));
             c.setPalavraNivelMedio(db.selectPalavraMedio(c.getNome()));
             c.setPalavraNivelHard(db.selectPalavraHard(c.getNome()));
         }
-
     }
 
     private void criarContextos(){
-
         Contexto animais,frutas;
         animais = new Contexto("Animais", R.drawable.animais+"", true);
         frutas = new Contexto("Frutas", R.drawable.frutas+"", true);
 
         // Animais
-
-        // facil
-        animais.adicionarPalavra(new Palavra("Sapo",R.drawable.sapo+"",Niveis.FACIL, true));
+        // easy
+        animais.adicionarPalavra(new Palavra("Sapo",R.drawable.sapo+"", Niveis.FACIL, true));
         animais.adicionarPalavra(new Palavra("Macaco",R.drawable.macaco+"",Niveis.FACIL, true));
         animais.adicionarPalavra(new Palavra("Gato",R.drawable.gato+"",Niveis.FACIL, true));
         animais.adicionarPalavra(new Palavra("Pato",R.drawable.pato+"",Niveis.FACIL, true));
@@ -82,7 +76,7 @@ public class ForcaApplication extends Application {
         animais.adicionarPalavra(new Palavra("Cavalo",R.drawable.cavalo+"",Niveis.FACIL, true));
         animais.adicionarPalavra(new Palavra("Bode",R.drawable.bode+"",Niveis.FACIL, true));
 
-        //medio
+        //medium
         animais.adicionarPalavra(new Palavra("Coelho",R.drawable.coelho+"", Niveis.MEDIO, true));
         animais.adicionarPalavra(new Palavra("Cachorro",R.drawable.cachorro+"", Niveis.MEDIO, true));
         animais.adicionarPalavra(new Palavra("Tartaruga",R.drawable.tartaruga+"", Niveis.MEDIO, true));
@@ -93,8 +87,7 @@ public class ForcaApplication extends Application {
         animais.adicionarPalavra(new Palavra("Zebra",R.drawable.zebra+"", Niveis.MEDIO, true));
         animais.adicionarPalavra(new Palavra("Urso",R.drawable.urso+"", Niveis.MEDIO, true));
 
-        //dificil
-
+        //hard
         animais.adicionarPalavra(new Palavra("Caranguejo", R.drawable.caranguejo+"", Niveis.DIFICIL, true));
         animais.adicionarPalavra(new Palavra("Caracol", R.drawable.caracol+"", Niveis.DIFICIL, true));
         animais.adicionarPalavra(new Palavra("Pulga", R.drawable.pulga+"", Niveis.DIFICIL, true));
@@ -106,8 +99,7 @@ public class ForcaApplication extends Application {
         animais.adicionarPalavra(new Palavra("Hipopótamo", R.drawable.hipopotamo+"", Niveis.DIFICIL, true));
 
         // Frutas
-
-        //facil
+        //easy
         frutas.adicionarPalavra(new Palavra("Amora", R.drawable.amora+"",Niveis.FACIL, true));
         frutas.adicionarPalavra(new Palavra("Caju", R.drawable.caju+"",Niveis.FACIL, true));
         frutas.adicionarPalavra(new Palavra("Coco", R.drawable.coco+"",Niveis.FACIL, true));
@@ -118,10 +110,7 @@ public class ForcaApplication extends Application {
         frutas.adicionarPalavra(new Palavra("Umbu", R.drawable.umbu+"",Niveis.FACIL, true));
         frutas.adicionarPalavra(new Palavra("Uva", R.drawable.uva+"",Niveis.FACIL, true));
 
-
-
-        //medio
-
+        //medium
         frutas.adicionarPalavra(new Palavra("Abacate",R.drawable.abacate+"", Niveis.MEDIO, true));
         frutas.adicionarPalavra(new Palavra("Banana",R.drawable.banana+"", Niveis.MEDIO, true));
         frutas.adicionarPalavra(new Palavra("Laranja",R.drawable.laranja+"", Niveis.MEDIO, true));
@@ -130,8 +119,7 @@ public class ForcaApplication extends Application {
         frutas.adicionarPalavra(new Palavra("Pitanga",R.drawable.pitanga+"", Niveis.MEDIO, true));
         frutas.adicionarPalavra(new Palavra("Sapoti",R.drawable.sapoti+"", Niveis.MEDIO, true));
 
-
-        //dificil
+        //hard
         frutas.adicionarPalavra(new Palavra("Jabuticaba",R.drawable.jabuticaba+"", Niveis.DIFICIL, true));
         frutas.adicionarPalavra(new Palavra("Jambo",R.drawable.jambo+"", Niveis.DIFICIL, true));
         frutas.adicionarPalavra(new Palavra("Limão",R.drawable.limao+"", Niveis.DIFICIL, true));
@@ -140,15 +128,9 @@ public class ForcaApplication extends Application {
 
         contextosDefault.add(animais);
         contextosDefault.add(frutas);
-
-
     }
 
-    private void criarPalavras(){
-
-    }
-
-    // cadastrar contexto no bd
+    // insert contexto on database
     public void adicionarContexto(Contexto c){
         Contexto contexto = db.selectContextoByNome(c.getNome());
         Log.i("lol","retorno do contexto = "+ contexto);
@@ -158,10 +140,9 @@ public class ForcaApplication extends Application {
         }else{
             Toast.makeText(this,"Contexto já cadastrado",Toast.LENGTH_LONG).show();
         }
-
     }
 
-    // remover contexto do bd
+    // delete contexto on database
     public void removerContexto(Contexto c){
         Contexto contexto = db.selectContextoByNome(c.getNome());
         if(contexto != null){
@@ -170,11 +151,9 @@ public class ForcaApplication extends Application {
         }else{
             Toast.makeText(getApplicationContext(),"Contexto não existe",Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
-    // alterar contexto do bd
+    // update contexto on database
     public void alterarContexto(Contexto atual, String nome, String path){
 
         for(Contexto c : this.contextos){
@@ -192,34 +171,29 @@ public class ForcaApplication extends Application {
         }
     }
 
-    // retorna todos os contextos
+    // getAll contexts
     public List<Contexto> getContextos(){
         return contextos;
     }
 
-
-
+    // get especifc contexto
     public Contexto getContexto(Contexto contexto){
         Contexto lol = null;
         for(Contexto c : this.contextos){
             if(c.getNome().equals(contexto.getNome())){
                 lol = c;
                 break;
-
             }
-
         }
         return lol;
     }
 
-
-    // cadastrar palavra em determinado contexto
+    // insert Palavra on dabatase
     public void adiconarPalavraAoContexto(Contexto contextoEscolhido, Palavra palavra) {
 
         for(Contexto c : this.contextos){
+
             if(c.getNome().equals(contextoEscolhido.getNome())){
-
-
                 if(palavra.getNivel() == Niveis.FACIL){
                     Palavra p = db.selectPalavraEasyByName(c.getNome(),palavra.getNome());
                     if(p == null){ // verificar se já existe a palavra no banco
@@ -247,18 +221,14 @@ public class ForcaApplication extends Application {
                 }
                 break;
             }
-
         }
     }
 
-
-    // remover palavra
+    // delete palavra from database
     public void removerPalavra(Contexto contexto, Palavra palavra){
 
         for(Contexto c : this.contextos){
-
             if(c.getNome().equals(contexto.getNome())){
-
                 if(palavra.getNivel() == Niveis.FACIL){
                     Palavra p = db.selectPalavraEasyByName(c.getNome(),palavra.getNome());
                     Log.i("lol","retorno palavra = "+ p.getNome());
@@ -278,60 +248,15 @@ public class ForcaApplication extends Application {
                     }
                 }else{
                     Palavra p = db.selectPalavraHardByName(c.getNome(),palavra.getNome());
-                    if(p != null){ // verificar se já existe a palavra no banco
+                    if(p != null){ // if word exists on dabatase
                         c.removerPalavra(palavra,palavra.getNivel());
                         db.deletePalavraHard(c.getNome(),palavra.getNome());
                     }else{
-                        Toast.makeText(this,"Palavra já cadastrada",Toast.LENGTH_LONG).show();
+                        Toast.makeText(this,"Palavra não cadastrada",Toast.LENGTH_LONG).show();
                     }
                 }
-
                 break;
-
-
-
-
             }
         }
-    }
-
-    // alterar palavra
-    public void alterarPalavra(Contexto contexto, Palavra palavra, String nome, String path,Niveis nivel){
-
-        for(Contexto c : this.contextos){
-
-            if(nivel == Niveis.FACIL){
-                for(Palavra p : c.getPalavrasNivelFacil()){
-                    if(p.equals(palavra)){
-                        String oldname = p.getNome();
-                        p.setPalavra(nome);
-                        p.setPathImagem(path);
-                        db.setPalavraEasy(c.getNome(),oldname,p);
-                    }
-                }
-            }
-            else if(nivel == Niveis.MEDIO){
-                for(Palavra p : c.getPalavrasNivelMedio()){
-                    if(p.equals(palavra)){
-                        String oldname = p.getNome();
-                        p.setPalavra(nome);
-                        p.setPathImagem(path);
-                        db.setPalavraMedio(c.getNome(),oldname,p);
-                    }
-                }
-            }else{
-                for(Palavra p : c.getPalavrasNivelDificil()){
-                    if(p.equals(palavra)){
-                        String oldname = p.getNome();
-                        p.setPalavra(nome);
-                        p.setPathImagem(path);
-                        db.setPalavraHard(c.getNome(),oldname,p);
-                    }
-                }
-            }
-
-        }
-
-
     }
 }

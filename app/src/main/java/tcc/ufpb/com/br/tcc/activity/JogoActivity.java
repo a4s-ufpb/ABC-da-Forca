@@ -1,12 +1,10 @@
-package tcc.ufpb.com.br.tcc;
+package tcc.ufpb.com.br.tcc.activity;
 
 import android.content.Context;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.content.Intent;
 import android.os.Vibrator;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,38 +21,34 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.squareup.picasso.Picasso;
+import tcc.ufpb.com.br.tcc.entity.Niveis;
+import tcc.ufpb.com.br.tcc.R;
+import tcc.ufpb.com.br.tcc.entity.Rodada;
+import tcc.ufpb.com.br.tcc.entity.Contexto;
+import tcc.ufpb.com.br.tcc.entity.Palavra;
 
 public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
-    private TextToSpeech myTTS; //Objeto TTS
-    private int MY_DATA_CHECK_CODE = 0; //Codigo de checagem
-
-    private MediaPlayer acerto;  // sons de acerto e erro
+    private TextToSpeech myTTS;
+    private int MY_DATA_CHECK_CODE = 0; //data check code
+    private MediaPlayer acerto;  // win and lose songs
     private MediaPlayer erro;
-
     private char[] palavraChar; // palavra quebrada em letras
     private char[] resposta; // array da palavra oculta
-
     private Contexto contextoEscolhido; // contexto escolhido pelo usuário
     private Niveis nivelEscolhido; // nível escolhido pelo usuário
     private Palavra palavraSorteada; // palavra da vez
     private Rodada rodada;
-
     private TextView campoPalavra; // campo da palavra oculta
     private ImageView campoImagem; // campo da imagem que representa a palavra
     private RelativeLayout layout; // layout principal do jogo
     private ImageView botaoHome; // botao home do layout
-
     private Vibrator vibrate; // objeto para vibrar
     private AlertDialog alerta; // alerta para feedback com usuario
-
     private int qtErros = 0; // qt de letras erradas
     private int qtAcertosNaRodada = 0; // quantidade de palavra certas na rodada
-
     private ArrayList<Button> botoes; // letras do alfabeto
-
-    //back key
-    private Toast toast;
+    private Toast toast; // back key
     private long lastBackPressTime = 0;
 
     @Override
@@ -63,12 +56,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogo);
 
-        //check for TTS data
-        Intent checkTTSIntent = new Intent();
+        Intent checkTTSIntent = new Intent(); //verify is exists TTS on device
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
 
-        this.acerto = MediaPlayer.create(this, R.raw.correct); // criando os áudios
+        this.acerto = MediaPlayer.create(this, R.raw.correct); // audio files
         this.erro = MediaPlayer.create(this, R.raw.erro);
 
         //Instanciando os objetos contidos na view
@@ -160,8 +152,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         this.rodada = new Rodada();
         iniciarRodada(this);
-
-
 
         botaoHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -472,7 +462,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnAcomAcentoAgudo.setEnabled(false);
                     verificarLetra('Á');
-
                 }
             });
         }
@@ -484,7 +473,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnEcomAcentoAgudo.setEnabled(false);
                     verificarLetra('É');
-
                 }
             });
         }
@@ -507,7 +495,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnOcomAcentoAgudo.setEnabled(false);
                     verificarLetra('Ó');
-
                 }
             });
         }
@@ -519,7 +506,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnUcomAcentoAgudo.setEnabled(false);
                     verificarLetra('Ú');
-
                 }
             });
         }
@@ -531,7 +517,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnAcomAcentoCircunflexo.setEnabled(false);
                     verificarLetra('Â');
-
                 }
             });
         }
@@ -543,7 +528,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnEcomAcentoCircunflexo.setEnabled(false);
                     verificarLetra('Ê');
-
                 }
             });
         }
@@ -555,7 +539,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnOcomAcentoCircunflexo.setEnabled(false);
                     verificarLetra('Ô');
-
                 }
             });
         }
@@ -567,7 +550,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnAcomTil.setEnabled(false);
                     verificarLetra('Ã');
-
                 }
             });
         }
@@ -579,7 +561,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                     speakWords(words);
                     btnOcomTil.setEnabled(false);
                     verificarLetra('Õ');
-
                 }
             });
         }
@@ -596,22 +577,20 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         }
     }
 
-    //speak the user text
+    //speak the string reiceved
     public void speakWords(String speech) {
-        //speak straight away
+        //change language of speak
         myTTS.setLanguage(new Locale("pt","BR"));
-        //myTTS.setSpeechRate((float) 0.9); // velocidade da voz
         myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
     }
 
-    //act on result of TTS data check
+    //on TTs activity result
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == MY_DATA_CHECK_CODE) {
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 //the user has the necessary data - create the TTS
                 myTTS = new TextToSpeech(this, this);
-            }
-            else {
+            } else {
                 //no data - install it now
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
@@ -622,21 +601,16 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
     //setup TTS
     public void onInit(int initStatus) {
-
         //check for successful instantiation
         if (initStatus == TextToSpeech.SUCCESS) {
             if(myTTS.isLanguageAvailable(Locale.US)==TextToSpeech.LANG_AVAILABLE){
-
                 myTTS.setLanguage(Locale.US);
             }
-
-        }
-        else if (initStatus == TextToSpeech.ERROR) {
+        } else if (initStatus == TextToSpeech.ERROR) {
             Toast.makeText(this, "Desculpe! Houve algum problema interno...", Toast.LENGTH_LONG).show();
         }
     }
 
-    //back key
     @Override
     public void onBackPressed() {
         if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
@@ -660,7 +634,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             }
         }
         if(!existeLetra){
-
             erro.start();
             this.qtErros++;
             vibrate.vibrate(500);
@@ -677,13 +650,13 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 layout.setBackground(getResources().getDrawable(R.drawable.background5erros));
             }else if(qtErros == 6){
                 layout.setBackground(getResources().getDrawable(R.drawable.background6erros));
-                // game over, inflar o alert dialog do game over
+                // game over, inflate the game over layout
                 errouPalavra();
             }
         }else{
-            acerto.start();
+            acerto.start(); // inflate sucess layout
         }
-        atualizarCampoPalavra();
+        atualizarCampoPalavra(); // update the word field
     }
 
     public void atualizarCampoPalavra(){
@@ -712,7 +685,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
     public void verificaPalavra(){
         if(Arrays.equals(palavraChar,resposta)){
-            // Ganhou
             try {
                 Thread.sleep( 1000 );
             } catch (InterruptedException e) {
@@ -724,9 +696,7 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     }
 
     public void acertouPalavra() {
-
         this.qtAcertosNaRodada++;
-
         LayoutInflater li = getLayoutInflater();
         final View view = li.inflate(R.layout.palavra_correta, null);
 
@@ -736,7 +706,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
                 carregarPalavra(view.getContext());
             }
         });
-
         view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -755,10 +724,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     }
 
     public void errouPalavra(){
-
         LayoutInflater li = getLayoutInflater();
         final View view = li.inflate(R.layout.palavra_incorreta, null);
-
         view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 Intent i = new Intent(view.getContext(), MainActivity.class);
@@ -789,7 +756,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     }
 
     public void iniciarRodada(Context context){
-
         this.rodada.iniciarRodada(this.contextoEscolhido, this.nivelEscolhido, 5);
         carregarPalavra(context);
     }
@@ -799,20 +765,15 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
             palavraSorteada = rodada.getPalavraDaVez();
             palavraChar = palavraSorteada.getNome().toCharArray();
             resposta = new char[palavraChar.length];
-
             if(palavraSorteada.getDefault()){
                 Picasso
                         .with(context).load(Integer.parseInt(palavraSorteada.getPathImagem()))
-                        //.resize(110,110)
                         .into(campoImagem);
             }else{
                 Picasso
                         .with(context).load(new File(palavraSorteada.getPathImagem()))
-                        //.resize(110,110)
                         .into(campoImagem);
             }
-
-
             layout.setBackground(getResources().getDrawable(R.drawable.backgrond0erros));
             this.qtErros = 0;
             habilitarLetras();
@@ -823,10 +784,8 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
     }
 
     public void fimDeRodada(){
-
         LayoutInflater li = getLayoutInflater();
         final View view = li.inflate(R.layout.feedback_rodada, null);
-
         ImageView estrelas = (ImageView)view.findViewById(R.id.estrelafeedback);
 
         if(this.qtAcertosNaRodada == 0){
@@ -853,13 +812,11 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         view.findViewById(R.id.botaoHome).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
                 Intent i = new Intent(view.getContext(), MainActivity.class);
                 startActivity(i);
                 finish();
             }
         });
-
         view.findViewById(R.id.botaoNovaRodada).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 alerta.cancel();
@@ -869,8 +826,6 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-       // builder.setTitle("Fim de rodada!");
-
         builder.setView(view);
         alerta = builder.create();
         alerta.show();

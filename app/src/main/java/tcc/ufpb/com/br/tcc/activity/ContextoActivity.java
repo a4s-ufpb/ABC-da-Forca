@@ -1,9 +1,7 @@
-package tcc.ufpb.com.br.tcc;
+package tcc.ufpb.com.br.tcc.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,17 +10,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+import tcc.ufpb.com.br.tcc.adapter.ContextoAdapter;
+import tcc.ufpb.com.br.tcc.R;
+import tcc.ufpb.com.br.tcc.entity.Contexto;
 
 public class ContextoActivity extends AppCompatActivity {
 
     private ListView listView;
     private ContextoAdapter adapter;
-    private ForcaApplication application;
-
-    //back key
     private Toast toast;
     private long lastBackPressTime = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +28,12 @@ public class ContextoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setTitle("Selecione o contexto");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        application = (ForcaApplication) getApplicationContext();
         adapter = new ContextoAdapter(this);
         listView = (ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
@@ -48,23 +43,19 @@ public class ContextoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Contexto retorno = adapter.getItem(position);
                 adapter.notifyDataSetChanged();
-                Toast.makeText(view.getContext(),retorno.getNome(), Toast.LENGTH_SHORT).show();
 
-                // passar o contexto selecionado no bundle para a activity de nível
+                // put context selected by user
                 Intent i = new Intent(view.getContext(),NivelActivity.class);
                 i.putExtra("contexto",retorno);
                 startActivity(i);
                 finish();
             }
         });
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-
         if(id == android.R.id.home){
             Intent i = new Intent(this,MainActivity.class);
             startActivity(i);
@@ -73,7 +64,6 @@ public class ContextoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //back key
     @Override
     public void onBackPressed() {
         if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
@@ -87,5 +77,4 @@ public class ContextoActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
 }
