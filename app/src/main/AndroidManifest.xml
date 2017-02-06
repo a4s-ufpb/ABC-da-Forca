@@ -55,6 +55,13 @@
             android:label="@string/title_activity_gerenciador_de_palavras"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme"/>
+
+        <activity
+            android:theme="@style/AppTheme"
+            android:screenOrientation="landscape"
+            android:name=".activity.TutorialActivity">
+
+        </activity>
     </application>
 
 </manifest>

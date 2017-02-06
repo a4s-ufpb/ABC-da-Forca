@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frag_04">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Este é um aplicativo personalizável, você pode cadastrar novos contextos e desafios para jogar a hora que quiser!"
+            android:textSize="40sp"
+            android:id="@+id/textView8"
+
+            />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/linearLayout2"
+            android:layout_weight="0.61">
+
+            <ImageView
+                android:layout_width="370dp"
+                android:layout_height="370dp"
+                android:id="@+id/menino01"
+                android:src="@drawable/tutorial41"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:layout_width="370dp"
+                android:layout_height="370dp"
+                android:id="@+id/menina01"
+                android:src="@drawable/tutorial42"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="245dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/linearLayout3"
+            android:layout_weight="0.41">
+
+            <ImageView
+                android:layout_width="370dp"
+                android:layout_height="370dp"
+                android:id="@+id/menina02"
+                android:src="@drawable/tutorial43"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:layout_width="370dp"
+                android:layout_height="370dp"
+                android:id="@+id/menino03"
+                android:src="@drawable/tutorial44"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"/>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

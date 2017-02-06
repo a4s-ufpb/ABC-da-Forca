@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        android:gravity="center_vertical|center_horizontal">>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Para jogar, basta selecionar o contexto e o nivel desejado!"
+            android:textSize="40sp"
+            android:id="@+id/textView8"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="440dp">
+
+        <ImageView
+            android:layout_width="560dp"
+            android:layout_height="340dp"
+            android:src="@drawable/tutorial32"
+            android:id="@+id/imageView4"
+            />
+
+        <ImageView
+            android:layout_marginLeft="30dp"
+            android:layout_width="560dp"
+            android:layout_marginTop="60dp"
+            android:layout_height="340dp"
+            android:src="@drawable/tutorial31"
+            android:id="@+id/imageView5"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
