@@ -14,6 +14,10 @@ import tcc.ufpb.com.br.tcc.R;
 
 public class SplashActivity extends AppCompatActivity{
 
+
+    public static boolean primeiraVez = false;
+
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
@@ -51,11 +55,21 @@ public class SplashActivity extends AppCompatActivity{
                         sleep(140);
                         waited += 100;
                     }
-                    Intent intent = new Intent(SplashActivity.this,
-                            TutorialActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    startActivity(intent);
-                    SplashActivity.this.finish();
+
+                    if(!primeiraVez){
+                        Intent intent = new Intent(SplashActivity.this,
+                                MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent);
+                        SplashActivity.this.finish();
+                    }else{
+                        Intent intent = new Intent(SplashActivity.this,
+                                TutorialActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent);
+                        SplashActivity.this.finish();
+                    }
+
                 } catch (InterruptedException e) {
                     // do nothing
                 } finally {

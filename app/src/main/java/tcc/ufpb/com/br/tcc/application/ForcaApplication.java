@@ -5,6 +5,8 @@ import android.util.Log;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
+
+import tcc.ufpb.com.br.tcc.activity.SplashActivity;
 import tcc.ufpb.com.br.tcc.entity.Niveis;
 import tcc.ufpb.com.br.tcc.R;
 import tcc.ufpb.com.br.tcc.db.DBManager;
@@ -33,6 +35,7 @@ public class ForcaApplication extends Application {
         for(Contexto c : this.contextosDefault){
             Contexto retorno= db.selectContextoByNome(c.getNome()); // if not null, don't exists in databae yet.
             if(retorno == null){
+                SplashActivity.primeiraVez = true;
                 db.addContexto(c); // add the contexto in database
                 for(Palavra p : c.getPalavrasNivelFacil()){ //add easy word default in dabatase
                     db.insertPalavraFacil(c.getNome(),p);

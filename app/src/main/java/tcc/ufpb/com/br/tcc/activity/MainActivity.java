@@ -78,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
             toast = Toast.makeText(this, "Pressione o Botão Voltar novamente para fechar o Aplicativo.", Toast.LENGTH_LONG);
             toast.show();
             this.lastBackPressTime = System.currentTimeMillis();
+
         } else {
             if (toast != null) {
                 toast.cancel();
+                mediaPlayer.stop();
             }
             super.onBackPressed();
         }
