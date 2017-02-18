@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Ele é totalmente personalizável, você pode cadastrar novos contextos e desafios para jogar a hora que quiser!"
-            android:textSize="23sp"
+            android:textSize="20sp"
             android:id="@+id/textView8"
 
             />
@@ -24,27 +24,29 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="149dp"
+            android:layout_height="148dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:id="@+id/linearLayout3"
             >
 
             <ImageView
-                android:layout_width="230dp"
-                android:layout_height="170dp"
+
+                android:layout_width="200dp"
+                android:layout_height="162dp"
                 android:id="@+id/menina02"
                 android:src="@drawable/tutorial43"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"/>
 
             <ImageView
-                android:layout_width="230dp"
+                android:layout_width="200dp"
                 android:layout_height="170dp"
                 android:id="@+id/menino03"
                 android:src="@drawable/tutorial44"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"/>
+
 
         </LinearLayout>
 

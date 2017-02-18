@@ -8,7 +8,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:weightSum="1">
 
         <TextView
 
@@ -24,7 +24,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="149dp"
+            android:layout_height="158dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:id="@+id/linearLayout3"
@@ -45,6 +45,8 @@
                 android:src="@drawable/tutorial44"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"/>
+
+
 
         </LinearLayout>
 

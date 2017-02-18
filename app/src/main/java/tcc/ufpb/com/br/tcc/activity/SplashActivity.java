@@ -14,17 +14,8 @@ import tcc.ufpb.com.br.tcc.R;
 
 public class SplashActivity extends AppCompatActivity{
 
-
-    public static boolean primeiraVez = false;
-
-
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        Window window = getWindow();
-        window.setFormat(PixelFormat.RGBA_8888);
-    }
-
     Thread splashTread;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,19 +47,10 @@ public class SplashActivity extends AppCompatActivity{
                         waited += 100;
                     }
 
-                    if(!primeiraVez){
-                        Intent intent = new Intent(SplashActivity.this,
-                                MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(intent);
-                        SplashActivity.this.finish();
-                    }else{
-                        Intent intent = new Intent(SplashActivity.this,
-                                TutorialActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(intent);
-                        SplashActivity.this.finish();
-                    }
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(intent);
+                    SplashActivity.this.finish();
 
                 } catch (InterruptedException e) {
                     // do nothing
@@ -78,5 +60,11 @@ public class SplashActivity extends AppCompatActivity{
             }
         };
         splashTread.start();
+    }
+
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Window window = getWindow();
+        window.setFormat(PixelFormat.RGBA_8888);
     }
 }

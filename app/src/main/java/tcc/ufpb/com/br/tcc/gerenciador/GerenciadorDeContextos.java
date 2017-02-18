@@ -307,7 +307,7 @@ public class GerenciadorDeContextos extends AppCompatActivity {
     public void GetImageFromGallery(){
         GalIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(Intent.createChooser(GalIntent, "Select Image From Gallery"), 2);
+        startActivityForResult(Intent.createChooser(GalIntent, "Selecionar imagem"), 2);
     }
 
     @Override
@@ -396,9 +396,7 @@ public class GerenciadorDeContextos extends AppCompatActivity {
             if (ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDeContextos.this,
                     Manifest.permission.CAMERA) && ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDeContextos.this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                Toast.makeText(GerenciadorDeContextos.this,"Todas as permissões concedidas", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(GerenciadorDeContextos.this,"Conceda as permissões", Toast.LENGTH_LONG).show();
                 ActivityCompat.requestPermissions(GerenciadorDeContextos.this,new String[]{
                         Manifest.permission.CAMERA,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE}, RequestPermissionCode);
@@ -406,16 +404,4 @@ public class GerenciadorDeContextos extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int RC, String per[], int[] PResult) {
-        switch (RC) {
-            case RequestPermissionCode:
-                if (PResult.length > 0 && PResult[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(GerenciadorDeContextos.this,"Permissão concedida", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(GerenciadorDeContextos.this,"Permissão negada.", Toast.LENGTH_LONG).show();
-                }
-                break;
-        }
-    }
 }

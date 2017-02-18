@@ -6,16 +6,17 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal">
+        android:layout_height="65dp"
+        >
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Para jogar, basta selecionar o contexto e o nivel desejado!"
-            android:textSize="25sp"
+            android:text="Este é um aplicativo para auxiliar no processo de alfabetização baseado no jogo da forca!"
+            android:textSize="22sp"
             android:id="@+id/textView8"
 
             />
@@ -29,19 +30,20 @@
         <ImageView
             android:layout_width="260dp"
             android:layout_height="140dp"
-            android:src="@drawable/tutorial32"
+            android:src="@drawable/tutorial21"
             android:id="@+id/imageView4"
             />
 
         <ImageView
 
             android:layout_width="260dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="60dp"
             android:layout_height="140dp"
-            android:src="@drawable/tutorial31"
+            android:src="@drawable/tutorial22"
             android:id="@+id/imageView5"
             />
 
     </LinearLayout>
 
 </LinearLayout>
+

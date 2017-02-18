@@ -230,7 +230,7 @@ public class GerenciadorDePalavras extends AppCompatActivity {
     public void GetImageFromGallery(){
         GalIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(Intent.createChooser(GalIntent, "Select Image From Gallery"), 2);
+        startActivityForResult(Intent.createChooser(GalIntent, "Selecionar imagem"), 2);
     }
 
     @Override
@@ -320,7 +320,6 @@ public class GerenciadorDePalavras extends AppCompatActivity {
             if (ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDePalavras.this,
                     Manifest.permission.CAMERA) && ActivityCompat.shouldShowRequestPermissionRationale(GerenciadorDePalavras.this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                Toast.makeText(GerenciadorDePalavras.this,"Todas as permissões concedidas", Toast.LENGTH_LONG).show();
             } else {
                 ActivityCompat.requestPermissions(GerenciadorDePalavras.this,new String[]{
                         Manifest.permission.CAMERA,
@@ -329,16 +328,5 @@ public class GerenciadorDePalavras extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int RC, String per[], int[] PResult) {
-        switch (RC) {
-            case RequestPermissionCode:
-                if (PResult.length > 0 && PResult[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(GerenciadorDePalavras.this,"Permissão concedida", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(GerenciadorDePalavras.this,"Permissão negada", Toast.LENGTH_LONG).show();
-                }
-                break;
-        }
-    }
+
 }

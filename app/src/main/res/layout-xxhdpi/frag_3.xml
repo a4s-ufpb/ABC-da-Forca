@@ -36,7 +36,7 @@
         <ImageView
 
             android:layout_width="260dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="60dp"
             android:layout_height="140dp"
             android:src="@drawable/tutorial31"
             android:id="@+id/imageView5"

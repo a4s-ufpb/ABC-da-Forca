@@ -20,17 +20,20 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/acertou"
+
         android:id="@+id/imageView2"
         android:layout_below="@+id/textView8"
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+
         android:src="@drawable/comecar"
         android:id="@+id/btncomecar"
         android:layout_below="@+id/imageView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_marginTop="11dp" />
 
 </RelativeLayout>

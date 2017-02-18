@@ -35,7 +35,6 @@ public class ForcaApplication extends Application {
         for(Contexto c : this.contextosDefault){
             Contexto retorno= db.selectContextoByNome(c.getNome()); // if not null, don't exists in databae yet.
             if(retorno == null){
-                SplashActivity.primeiraVez = true;
                 db.addContexto(c); // add the contexto in database
                 for(Palavra p : c.getPalavrasNivelFacil()){ //add easy word default in dabatase
                     db.insertPalavraFacil(c.getNome(),p);

@@ -7,17 +7,17 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:gravity="center_vertical|center_horizontal">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_marginTop="10dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Olá, bem vindo ao ABC da Forca!"
-            android:textSize="35sp"
+            android:textSize="50sp"
             android:id="@+id/textView8"
 
             />
@@ -27,13 +27,13 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="217dp">
+        android:layout_height="545dp">
 
         <ImageView
             android:layout_gravity="center"
             android:layout_width="match_parent"
 
-            android:layout_height="205dp"
+            android:layout_height="500dp"
             android:src="@drawable/tutorial1"
             android:id="@+id/imageView8"
             />

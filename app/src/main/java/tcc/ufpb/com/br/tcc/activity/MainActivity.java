@@ -16,7 +16,7 @@ import tcc.ufpb.com.br.tcc.gerenciador.GerenciadorDeContextos;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView botaoJogar, botaoConfigurar, botaoInfo;
+    private ImageView botaoJogar, botaoConfigurar, botaoInfo, botaoTutorial;
     private Toast toast;
     private long lastBackPressTime = 0;
     private MediaPlayer mediaPlayer;
@@ -34,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
         botaoJogar = (ImageView) findViewById(R.id.botaoJogar);
         botaoConfigurar = (ImageView) findViewById(R.id.botaoConfigurar);
         botaoInfo = (ImageView) findViewById(R.id.infomenu);
+        botaoTutorial = (ImageView) findViewById(R.id.botaoTutorial);
+
+        botaoTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+                mediaPlayer.stop();
+                startActivity(intent);
+                finish();
+            }
+        });
+
         botaoJogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

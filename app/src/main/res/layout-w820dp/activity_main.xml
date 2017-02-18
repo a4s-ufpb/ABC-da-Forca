@@ -11,28 +11,6 @@
     android:background="@drawable/background">
 
     <ImageView
-
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="Jogar"
-        android:id="@+id/botaoJogar"
-        android:src="@drawable/botaoplay"
-        android:background="@android:color/transparent"
-        android:layout_below="@+id/logoMenu"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="Configurar"
-        android:id="@+id/botaoConfigurar"
-        android:src="@drawable/botaoconfigurar"
-        android:background="@android:color/transparent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
         android:layout_width="500dp"
         android:layout_height="320dp"
         android:id="@+id/logoMenu"
@@ -48,5 +26,40 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/botaoTutorial"
+        android:src="@drawable/tutorialicon"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/botaoJogar"
+        android:src="@drawable/botaoplay"
+        android:background="@android:color/transparent"
+        android:layout_marginLeft="145dp"
+        android:layout_marginStart="145dp"
+        android:layout_below="@+id/logoMenu"
+        android:layout_alignLeft="@+id/logoMenu"
+        android:layout_alignStart="@+id/logoMenu" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/botaoConfigurar"
+        android:src="@drawable/botaoconfigurar"
+        android:background="@android:color/transparent"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_below="@+id/logoMenu"
+        android:layout_toRightOf="@+id/botaoJogar"
+        android:layout_toEndOf="@+id/botaoJogar" />
 
 </RelativeLayout>

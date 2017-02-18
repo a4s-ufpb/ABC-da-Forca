@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Palavra:"
+            android:textSize="20dp"
+
+            />
+
+        <EditText
+
+            android:textSize="20dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/campoNomeContexto"
+
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+
+        <Button
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSelecionarImagem"
+            android:text="Selecionar Imagem"
+            />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/noimagebox"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/campoImagem"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+
+
+        android:layout_marginTop="10sp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+
+        <RadioGroup
+            android:id="@+id/radioButtonNiveis"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fácil"
+                android:textSize="20dp"
+                android:textColor="@color/md_green_900"
+                android:id="@+id/radioButton" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Médio"
+                android:textSize="20dp"
+                android:textColor="@color/md_yellow_A700"
+                android:id="@+id/radioButton2" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/md_red_900"
+                android:text="Difícil"
+                android:id="@+id/radioButton3" />
+
+        </RadioGroup>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+
+            android:text="Cadastrar"
+            android:id="@+id/btnCadastrar2"
+            />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Cancelar"
+            android:id="@+id/btnCancelar"
+            />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
