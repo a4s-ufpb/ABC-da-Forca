@@ -114,12 +114,13 @@ public class GerenciadorDePalavras extends AppCompatActivity {
                             }
 
                             String nome = campoCadastrarNomeImagem.getText().toString();
-                            if(imagemCarregada && !nome.equals("")){
+                            if(imagemCarregada && (!nome.equals("") && !nome.equals(" "))){
 
-                                if(validarPalavra(nome)){
+                                String retornoPalavra = validarPalavra(nome);
+                                if(retornoPalavra != null){
                                     try {
                                         saveImageToExternalStorage(imagemASerSalva);
-                                        application.adiconarPalavraAoContexto(contextoEscolhido,new Palavra(nome,pathPalavraASerCadastrada, nivel, false));
+                                        application.adiconarPalavraAoContexto(contextoEscolhido,new Palavra(retornoPalavra,pathPalavraASerCadastrada, nivel, false));
                                         adapter.notifyDataSetChanged();
 
                                         alerta.cancel();
@@ -192,7 +193,7 @@ public class GerenciadorDePalavras extends AppCompatActivity {
         });
     }
 
-    public static boolean validarPalavra(String input){
+    public static String validarPalavra(String input){
 
         char[] entrada = input.toCharArray(); // se tem espaço no meio da palavra, nao deixa cadastrar
         // se nao tem espaço no meio da palavra e tem espaço no final da palavra remove o espaço e cadastra
@@ -205,11 +206,12 @@ public class GerenciadorDePalavras extends AppCompatActivity {
         }
 
         if(cont == 0){
-            return true;
-        }else if (cont == 1 && entrada[entrada.length-1] == ' '){
-            return true;
+            return input;
+        }else if (cont == 1 && entrada[entrada.length-1] == ' '){ // retornar a palavra sem o espaco no final
+            return input.substring(0,entrada.length-1);
+
         }else{
-            return  false;
+            return null;
         }
 
     }
