@@ -112,20 +112,26 @@ public class GerenciadorDePalavras extends AppCompatActivity {
                                     nivel = Niveis.DIFICIL;
                                     break;
                             }
-                            if(imagemCarregada){
-                                try {
-                                    saveImageToExternalStorage(imagemASerSalva);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                String nome = campoCadastrarNomeImagem.getText().toString();
-                                application.adiconarPalavraAoContexto(contextoEscolhido,new Palavra(nome,pathPalavraASerCadastrada, nivel, false));
-                                adapter.notifyDataSetChanged();
 
-                                alerta.cancel();
-                                imagemCarregada = false;
-                                pathPalavraASerCadastrada= null;
-                                imagemASerSalva=null;
+                            String nome = campoCadastrarNomeImagem.getText().toString();
+                            if(imagemCarregada && !nome.equals("")){
+
+                                if(validarPalavra(nome)){
+                                    try {
+                                        saveImageToExternalStorage(imagemASerSalva);
+                                        application.adiconarPalavraAoContexto(contextoEscolhido,new Palavra(nome,pathPalavraASerCadastrada, nivel, false));
+                                        adapter.notifyDataSetChanged();
+
+                                        alerta.cancel();
+                                        imagemCarregada = false;
+                                        pathPalavraASerCadastrada= null;
+                                        imagemASerSalva=null;
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }else{
+                                    Toast.makeText(v.getContext(),"A palavra não pode conter espaços",Toast.LENGTH_SHORT).show();
+                                }
                             }else{
                                 Toast.makeText(v.getContext(),"Para continuar, Dê um nome a palavra e selecione uma imagem da galeria",Toast.LENGTH_SHORT).show();
                             }
@@ -184,6 +190,28 @@ public class GerenciadorDePalavras extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+    }
+
+    public static boolean validarPalavra(String input){
+
+        char[] entrada = input.toCharArray(); // se tem espaço no meio da palavra, nao deixa cadastrar
+        // se nao tem espaço no meio da palavra e tem espaço no final da palavra remove o espaço e cadastra
+
+        int cont = 0;
+
+        for(char c : entrada){
+            if (c == ' ')
+                cont++;
+        }
+
+        if(cont == 0){
+            return true;
+        }else if (cont == 1 && entrada[entrada.length-1] == ' '){
+            return true;
+        }else{
+            return  false;
+        }
+
     }
 
     @Override

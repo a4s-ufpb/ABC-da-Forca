@@ -6,16 +6,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="173dp"
+        android:layout_height="107dp"
         android:gravity="center_vertical|center_horizontal">
 
         <TextView
 
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Para jogar, basta selecionar o contexto e o nivel desejado!"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:id="@+id/textView8"
 
             />
@@ -24,20 +24,20 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="440dp">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="560dp"
-            android:layout_height="340dp"
+            android:layout_width="320dp"
+            android:layout_height="188dp"
             android:src="@drawable/tutorial32"
             android:id="@+id/imageView4"
             />
 
         <ImageView
-            android:layout_marginLeft="30dp"
-            android:layout_width="560dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="320dp"
             android:layout_marginTop="60dp"
-            android:layout_height="340dp"
+            android:layout_height="188dp"
             android:src="@drawable/tutorial31"
             android:id="@+id/imageView5"
             />

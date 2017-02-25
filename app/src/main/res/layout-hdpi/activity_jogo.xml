@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="45sp"
+        android:textSize="38sp"
         android:id="@+id/campoPalavra"
         android:textAlignment="center"
 
@@ -63,13 +63,12 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/campoImagem"
-        android:layout_alignTop="@+id/qtAcertos"
         android:layout_centerHorizontal="true" />
 
 
     <!-- Letras do alfabeto -->
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -80,7 +79,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -91,7 +90,7 @@
         android:layout_toEndOf="@+id/botaoA" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -102,7 +101,7 @@
         android:layout_toEndOf="@+id/botaoB" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -113,7 +112,7 @@
         android:layout_toEndOf="@+id/botaoC" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -124,7 +123,7 @@
         android:layout_toEndOf="@+id/botaoD" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -135,7 +134,7 @@
         android:layout_toEndOf="@+id/botaoE" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -146,7 +145,7 @@
         android:layout_toEndOf="@+id/botaoF" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -157,7 +156,7 @@
         android:layout_toEndOf="@+id/botaoG" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -168,7 +167,7 @@
         android:layout_toEndOf="@+id/botaoH" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -179,7 +178,7 @@
         android:layout_toEndOf="@+id/botaoI" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -190,7 +189,7 @@
         android:layout_toEndOf="@+id/botaoJ" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -201,7 +200,7 @@
         android:layout_toEndOf="@+id/botaoK" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -212,7 +211,7 @@
         android:layout_toEndOf="@+id/botaoL" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -223,7 +222,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -234,7 +233,7 @@
         android:layout_toEndOf="@+id/botaoA" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -245,7 +244,7 @@
         android:layout_alignStart="@+id/botaoC" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -257,7 +256,7 @@
         android:layout_toEndOf="@+id/botaoC" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -269,7 +268,7 @@
         android:layout_toStartOf="@+id/botaoF" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -281,7 +280,7 @@
         android:layout_alignStart="@+id/botaoF" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -293,7 +292,7 @@
         android:layout_toStartOf="@+id/botaoH" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -305,7 +304,7 @@
         android:layout_alignStart="@+id/botaoH" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -316,7 +315,7 @@
         android:layout_toEndOf="@+id/botaoH" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -328,7 +327,7 @@
         android:layout_toEndOf="@+id/botaoI" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -340,7 +339,7 @@
         android:layout_toEndOf="@+id/botaoW" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -351,7 +350,7 @@
         android:layout_toEndOf="@+id/botaoK" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -363,7 +362,7 @@
 
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -375,7 +374,7 @@
         android:layout_toEndOf="@+id/botaoN" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -386,7 +385,7 @@
         android:layout_toEndOf="@+id/botaoO" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -397,7 +396,7 @@
         android:layout_toEndOf="@+id/botaoP" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -408,7 +407,7 @@
         android:layout_toEndOf="@+id/botaoQ" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -420,7 +419,7 @@
         android:layout_toEndOf="@+id/botaoOComAcentoAgudo" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -432,7 +431,7 @@
         android:layout_toEndOf="@+id/botaoUComAcentoAgudo" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -443,7 +442,7 @@
         android:layout_toEndOf="@+id/botaoAComCircunflexo" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -455,7 +454,7 @@
         android:layout_toEndOf="@+id/botaoEComCircunflexo" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -466,7 +465,7 @@
         android:layout_toEndOf="@+id/botaoOComcircunflexo" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -477,7 +476,7 @@
         android:layout_toEndOf="@+id/botaoAComTil" />
 
     <Button
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_width="40dp"
         android:layout_height="40dp"
