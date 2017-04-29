@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Para jogar, basta selecionar o contexto e o nivel desejado!"
+            android:text="Para jogar, basta selecionar o contexto e o nível desejado!"
             android:textSize="30sp"
             android:id="@+id/textView8"
 
