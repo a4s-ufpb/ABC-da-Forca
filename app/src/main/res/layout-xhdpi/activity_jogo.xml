@@ -365,45 +365,23 @@
         android:textStyle="bold"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:text="Á"
-        android:id="@+id/botaoAComAcentoAgudo"
-
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoEComAcentoAgudo"
-        android:layout_toStartOf="@+id/botaoEComAcentoAgudo" />
-
-    <Button
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="É"
-        android:id="@+id/botaoEComAcentoAgudo"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoIComAcentoAgudo"
-        android:layout_toStartOf="@+id/botaoIComAcentoAgudo" />
+        android:text="Ç"
+        android:id="@+id/botaoCedilha"
+        android:layout_alignTop="@+id/botaoOComTil"
+        android:layout_toRightOf="@+id/botaoX"
+        android:layout_toEndOf="@+id/botaoX" />
 
     <Button
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:text="Í"
-        android:id="@+id/botaoIComAcentoAgudo"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoOComAcentoAgudo"
-        android:layout_toStartOf="@+id/botaoOComAcentoAgudo" />
+        android:text="Â"
 
-    <Button
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="Ó"
-        android:id="@+id/botaoOComAcentoAgudo"
+        android:id="@+id/botaoAComCircunflexo"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoUComAcentoAgudo"
-        android:layout_toStartOf="@+id/botaoUComAcentoAgudo" />
+        android:layout_toRightOf="@+id/botaoO"
+        android:layout_toEndOf="@+id/botaoO" />
 
     <Button
         android:textSize="20sp"
@@ -414,6 +392,18 @@
         android:id="@+id/botaoUComAcentoAgudo"
 
         android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoW"
+        android:layout_toEndOf="@+id/botaoW" />
+
+    <Button
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="Á"
+        android:id="@+id/botaoAComAcentoAgudo"
+
+        android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/botaoAComCircunflexo"
         android:layout_toStartOf="@+id/botaoAComCircunflexo" />
 
@@ -422,12 +412,11 @@
         android:textStyle="bold"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:text="Â"
-
-        android:id="@+id/botaoAComCircunflexo"
-        android:layout_alignTop="@+id/botaoEComCircunflexo"
-        android:layout_toLeftOf="@+id/botaoEComCircunflexo"
-        android:layout_toStartOf="@+id/botaoEComCircunflexo" />
+        android:text="Ã"
+        android:id="@+id/botaoAComTil"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoP"
+        android:layout_toEndOf="@+id/botaoP" />
 
     <Button
         android:textSize="20sp"
@@ -437,8 +426,52 @@
         android:text="Ê"
         android:id="@+id/botaoEComCircunflexo"
         android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoR"
+        android:layout_toEndOf="@+id/botaoR" />
+
+    <Button
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="É"
+        android:id="@+id/botaoEComAcentoAgudo"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoQ"
+        android:layout_toEndOf="@+id/botaoQ" />
+
+    <Button
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="Í"
+        android:id="@+id/botaoIComAcentoAgudo"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoS"
+        android:layout_toEndOf="@+id/botaoS" />
+
+    <Button
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="Ó"
+        android:id="@+id/botaoOComAcentoAgudo"
+        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/botaoT"
         android:layout_toEndOf="@+id/botaoT" />
+
+    <Button
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="Õ"
+        android:id="@+id/botaoOComTil"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/botaoUComAcentoAgudo"
+        android:layout_toStartOf="@+id/botaoUComAcentoAgudo" />
 
     <Button
         android:textSize="20sp"
@@ -449,42 +482,8 @@
 
         android:id="@+id/botaoOComcircunflexo"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoAComTil"
-        android:layout_toStartOf="@+id/botaoAComTil" />
-
-    <Button
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="Ã"
-        android:id="@+id/botaoAComTil"
-        android:layout_alignTop="@+id/botaoOComTil"
-        android:layout_toRightOf="@+id/botaoV"
-        android:layout_toEndOf="@+id/botaoV" />
-
-    <Button
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="Õ"
-        android:id="@+id/botaoOComTil"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/botaoW"
-        android:layout_toEndOf="@+id/botaoW" />
-
-    <Button
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="Ç"
-        android:id="@+id/botaoCedilha"
-        android:layout_alignTop="@+id/botaoOComTil"
-        android:layout_toRightOf="@+id/botaoX"
-        android:layout_toEndOf="@+id/botaoX" />
-
+        android:layout_toRightOf="@+id/botaoOComAcentoAgudo"
+        android:layout_toEndOf="@+id/botaoOComAcentoAgudo" />
 
 
 </RelativeLayout>

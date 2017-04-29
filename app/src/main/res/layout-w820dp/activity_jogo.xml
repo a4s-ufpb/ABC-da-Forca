@@ -62,356 +62,14 @@
 
 
     <!-- Letras do alfabeto -->
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="A"
-        android:id="@+id/botaoA"
-        android:layout_above="@+id/botaoN"
-        android:layout_alignLeft="@+id/botaoN"
-        android:layout_alignStart="@+id/botaoN" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="B"
-        android:id="@+id/botaoB"
-        android:layout_above="@+id/botaoO"
-        android:layout_toLeftOf="@+id/botaoC"
-        android:layout_toStartOf="@+id/botaoC" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="C"
-        android:id="@+id/botaoC"
-        android:layout_above="@+id/botaoP"
-        android:layout_alignLeft="@+id/botaoP"
-        android:layout_alignStart="@+id/botaoP" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="D"
-        android:id="@+id/botaoD"
-        android:layout_above="@+id/botaoQ"
-        android:layout_toRightOf="@+id/botaoP"
-        android:layout_toEndOf="@+id/botaoP" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="E"
-        android:id="@+id/botaoE"
-        android:layout_above="@+id/botaoR"
-        android:layout_toLeftOf="@+id/botaoF"
-        android:layout_toStartOf="@+id/botaoF" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="F"
-        android:id="@+id/botaoF"
-        android:layout_alignTop="@+id/botaoG"
-        android:layout_toRightOf="@+id/botaoR"
-        android:layout_toEndOf="@+id/botaoR" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="G"
-        android:id="@+id/botaoG"
-        android:layout_alignTop="@+id/botaoH"
-        android:layout_toLeftOf="@+id/botaoH"
-        android:layout_toStartOf="@+id/botaoH" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="H"
-        android:id="@+id/botaoH"
-        android:layout_above="@+id/botaoU"
-        android:layout_toLeftOf="@+id/botaoI"
-        android:layout_toStartOf="@+id/botaoI" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="I"
-        android:id="@+id/botaoI"
-        android:layout_above="@+id/botaoV"
-        android:layout_alignLeft="@+id/botaoV"
-        android:layout_alignStart="@+id/botaoV" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="J"
-        android:id="@+id/botaoJ"
-        android:layout_above="@+id/botaoW"
-        android:layout_toRightOf="@+id/botaoV"
-        android:layout_toEndOf="@+id/botaoV" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="K"
-        android:id="@+id/botaoK"
-        android:layout_alignTop="@+id/botaoL"
-        android:layout_toRightOf="@+id/botaoW"
-        android:layout_toEndOf="@+id/botaoW" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="L"
-        android:id="@+id/botaoL"
-        android:layout_above="@+id/botaoY"
-        android:layout_alignLeft="@+id/botaoY"
-        android:layout_alignStart="@+id/botaoY" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="M"
-        android:id="@+id/botaoM"
-        android:layout_above="@+id/botaoZ"
-        android:layout_toRightOf="@+id/botaoY"
-        android:layout_toEndOf="@+id/botaoY" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="N"
-        android:id="@+id/botaoN"
-        android:layout_alignTop="@+id/botaoO"
-        android:layout_toLeftOf="@+id/botaoO"
-        android:layout_toStartOf="@+id/botaoO" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="O"
-        android:id="@+id/botaoO"
-        android:layout_above="@+id/botaoAComAcentoAgudo"
-        android:layout_alignRight="@+id/botaoAComAcentoAgudo"
-        android:layout_alignEnd="@+id/botaoAComAcentoAgudo" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="P"
-        android:id="@+id/botaoP"
-        android:layout_above="@+id/botaoEComAcentoAgudo"
-        android:layout_toLeftOf="@+id/botaoQ"
-        android:layout_toStartOf="@+id/botaoQ" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Q"
-        android:id="@+id/botaoQ"
-
-        android:layout_above="@+id/botaoIComAcentoAgudo"
-        android:layout_toLeftOf="@+id/botaoR"
-        android:layout_toStartOf="@+id/botaoR" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="R"
-        android:id="@+id/botaoR"
-
-        android:layout_above="@+id/botaoOComAcentoAgudo"
-        android:layout_alignRight="@+id/botaoOComAcentoAgudo"
-        android:layout_alignEnd="@+id/botaoOComAcentoAgudo" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="S"
-        android:id="@+id/botaoS"
-
-        android:layout_above="@+id/botaoUComAcentoAgudo"
-        android:layout_toLeftOf="@+id/botaoT"
-        android:layout_toStartOf="@+id/botaoT" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="T"
-        android:id="@+id/botaoT"
-
-        android:layout_above="@+id/botaoAComCircunflexo"
-        android:layout_toLeftOf="@+id/botaoU"
-        android:layout_toStartOf="@+id/botaoU" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="U"
-        android:id="@+id/botaoU"
-
-        android:layout_above="@+id/botaoEComCircunflexo"
-        android:layout_toLeftOf="@+id/botaoV"
-        android:layout_toStartOf="@+id/botaoV" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="V"
-        android:id="@+id/botaoV"
-        android:layout_above="@+id/botaoOComcircunflexo"
-        android:layout_toLeftOf="@+id/botaoW"
-        android:layout_toStartOf="@+id/botaoW" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="W"
-        android:id="@+id/botaoW"
-
-        android:layout_above="@+id/botaoAComTil"
-        android:layout_toLeftOf="@+id/botaoX"
-        android:layout_toStartOf="@+id/botaoX" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="X"
-        android:id="@+id/botaoX"
-
-        android:layout_above="@+id/botaoOComTil"
-        android:layout_alignRight="@+id/botaoOComTil"
-        android:layout_alignEnd="@+id/botaoOComTil" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Y"
-        android:id="@+id/botaoY"
-        android:layout_above="@+id/botaoCedilha"
-        android:layout_toLeftOf="@+id/botaoZ"
-        android:layout_toStartOf="@+id/botaoZ" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Z"
-        android:id="@+id/botaoZ"
-        android:layout_above="@+id/botaoCedilha"
-        android:layout_toRightOf="@+id/botaoCedilha"
-        android:layout_toEndOf="@+id/botaoCedilha" />
 
 
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Á"
-        android:id="@+id/botaoAComAcentoAgudo"
-
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoEComAcentoAgudo"
-        android:layout_toStartOf="@+id/botaoEComAcentoAgudo" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="É"
-        android:id="@+id/botaoEComAcentoAgudo"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoIComAcentoAgudo"
-        android:layout_toStartOf="@+id/botaoIComAcentoAgudo" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Í"
-        android:id="@+id/botaoIComAcentoAgudo"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/botaoOComAcentoAgudo"
-        android:layout_toStartOf="@+id/botaoOComAcentoAgudo" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Ó"
-        android:id="@+id/botaoOComAcentoAgudo"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/campoImagem"
-        android:layout_toStartOf="@+id/campoImagem" />
-
-    <Button
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Ú"
-        android:id="@+id/botaoUComAcentoAgudo"
-
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/campoImagem"
-        android:layout_alignStart="@+id/campoImagem" />
+    <ImageView
+        android:layout_marginTop="30sp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/campoImagem"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:textSize="30sp"
@@ -422,8 +80,99 @@
 
         android:id="@+id/botaoAComCircunflexo"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/botaoUComAcentoAgudo"
-        android:layout_toEndOf="@+id/botaoUComAcentoAgudo" />
+        android:layout_toRightOf="@+id/botaoO"
+        android:layout_toEndOf="@+id/botaoO" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="S"
+        android:id="@+id/botaoS"
+
+        android:layout_below="@+id/botaoF"
+        android:layout_toRightOf="@+id/botaoE"
+        android:layout_toEndOf="@+id/botaoE" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="G"
+        android:id="@+id/botaoG"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoF"
+        android:layout_toEndOf="@+id/botaoF" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="H"
+        android:id="@+id/botaoH"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoG"
+        android:layout_toEndOf="@+id/botaoG" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="U"
+        android:id="@+id/botaoU"
+
+        android:layout_below="@+id/botaoH"
+        android:layout_toRightOf="@+id/botaoT"
+        android:layout_toEndOf="@+id/botaoT" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="I"
+        android:id="@+id/botaoI"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoH"
+        android:layout_toEndOf="@+id/botaoH" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="V"
+        android:id="@+id/botaoV"
+        android:layout_below="@+id/botaoI"
+        android:layout_toLeftOf="@+id/botaoJ"
+        android:layout_toStartOf="@+id/botaoJ" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="W"
+        android:id="@+id/botaoW"
+
+        android:layout_below="@+id/botaoJ"
+        android:layout_toRightOf="@+id/botaoI"
+        android:layout_toEndOf="@+id/botaoI" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Ã"
+        android:id="@+id/botaoAComTil"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoAComCircunflexo"
+        android:layout_toEndOf="@+id/botaoAComCircunflexo" />
 
     <Button
         android:textSize="30sp"
@@ -433,8 +182,66 @@
         android:text="Ê"
         android:id="@+id/botaoEComCircunflexo"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/botaoAComCircunflexo"
-        android:layout_toEndOf="@+id/botaoAComCircunflexo" />
+        android:layout_toRightOf="@+id/botaoEComAcentoAgudo"
+        android:layout_toEndOf="@+id/botaoEComAcentoAgudo" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="É"
+        android:id="@+id/botaoEComAcentoAgudo"
+        android:layout_alignTop="@+id/botaoAComTil"
+        android:layout_toRightOf="@+id/botaoAComTil"
+        android:layout_toEndOf="@+id/botaoAComTil" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Í"
+        android:id="@+id/botaoIComAcentoAgudo"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/botaoEComCircunflexo"
+        android:layout_toEndOf="@+id/botaoEComCircunflexo" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Á"
+        android:id="@+id/botaoAComAcentoAgudo"
+
+        android:layout_marginRight="175dp"
+        android:layout_marginEnd="175dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/campoImagem"
+        android:layout_toStartOf="@+id/campoImagem" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="E"
+        android:id="@+id/botaoE"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoD"
+        android:layout_toEndOf="@+id/botaoD" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Õ"
+        android:id="@+id/botaoOComTil"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/botaoW"
+        android:layout_alignStart="@+id/botaoW" />
 
     <Button
         android:textSize="30sp"
@@ -445,30 +252,31 @@
 
         android:id="@+id/botaoOComcircunflexo"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/botaoEComCircunflexo"
-        android:layout_toEndOf="@+id/botaoEComCircunflexo" />
+        android:layout_toRightOf="@+id/botaoU"
+        android:layout_toEndOf="@+id/botaoU" />
 
     <Button
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text="Ã"
-        android:id="@+id/botaoAComTil"
+        android:text="Ú"
+        android:id="@+id/botaoUComAcentoAgudo"
+
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/botaoOComcircunflexo"
-        android:layout_toEndOf="@+id/botaoOComcircunflexo" />
+        android:layout_toRightOf="@+id/botaoW"
+        android:layout_toEndOf="@+id/botaoW" />
 
     <Button
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text="Õ"
-        android:id="@+id/botaoOComTil"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/botaoAComTil"
-        android:layout_toEndOf="@+id/botaoAComTil" />
+        android:text="K"
+        android:id="@+id/botaoK"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoJ"
+        android:layout_toEndOf="@+id/botaoJ" />
 
     <Button
         android:textSize="30sp"
@@ -477,18 +285,212 @@
         android:layout_height="60dp"
         android:text="Ç"
         android:id="@+id/botaoCedilha"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/botaoOComTil"
-        android:layout_toEndOf="@+id/botaoOComTil" />
+        android:layout_alignTop="@+id/botaoUComAcentoAgudo"
+        android:layout_toRightOf="@+id/botaoUComAcentoAgudo"
+        android:layout_toEndOf="@+id/botaoUComAcentoAgudo" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Ó"
+        android:id="@+id/botaoOComAcentoAgudo"
+        android:layout_below="@+id/botaoU"
+        android:layout_toRightOf="@+id/botaoT"
+        android:layout_toEndOf="@+id/botaoT" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="R"
+        android:id="@+id/botaoR"
+
+        android:layout_below="@+id/botaoE"
+        android:layout_toRightOf="@+id/botaoD"
+        android:layout_toEndOf="@+id/botaoD" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="M"
+        android:id="@+id/botaoM"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoL"
+        android:layout_toEndOf="@+id/botaoL" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="X"
+        android:id="@+id/botaoX"
+
+        android:layout_below="@+id/botaoL"
+        android:layout_toRightOf="@+id/botaoW"
+        android:layout_toEndOf="@+id/botaoW" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Y"
+        android:id="@+id/botaoY"
+        android:layout_below="@+id/botaoM"
+        android:layout_toRightOf="@+id/botaoUComAcentoAgudo"
+        android:layout_toEndOf="@+id/botaoUComAcentoAgudo" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="B"
+        android:id="@+id/botaoB"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoA"
+        android:layout_toEndOf="@+id/botaoA" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="C"
+        android:id="@+id/botaoC"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoB"
+        android:layout_toEndOf="@+id/botaoB" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="F"
+        android:id="@+id/botaoF"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoE"
+        android:layout_toEndOf="@+id/botaoE" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="J"
+        android:id="@+id/botaoJ"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoI"
+        android:layout_toEndOf="@+id/botaoI" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="L"
+        android:id="@+id/botaoL"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoK"
+        android:layout_toEndOf="@+id/botaoK" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="D"
+        android:id="@+id/botaoD"
+        android:layout_below="@+id/campoPalavra"
+        android:layout_toRightOf="@+id/botaoC"
+        android:layout_toEndOf="@+id/botaoC" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="A"
+        android:id="@+id/botaoA"
+        android:layout_above="@+id/botaoN"
+        android:layout_toLeftOf="@+id/botaoO"
+        android:layout_toStartOf="@+id/botaoO" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="O"
+        android:id="@+id/botaoO"
+        android:layout_below="@+id/botaoB"
+        android:layout_alignLeft="@+id/botaoAComAcentoAgudo"
+        android:layout_alignStart="@+id/botaoAComAcentoAgudo" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Z"
+        android:id="@+id/botaoZ"
+        android:layout_below="@+id/botaoM"
+        android:layout_toRightOf="@+id/botaoY"
+        android:layout_toEndOf="@+id/botaoY" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="T"
+        android:id="@+id/botaoT"
+
+        android:layout_alignBottom="@+id/botaoS"
+        android:layout_toRightOf="@+id/botaoS"
+        android:layout_toEndOf="@+id/botaoS" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="P"
+        android:id="@+id/botaoP"
+        android:layout_below="@+id/botaoC"
+        android:layout_toRightOf="@+id/botaoB"
+        android:layout_toEndOf="@+id/botaoB" />
+
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Q"
+        android:id="@+id/botaoQ"
 
 
+        android:layout_alignBottom="@+id/botaoP"
+        android:layout_toRightOf="@+id/botaoC"
+        android:layout_toEndOf="@+id/botaoC" />
 
-    <ImageView
-        android:layout_marginTop="30sp"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/campoImagem"
-        android:layout_centerHorizontal="true" />
+    <Button
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="N"
+        android:id="@+id/botaoN"
+        android:layout_above="@+id/botaoAComAcentoAgudo"
+        android:layout_alignLeft="@+id/botaoA"
+        android:layout_alignStart="@+id/botaoA" />
 
 
     <!-- / Letras do alfabeto -->
