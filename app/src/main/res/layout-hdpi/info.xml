@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ABC da Forca 1.0\n\nDesenvolvedor: Deyvison Oliveira\nE-mail: deyvison.melo@dcx.ufpb.br\n\nDesign: Daniel Pessoa\nE-mail: danielfalconx@hotmail.com\n\nMúsica: http://www.bensound.com\nSprites: @CamTatz\n\nProfessor Orientador: Ayla Rebouças\nE-mail: ayla@dcx.ufpb.br\n"
+            android:text="ABC da Forca 1.0.3\n\nDesenvolvedor: Deyvison Oliveira\nE-mail: deyvison.melo@dcx.ufpb.br\n\nDesign: Daniel Pessoa\nE-mail: danielfalconx@hotmail.com\n\nMúsica: http://www.bensound.com\nSprites: @CamTatz\n\nProfessor Orientador: Ayla Rebouças\nE-mail: ayla@dcx.ufpb.br\n"
             android:textSize="13dp"
 
             />
