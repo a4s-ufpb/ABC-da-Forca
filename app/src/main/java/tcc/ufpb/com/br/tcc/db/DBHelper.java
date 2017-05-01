@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static int DB_VERSION = 1;
+    private static int DB_VERSION = 5;
     private static String DB_NAME = "abcdaforca";
 
     private static String TABLE_CONTEXT = "CREATE TABLE contexto("+
