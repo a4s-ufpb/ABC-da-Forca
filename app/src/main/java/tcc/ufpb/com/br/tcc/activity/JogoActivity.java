@@ -16,6 +16,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Random;
+
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -787,25 +789,52 @@ public class JogoActivity extends AppCompatActivity implements OnInitListener  {
         LayoutInflater li = getLayoutInflater();
         final View view = li.inflate(R.layout.feedback_rodada, null);
         ImageView estrelas = (ImageView)view.findViewById(R.id.estrelafeedback);
+        Random random = new Random();
 
         if(this.qtAcertosNaRodada == 0){
             estrelas.setImageResource(R.drawable.estrela0acertos);
-            speakWords("Você acertou nenhuma palavra. Seu desempenho foi péssimo");
+            String feedback[] = {"Você acertou nenhuma palavra. Continue tentando.",
+                    "Você acertou nenhuma palavra. Treine mais um pouco.",
+                    "Você acertou nenhuma palavra. Não desista. Você pode melhorar.",
+                    "Você acertou nenhuma palavra. Tente mudar para um nível mais fácil ou selecionar outro desafio.",
+                    "Você acertou nenhuma palavra. Não desanime"};
+            speakWords(feedback[random.nextInt(feedback.length)]);
+
         }else if(this.qtAcertosNaRodada == 1){
             estrelas.setImageResource(R.drawable.estrela1acertos);
-            speakWords("Você acertou uma palavra. Seu desempenho foi ruim");
+            String feedback[] = {"Você acertou uma palavra. Você está no caminho certo.",
+                    "Você acertou uma palavra. Se esforçe mais um pouco.",
+                    "Você acertou uma palavra. Você pode melhorar."};
+            speakWords(feedback[random.nextInt(feedback.length)]);
+
         }else if(this.qtAcertosNaRodada == 2){
             estrelas.setImageResource(R.drawable.estrela2acertos);
-            speakWords("Você acertou duas palavras. Seu desempenho foi regular");
+            String feedback[] = {"Você acertou duas palavras e ainda pode melhorar.",
+                    "Você acertou duas palavras. Seu desempenho foi regular.",
+                    "Você está indo no caminho certo, mas ainda precisa melhorar."};
+            speakWords(feedback[random.nextInt(feedback.length)]);
+
         }else if(this.qtAcertosNaRodada == 3){
             estrelas.setImageResource(R.drawable.estrela3acertos);
-            speakWords("Você acertou três palavras. Seu desempenho foi bom");
+            String feedback[] = {"Você acertou três palavras. Seu desempenho foi bom",
+                    "Você acertou três palavras. Você está indo no caminho certo",
+                    "Você acertou três palavras. Continue assim",
+                    "Você acertou três palavras. Continue progredindo"};
+            speakWords(feedback[random.nextInt(feedback.length)]);
+
         }else if(this.qtAcertosNaRodada == 4){
             estrelas.setImageResource(R.drawable.estrela4acertos);
-            speakWords("Você acertou quatro palavras. Seu desempenho foi ótimo");
+            String feedback[] = {"Você acertou quatro palavras. Você está indo muito bem.",
+                    "Você acertou quatro palavras. Seu desempenho foi ótimo.",
+                    "Você acertou quatro palavras. Parabéns, continue assim."};
+            speakWords(feedback[random.nextInt(feedback.length)]);
+
         }else if(this.qtAcertosNaRodada == 5){
             estrelas.setImageResource(R.drawable.estrela5acertos);
-            speakWords("Você acertou todas as palavras. Seu desempenho foi excelente");
+            String feedback[] = {"Você acertou todas as palavras. Seu desempenho foi excelente.",
+                    "Parabéns. Seu desempenho foi excelente.",
+                    "Seu desempenho foi excelente, experimente selecionar um novo nível ou contexto diferente"};
+            speakWords(feedback[random.nextInt(feedback.length)]);
         }
 
         this.qtAcertosNaRodada = 0;
