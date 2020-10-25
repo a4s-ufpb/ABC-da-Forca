@@ -3,9 +3,9 @@ package tcc.ufpb.com.br.tcc.adapter;
  * Created by Deyvison on 23/12/2016.
  */
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import tcc.ufpb.com.br.tcc.fragments.TabFragment1;
 import tcc.ufpb.com.br.tcc.fragments.TabFragment2;
 import tcc.ufpb.com.br.tcc.fragments.TabFragment3;

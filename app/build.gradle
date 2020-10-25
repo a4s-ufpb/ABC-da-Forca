@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 29
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "tcc.ufpb.com.br.tcc"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 5
-        versionName "1.0.4"
+        applicationId "tcc.ufpb.com.br"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 6
+        versionName "1.0.5"
     }
 
     buildTypes {
@@ -21,12 +21,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 
-    compile 'com.android.support:design:23.4.0'
-    compile group:'com.squareup.picasso', name:'picasso', version:'2.3.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation group:'com.squareup.picasso', name:'picasso', version:'2.3.2'
 
-    compile 'me.relex:circleindicator:1.2.2@aar'
+    implementation 'me.relex:circleindicator:1.2.2@aar'
 }

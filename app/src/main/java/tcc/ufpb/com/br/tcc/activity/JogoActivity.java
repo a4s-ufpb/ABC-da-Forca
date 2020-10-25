@@ -2,8 +2,8 @@ package tcc.ufpb.com.br.tcc.activity;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.Button;

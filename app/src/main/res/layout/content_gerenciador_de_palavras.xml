@@ -12,10 +12,12 @@
     tools:context="tcc.ufpb.com.br.tcc.gerenciador.GerenciadorDePalavras"
     tools:showIn="@layout/activity_gerenciador_de_palavras">
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/tab_layout"/>
+        android:layout_height="fill_parent" />
+<!--        android:layout_below="@id/tab_layout" -->
+
+
 
 </RelativeLayout>
